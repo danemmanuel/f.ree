@@ -11,12 +11,12 @@ if (isset($entrar)) {
     $verifica = mysql_query("SELECT * FROM freelancer WHERE email = '$email' AND senha = '$senha'") or die("erro ao selecionar");
     
     if (mysql_num_rows($verifica)<=0){
-        header("location:index.php");
+        header("location:index.html");
         die();
     }else{
         $_SESSION['usuario'] = $email;
         echo $_SESSION['usuario'];
-        header('location:../conta');
+        header('location:../index.php');
     }
 }
 ?>

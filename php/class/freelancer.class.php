@@ -78,15 +78,10 @@ class freelancer{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"INSERT INTO freelancer(nome,email,telefone,areaatuacao,sexo,datanascimento,resumo,senha)
-				VALUES(:nome,:email,:telefone,:areaatuacao,:sexo,:datanascimento,:resumo,:senha)");
+				"INSERT INTO freelancer(nome,email,senha)
+				VALUES(:nome,:email,:senha)");
 			$stmt->bindValue(":nome",$this->getNome());
-			$stmt->bindValue(":telefone",$this->getTelefone());
 			$stmt->bindValue(":email",$this->getEmail());
-			$stmt->bindValue(":areaatuacao",$this->getAreaatuacao());
-			$stmt->bindValue(":sexo",$this->getSexo());
-			$stmt->bindValue(":datanascimento",$this->getDatanascimento());
-			$stmt->bindValue(":resumo",$this->getResumo());
 			$stmt->bindValue(":senha",$this->getSenha());
 			return $stmt->execute();
 		}catch(PDOException $e){

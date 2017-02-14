@@ -33,7 +33,7 @@
 
 <body class="bg-faded p-t-2">
   <div class="container">
-    <h3 class="p-y-1 text-xs-center">Entre na sua conta<strong> F.ree</strong></h3>
+    <h3 class="p-y-1 text-xs-center">Cadastre-se na<strong> F.ree</strong></h3>
   </div>
 
     <!-- WHITE navigation
@@ -50,7 +50,11 @@
 
           <!-- Forms
           ================================================== -->
-          <form  action="login.php" method="POST">
+          <form  action="../php/functions/registrarfreelancer.php" method="POST">
+            <div class="form-group has-icon-left form-control-name">
+              <label class="sr-only" for="inputName">Seu nome</label>
+              <input type="text" class="form-control form-control-lg" id="inputName" name="nome" placeholder="Seu nome">
+            </div>
             <div class="form-group has-icon-left form-control-email">
               <label class="sr-only" for="inputEmail">Seu email</label>
               <input type="email" class="form-control form-control-lg" id="inputEmail" name="email" placeholder="Seu email" autocomplete="off">
@@ -60,7 +64,7 @@
               <input type="password" class="form-control form-control-lg" id="inputPassword" name="senha" placeholder="Sua senha" autocomplete="off">
             </div>
 
-            <button name="entrar" type="submit" class="btn btn-primary btn-block">Entrar!</button>
+            <button type="submit" class="btn btn-primary btn-block">Cadastrar!</button>
           </form>
 
         </div>
