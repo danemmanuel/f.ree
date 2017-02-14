@@ -66,7 +66,7 @@
             <li class="navbar-divider hidden-sm-down"></li>
             <li class="nav-item dropdown nav-dropdown-search hidden-sm-down">
               <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="icon-search"></span>
+                
               </a>
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-search" aria-labelledby="dropdownMenu1">
                 <form class="navbar-form">
@@ -129,7 +129,7 @@
       <div class="container">
         <h1 class="display-3">Land.io, blissful innovation.</h1>
         <h2 class="m-b-3">Craft your journey, <em>absolutely free</em>, with <a href="ui-elements.html" class="jumbolink">Land.io UI kit</a>.</h2>
-        <a class="btn btn-secondary-outline m-b-1" href="http://tympanus.net/codrops/?p=25217" role="button">Procurar Freela</a>
+        <a class="btn btn-secondary-outline m-b-1" href="#" role="button">Procurar Freela</a>
         <ul class="nav nav-inline social-share">
           <li class="nav-item"><a class="nav-link" href="#"><span class="icon-twitter"></span> 1024</a></li>
           <li class="nav-item"><a class="nav-link" href="#"><span class="icon-facebook"></span> 562</a></li>
