@@ -12,5 +12,6 @@ $freelancer -> setTelefone($telefone);
 $freelancer -> setEmail($email);
 $freelancer -> setSenha($senha);
 $freelancer -> inserir();
+header("location:../../index.html");
 
  ?>

@@ -16,7 +16,7 @@ if (isset($entrar)) {
     }else{
         $_SESSION['usuario'] = $email;
         echo $_SESSION['usuario'];
-        header('location:../index.html');
+        header('location:../index.php');
     }
 }
 ?>
