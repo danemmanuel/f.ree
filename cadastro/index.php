@@ -65,6 +65,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Cadastrar!</button>
+            <p style="text-align:center;padding:5px;">Já é cadastrado? <a href="../login">Entre</a></p>
           </form>
 
         </div>

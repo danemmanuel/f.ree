@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['usuario'])){
+
+header("location:../conta");
+}else{  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,6 +67,7 @@
             </div>
 
             <button name="entrar" type="submit" class="btn btn-primary btn-block">Entrar!</button>
+            <p style="text-align:center;padding:5px;">Não é cadastrado? <a href="../cadastro">Cadastre-se</a></p>
           </form>
 
         </div>
@@ -70,15 +77,15 @@
           ================================================== -->
 
           <a href="#" class="btn btn-social btn-block bg-facebook">
-            <span class="icon-facebook"></span> Cadastrar com Facebook
+            <span class="icon-facebook"></span> Entrar com Facebook
           </a>
           <hr class="invisible">
           <a href="#" class="btn btn-social btn-block bg-google">
-            <span class="icon-google"></span> Cadastrar com Google
+            <span class="icon-google"></span> Entrar com Google
           </a>
           <hr class="invisible">
           <a href="#" class="btn btn-social btn-block bg-linkedin">
-            <span class="icon-linkedin"></span> Cadastrar com LinkedIn
+            <span class="icon-linkedin"></span> Entrar com LinkedIn
           </a>
 
           <hr class="invisible">
@@ -111,3 +118,7 @@
     <script src="js/landio.min.js"></script>
   </body>
   </html>
+<?php 
+  
+}
+?>
