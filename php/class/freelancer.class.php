@@ -156,6 +156,7 @@ class freelancer{
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}}
+			
 			public function buscarId(){
 				$conect = new conexao();
 				try{
