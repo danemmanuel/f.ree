@@ -23,6 +23,7 @@ if(isset($_SESSION['usuario'])){
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -205,13 +206,12 @@ if(isset($_SESSION['usuario'])){
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Blank page
-          <small>it all starts here</small>
+          DADOS PESSOAIS
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
           <li><a href="#">Examples</a></li>
-          <li class="active">Blank page</li>
+          <li class="active">Dados Pessoais</li>
         </ol>
       </section>
 
@@ -221,7 +221,7 @@ if(isset($_SESSION['usuario'])){
         <!-- Default box -->
         <div class="box">
           <div class="box-header with-border">
-            <h3 class="box-title">Title</h3>
+
 
             <div class="box-tools pull-right">
               <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -231,7 +231,43 @@ if(isset($_SESSION['usuario'])){
                 </div>
               </div>
               <div class="box-body">
-                Start creating your amazing application!
+                <?php 
+                require_once '../php/class/freelancer.class.php';
+
+                $freelancer=new freelancer();
+                $idfreelancer="1";
+                $freelancer->setId($idfreelancer);
+                $result = $freelancer->buscarId();
+
+                $nomefreelancer=$result['nome'];
+                $email=$result['email'];
+
+
+
+                ?>
+                <form>
+                  <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+                      <label for="nomefreelancer">Seu Nome</label>
+                      <input id="nomefreelancer" class="form-control input-lg" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+                      <label for="nomefreelancer">Seu Email</label>
+                      <input id="nomefreelancer" class="form-control input-lg" type="text" placeholder="Seu Nome" value="<?php echo $email ?>">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+                      <label for="nomefreelancer">Data de Nascimento</label>
+                      <input type="checkbox" class="flat-red">  
+                    </div>
+                  </div>
+
+                </form>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
@@ -463,6 +499,7 @@ if(isset($_SESSION['usuario'])){
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+
 </body>
 </html>
 <?php

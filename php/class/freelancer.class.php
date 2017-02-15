@@ -161,7 +161,7 @@ class freelancer{
 				$conect = new conexao();
 				try{
 					$stmt = $conect->conn->prepare(
-						"select * from clientes where idfreelancer=:idfreelancer");
+						"select * from freelancer where idfreelancer=:idfreelancer");
 					$stmt->bindValue(':idfreelancer',$this->getId());
 					$stmt->execute();
 					$row=$stmt->fetch();
@@ -170,7 +170,11 @@ class freelancer{
 						"nome"=>$row['nome'],
 						"telefone"=>$row['telefone'],
 						"email"=>$row['email'],
-						"areaatuacao"=>$row['areaatuacao']);
+						"areaatuacao"=>$row['areaatuacao'],
+						"sexo"=>$row['sexo'],
+						"datanascimento"=>$row['datanascimento'],
+						"resumo"=>$row['resumo'],
+						"senha"=>$row['senha']);
 					return $r;
 				}catch(PDOException $e){
 					echo $e->getMessage();
