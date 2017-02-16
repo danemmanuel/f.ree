@@ -14,7 +14,7 @@ if (isset($entrar)) {
         header("location:index.php");
         die();
     }else{
-        $_SESSION['usuario'] = $email;
+        $_SESSION['usuario'] = $idusuario;
         echo $_SESSION['usuario'];
         header('location:../conta');
     }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['usuario'])){
+if(isset($_SESSION['idfreelancer'])){
 
 header("location:../conta");
 }else{  ?>
@@ -56,7 +56,7 @@ header("location:../conta");
 
           <!-- Forms
           ================================================== -->
-          <form  action="login.php" method="POST">
+          <form  action="loginpdo.php" method="POST">
             <div class="form-group has-icon-left form-control-email">
               <label class="sr-only" for="inputEmail">Seu email</label>
               <input type="email" class="form-control form-control-lg" id="inputEmail" name="email" placeholder="Seu email" autocomplete="off">
@@ -66,7 +66,7 @@ header("location:../conta");
               <input type="password" class="form-control form-control-lg" id="inputPassword" name="senha" placeholder="Sua senha" autocomplete="off">
             </div>
 
-            <button name="entrar" type="submit" class="btn btn-primary btn-block">Entrar!</button>
+            <button type="submit" class="btn btn-primary btn-block">Entrar!</button>
             <p style="text-align:center;padding:5px;">Não é cadastrado? <a href="../cadastro">Cadastre-se</a></p>
           </form>
 

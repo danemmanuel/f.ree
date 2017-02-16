@@ -180,6 +180,23 @@ class freelancer{
 					echo $e->getMessage();
 				}
 			}
+
+			public function login(){
+				$conect = new conexao();
+				try{
+					$stmt = $conect->conn->prepare(
+						"select * from freelancer where email=:email and senha=:senha");
+					$stmt->bindValue(':email',$this->getEmail());
+					$stmt->bindValue(':senha',$this->getSenha());
+					$stmt->execute();
+					$row=$stmt->fetch();
+					$r= array(
+						"idfreelancer"=>$row['idfreelancer']);
+					return $r;
+				}catch(PDOException $e){
+					echo $e->getMessage();
+				}
+			}
 			
 		}
 		?>
