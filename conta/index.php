@@ -19,7 +19,7 @@ if(isset($_SESSION['idfreelancer'])){
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-    <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
@@ -247,34 +247,70 @@ if(isset($_SESSION['idfreelancer'])){
 
                 ?>
                 <form>
-
-                  <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                      <label for="nomefreelancer">Seu Nome</label>
-                      <input id="nomefreelancer" class="form-control input-lg" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
-                    </div>
-                  </div>
-
-                  <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                      <label for="nomefreelancer">Seu Email</label>
-                      <input id="nomefreelancer" class="form-control input-lg" type="text" placeholder="Seu Nome" value="<?php echo $email ?>">
-                    </div>
-                  </div>
-
-                  <div class="col-md-6 col-xs-12">
-                    <div class="form-group">
-                      <label>Date:</label>
-
-                      <div class="input-group date">
-                        <div class="input-group-addon">
-                          <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="form-control pull-right input-lg" id="datepicker">
+                  <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
+                        <label for="nomefreelancer">Seu Nome</label>
+                        <input id="nomefreelancer" class="form-control input-lg" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
                       </div>
-                      <!-- /.input group -->
+                    </div>
+
+                    <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
+                        <label for="nomefreelancer">Seu Email</label>
+                        <input id="nomefreelancer" class="form-control input-lg" type="text" placeholder="Seu Nome" value="<?php echo $email ?>">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
+                        <label>Data Nascimento:</label>
+
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control input-lg" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
+                        <label>Sexo:</label><br>
+                        <label for="masculino">Masculino</label>
+                        <input type="radio" name="r3" class="flat-red" id="masculino">
+                        <label for="feminino">Feminino</label>
+                        <input type="radio" name="r3" class="flat-red" id="feminino">
+                      </div>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                      <label for="telefone">Telefone</label>
+                      <div class="input-group">
+
+                        <div class="input-group-addon">
+                          <i class="fa fa-phone"></i>
+                        </div>
+                        <input id="telefone" type="text" class="form-control input-lg" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                      <label for="telefone">Celular</label>
+                      <div class="input-group">
+
+                        <div class="input-group-addon">
+                          <i class="fa fa-phone"></i>
+                        </div>
+                        <input id="telefone" type="text" class="form-control input-lg" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
+                      </div>
+                    </div>
+                  </div>
+
 
                 </form>
               </div>
@@ -527,7 +563,7 @@ if(isset($_SESSION['idfreelancer'])){
 <script src="dist/js/demo.js"></script>
 <!-- Page script -->
 <script>
-  $(function () {
+$(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
 
@@ -544,21 +580,21 @@ if(isset($_SESSION['idfreelancer'])){
     $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
     //Date range as a button
     $('#daterange-btn').daterangepicker(
-        {
-          ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-          },
-          startDate: moment().subtract(29, 'days'),
-          endDate: moment()
-        },
-        function (start, end) {
-          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
+    {
+      ranges: {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      },
+      startDate: moment().subtract(29, 'days'),
+      endDate: moment()
+    },
+    function (start, end) {
+      $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
     );
 
     //Date picker
