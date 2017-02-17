@@ -11,8 +11,7 @@ $email=$result['email'];
 $telefone=$result['telefone'];
 $datanascimento=$result['datanascimento'];
 $sexo=$result['sexo'];
-
-$datanova = date("d-m-Y", strtotime($datanascimento));
+$urlavatar=$result['urlavatar'];
 
 
 ?>
@@ -51,7 +50,7 @@ $datanova = date("d-m-Y", strtotime($datanascimento));
                 <li><!-- start message -->
                   <a href="#">
                     <div class="pull-left">
-                      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <img src="<?php echo $urlavatar ?>" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                       Support Team
@@ -122,13 +121,13 @@ $datanova = date("d-m-Y", strtotime($datanascimento));
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-            <span class="hidden-xs">Alexander Pierce</span>
+            <img src="<?php echo $urlavatar ?>" class="user-image" alt="User Image">
+            <span class="hidden-xs"><?php echo $nomefreelancer ?></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <img src="<?php echo $urlavatar ?>" class="img-circle" alt="User Image">
 
               <p>
                 Alexander Pierce - Web Developer
