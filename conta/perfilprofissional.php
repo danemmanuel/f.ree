@@ -3,9 +3,8 @@ session_start();
 if(isset($_SESSION['idfreelancer'])){
 
   require_once 'includes/freelancer.php';
-
+  $header=file_get_contents(realpath(dirname(__FILE__) . '/includes/header.php'));
   $menu=file_get_contents(realpath(dirname(__FILE__) . '/includes/menu.php'));
-
   ?>         
 
   <!DOCTYPE html>
@@ -18,6 +17,8 @@ if(isset($_SESSION['idfreelancer'])){
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="upload/css/component.css" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -25,6 +26,8 @@ if(isset($_SESSION['idfreelancer'])){
     <!-- Theme style -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <script src="plugins/select2/select2.full.min.js"></script>
+    <link rel="stylesheet" href="plugins/select2/select2.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
@@ -49,19 +52,17 @@ if(isset($_SESSION['idfreelancer'])){
 
     ?>
 
-    
-    <!-- =============================================== -->
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          DADOS PESSOAIS
+          PERFIL PROFISSIONAL
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Conta</a></li>
-          <li class="active">Dados Pessoais</li>
+          <li class="active">Avatar</li>
         </ol>
       </section>
 
@@ -73,83 +74,57 @@ if(isset($_SESSION['idfreelancer'])){
 
           <div class="box-body">
 
-            <form method="POST" action="../php/functions/alterarfreelancer.php">
-              <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer ?>">
+            <form method="GET" action="test.php">
               <div class="row">
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label for="nomefreelancer">Seu Nome</label>
-                    <input id="nomefreelancer" class="form-control input-lg" name="nomefreelancer" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
-                  </div>
-                </div>
 
                 <div class="col-md-6 col-xs-12">
                   <div class="form-group">
-                    <label for="nomefreelancer">Seu Email</label>
-                    <input id="nomefreelancer" class="form-control input-lg" name="email" type="text" disabled placeholder="Seu Email" value="<?php echo $email ?>">
-                  </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label>Data Nascimento:</label>
-
-                    <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control input-lg" value="<?php echo $datanova ?>"name="datanascimento" data-inputmask="'alias': 'dd-mm-yyyy'" data-mask>
-
-                    </div>
-                    <!-- /.input group -->
-                  </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label>Sexo:</label><br>
-
-                    <label for="masculino">Masculino</label>
-                    <input type="radio" name="sexo" class="flat-red" value="masculino" id="masculino" checked>
-                    <label for="feminino">Feminino</label>
-                    <input type="radio" class="flat-red" name="sexo" value="feminino" id="feminino">
-
-
-
+                    <label for="nomefreelancer">Área de Atuação</label>
+                    <select class="form-control select2" name="areaatuacao">
+                      <option selected="selected">Alabama</option>
+                      <option>Alaska</option>
+                      <option>California</option>
+                      <option>Delaware</option>
+                      <option>Tennessee</option>
+                      <option>Texas</option>
+                      <option>Washington</option>
+                    </select>
 
                   </div>
                 </div>
               </div>
 
               <div class="row">
-                <div class="col-md-6 col-xs-12">
-                  <label for="telefone">Telefone</label>
-                  <div class="input-group">
 
-                    <div class="input-group-addon">
-                      <i class="fa fa-phone"></i>
-                    </div>
-                    <input id="telefone" type="text" class="form-control input-lg"  data-inputmask='"mask": "(99) 99999-9999"' data-mask>
+                <div class="col-md-6 col-xs-12">
+                  <div class="form-group">
+                    <label for="nomefreelancer">Especialidade Primária</label>
+                    <select class="form-control select2" name="especialidadeprimaria">
+                      <option selected="selected">Alabama</option>
+                      <option>Alaska</option>
+                      <option>California</option>
+                      <option>Delaware</option>
+                      <option>Tennessee</option>
+                      <option>Texas</option>
+                      <option>Washington</option>
+                    </select>
+
                   </div>
                 </div>
+
                 <div class="col-md-6 col-xs-12">
-                  <label for="telefone">Celular</label> <small>(Whatsapp)</small>
-                  <div class="input-group">
+                  <div class="form-group">
+                    <label for="nomefreelancer">Especialidade Secundária</label>
+                    <select class="form-control select2" name="especialidadesecundaria">
+                      <option selected="selected">Alabama</option>
+                      <option>Alaska</option>
+                      <option>California</option>
+                      <option>Delaware</option>
+                      <option>Tennessee</option>
+                      <option>Texas</option>
+                      <option>Washington</option>
+                    </select>
 
-                    <div class="input-group-addon">
-                      <i class="fa fa-phone"></i>
-                    </div>
-                    <input id="telefone" type="text" class="form-control input-lg" name="telefone" value="<?php echo $telefone?>" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
-                  </div>
-
-
-                </div>
-
-              </div></br>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="input-group">
-                    <button type="submit" class="btn btn-block btn-success btn-lg">Salvar</button>
                   </div>
                 </div>
               </div>
@@ -177,6 +152,9 @@ if(isset($_SESSION['idfreelancer'])){
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Create the tabs -->
       <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+
+        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
@@ -396,6 +374,8 @@ if(isset($_SESSION['idfreelancer'])){
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+
+<script src="upload/js/custom-file-input.js"></script>
 <!-- Page script -->
 <script>
 $(function () {

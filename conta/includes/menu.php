@@ -13,7 +13,7 @@
         <ul class="treeview-menu">
           <li><a href="index.php"><i class="fa fa-edit"></i> Dados Pessoais</a></li>
           <li><a href="avatar.php"><i class="fa fa-picture-o"></i> Trocar Avatar</a></li>
-          <li><a href="#"><i class="fa fa-key"></i> Alterar Senha</a></li>
+          <li><a href="alterarsenha.php"><i class="fa fa-key"></i> Alterar Senha</a></li>
           <li><a href="#"><i class="fa fa-times"></i> Excluir Conta</a></li>
         </ul>
       </li>
@@ -26,7 +26,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-male"></i> Perfil Profissional</a></li>
+          <li><a href="perfilprofissional.php"><i class="fa fa-male"></i> Perfil Profissional</a></li>
           <li><a href="#"><i class="fa fa-align-left"></i> Resumo</a></li>
           <li><a href="#"><i class="fa fa-lightbulb-o"></i> Habilidades</a></li>
           <li><a href="#"><i class="fa fa-phone"></i> Contatos</a></li>
