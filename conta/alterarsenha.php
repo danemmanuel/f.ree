@@ -71,7 +71,7 @@ require_once 'includes/freelancer.php';
         <div class="box">
           
               <div class="box-body">
-                  <form method="POST" action="../php/functions/alterarsenha.php">
+                  <form>
               <div class="row">
               <div class="col-md-6 col-xs-12">
               <div class="form-group">
