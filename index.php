@@ -94,7 +94,7 @@
                     <h6>hey@joelfisher.com</h6>
                   </div>
                 </div>
-                <a href="#" class="dropdown-item text-uppercase">View posts</a>
+                <a href="conta" class="dropdown-item text-uppercase">Minha Conta</a>
                 <a href="conta/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
                 <a href="#" class="btn-circle has-gradient pull-xs-right">
                   <span class="sr-only">Edit</span>
@@ -106,34 +106,32 @@
             <?php }
             else{
               ?>
-            
-            <li class="nav-item nav-item-toggable">
-              <a class="nav-link" href="conta">Login</a>
-            </li>
-            <?php } ?>
-          </ul>
-        </div>
-        <div id="collapsingMobileUser" class="collapse navbar-toggleable-custom dropdown-menu-custom p-x-1 hidden-md-up" role="tabpanel" aria-labelledby="collapsingMobileUser">
-          <div class="media m-t-1">
-            <div class="media-left">
-              <img src="img/face5.jpg" height="60" width="60" alt="Avatar" class="img-circle">
-            </div>
-            <div class="media-body media-middle">
-              <h5 class="media-heading">Joel Fisher</h5>
-              <h6>hey@joelfisher.com</h6>
-            </div>
+
+              <li class="nav-item nav-item-toggable">
+                <a class="nav-link" href="conta">Login</a>
+              </li>
+              <?php } ?>
+            </ul>
           </div>
-          <a href="#" class="dropdown-item text-uppercase">View posts</a>
-          <a href="#" class="dropdown-item text-uppercase">Manage groups</a>
-          <a href="#" class="dropdown-item text-uppercase">Subscription &amp; billing</a>
-          <a href="#" class="dropdown-item text-uppercase text-muted">Log out</a>
-          <a href="#" class="btn-circle has-gradient pull-xs-right m-b-1">
-            <span class="sr-only">Edit</span>
-            <span class="icon-edit"></span>
-          </a>
+          <div id="collapsingMobileUser" class="collapse navbar-toggleable-custom dropdown-menu-custom p-x-1 hidden-md-up" role="tabpanel" aria-labelledby="collapsingMobileUser">
+            <div class="media m-t-1">
+              <div class="media-left">
+                <img src="img/face5.jpg" height="60" width="60" alt="Avatar" class="img-circle">
+              </div>
+              <div class="media-body media-middle">
+                <h5 class="media-heading">Joel Fisher</h5>
+                <h6>hey@joelfisher.com</h6>
+              </div>
+            </div>
+            <a href="conta" class="dropdown-item text-uppercase">Minha Conta</a>
+                <a href="conta/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
+            <a href="#" class="btn-circle has-gradient pull-xs-right m-b-1">
+              <span class="sr-only">Edit</span>
+              <span class="icon-edit"></span>
+            </a>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
     <!-- Hero Section
     ================================================== -->

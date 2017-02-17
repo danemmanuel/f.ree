@@ -14,6 +14,8 @@ if(isset($_SESSION['idfreelancer'])){
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" type="text/css" href="upload/css/component.css" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -142,6 +144,7 @@ if(isset($_SESSION['idfreelancer'])){
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
                 <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                 <span class="hidden-xs">Alexander Pierce</span>
               </a>
@@ -209,7 +212,6 @@ if(isset($_SESSION['idfreelancer'])){
 
             ?>
 
-
             <img src="<?php echo $avatar ?>" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
@@ -220,7 +222,6 @@ if(isset($_SESSION['idfreelancer'])){
           </div>
         </div>
 
-        <!-- Left side column. contains the sidebar -->
         <?php
 
         $menu=file_get_contents(realpath(dirname(__FILE__) . '/menu.php'));
@@ -230,18 +231,16 @@ if(isset($_SESSION['idfreelancer'])){
       </section>
       <!-- /.sidebar -->
     </aside>
-    <!-- =============================================== -->
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          DADOS PESSOAIS
+          SEU AVATAR
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Conta</a></li>
-          <li class="active">Dados Pessoais</li>
+          <li class="active">Avatar</li>
         </ol>
       </section>
 
@@ -263,97 +262,30 @@ if(isset($_SESSION['idfreelancer'])){
                 $nomefreelancer=$result['nome'];
                 $email=$result['email'];
                 $telefone=$result['telefone'];
-                $datanascimento=$result['datanascimento'];
-                $sexo=$result['sexo'];
-                
-                $datanova = date("d-m-Y", strtotime($datanascimento));
+
 
 
                 ?>
-                <form method="POST" action="../php/functions/alterarfreelancer.php">
-                  <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer ?>">
-                  <div class="row">
-                    <div class="col-md-6 col-xs-12">
-                      <div class="form-group">
-                        <label for="nomefreelancer">Seu Nome</label>
-                        <input id="nomefreelancer" class="form-control input-lg" name="nomefreelancer" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
-                      </div>
-                    </div>
+                <form action="recebeUpload.php" enctype="multipart/form-data" method="POST">
+                  <div class="row form-group">
+                    <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
 
-                    <div class="col-md-6 col-xs-12">
-                      <div class="form-group">
-                        <label for="nomefreelancer">Seu Email</label>
-                        <input id="nomefreelancer" class="form-control input-lg" name="email" type="text" placeholder="Seu Email" value="<?php echo $email ?>">
-                      </div>
-                    </div>
-
-                    <div class="col-md-6 col-xs-12">
-                      <div class="form-group">
-                        <label>Data Nascimento:</label>
-
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" class="form-control input-lg" value="<?php echo $datanova ?>"name="datanascimento" data-inputmask="'alias': 'dd-mm-yyyy'" data-mask>
-
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-                    </div>
-
-                    <div class="col-md-6 col-xs-12">
-                      <div class="form-group">
-                        <label>Sexo:</label><br>
-
-                        <label for="masculino">Masculino</label>
-                        <input type="radio" name="sexo" class="flat-red" value="masculino" id="masculino" checked>
-                        <label for="feminino">Feminino</label>
-                        <input type="radio" class="flat-red" name="sexo" value="feminino" id="feminino">
-                        
-
-                        
-                        
-                      </div>
-                    </div>
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-6 col-xs-12">
-                      <label for="telefone">Telefone</label>
-                      <div class="input-group">
-
-                        <div class="input-group-addon">
-                          <i class="fa fa-phone"></i>
-                        </div>
-                        <input id="telefone" type="text" class="form-control input-lg"  data-inputmask='"mask": "(99) 99999-9999"' data-mask>
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                      <label for="telefone">Celular</label> <small>(Whatsapp)</small>
-                      <div class="input-group">
-
-                        <div class="input-group-addon">
-                          <i class="fa fa-phone"></i>
-                        </div>
-                        <input id="telefone" type="text" class="form-control input-lg" name="telefone" value="<?php echo $telefone?>" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
-                      </div>
-
-                      
-                    </div>
-
-                  </div></br>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="input-group">
-                        <button type="submit" class="btn btn-block btn-success btn-lg">Salvar</button>
-                      </div>
-                    </div>
+                  <div class="form-group" style="text-align:center">
+                    <input type="file" name="arquivo" id="file-5" class="inputfile inputfile-4" data-multiple-caption="{count} files selected" multiple />
+                    <label for="file-5"><figure><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></figure> <span>Escolha seu Avatar&hellip;</span></label>
                   </div>
 
-                </form>
+                  
+
+                  <div class="form-group">
+                    <input type="submit" value="Enviar" class="btn btn-primary btn-lg" name="salvar">
+                  </div>
+
+                </form> 
               </div>
-
+              
             </div>
             <!-- /.box -->
 
@@ -596,6 +528,8 @@ if(isset($_SESSION['idfreelancer'])){
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+
+<script src="upload/js/custom-file-input.js"></script>
 <!-- Page script -->
 <script>
 $(function () {

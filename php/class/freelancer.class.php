@@ -13,6 +13,7 @@ class freelancer{
 	private $datanascimento;
 	private $resumo;
 	private $senha;
+	private $urlavatar;
 
 
 
@@ -72,6 +73,12 @@ class freelancer{
 	public function setSenha($senha){
 		$this->senha=$senha;
 	}	
+	public function getUrlAvatar(){
+		return $this->urlavatar;
+	}
+	public function setUrlAvatar($urlavatar){
+		$this->urlavatar=$urlavatar;
+	}	
 	public function inserir(){
 		
 		
@@ -88,17 +95,31 @@ class freelancer{
 			echo $e->getMessage();
 		}
 	}
-	public function alterar(){
+	public function alterarAvatar(){
+		
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"UPDATE clientes set nome=:nome,telefone=:telefone,
-				email=:email,areaatuacao=:areaatuacao where idfreelancer=:id");
-			$stmt->bindValue(":id",$this->getId());
+				"UPDATE freelancer set urlavatar=:urlavatar where idfreelancer=:idfreelancer");
+			$stmt->bindValue(":idfreelancer",$this->getId());
+			$stmt->bindValue(":urlavatar",$this->getUrlAvatar());
+			return $stmt->execute();
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
+	}
+	public function alterarFreelancer(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"UPDATE freelancer set nome=:nome,telefone=:telefone,
+				email=:email,sexo=:sexo,datanascimento=:datanascimento where idfreelancer=:idfreelancer");
+			$stmt->bindValue(":idfreelancer",$this->getId());
 			$stmt->bindValue(":nome",$this->getNome());
 			$stmt->bindValue(":telefone",$this->getTelefone());
 			$stmt->bindValue(":email",$this->getEmail());
-			$stmt->bindValue(":areaatuacao",$this->getareaatuacao());
+			$stmt->bindValue(":sexo",$this->getSexo());
+			$stmt->bindValue(":datanascimento",$this->getDatanascimento());
 			return $stmt->execute();
 		}catch(PDOException $e){
 			echo $e->getMessage();
@@ -174,6 +195,7 @@ class freelancer{
 						"sexo"=>$row['sexo'],
 						"datanascimento"=>$row['datanascimento'],
 						"resumo"=>$row['resumo'],
+						"urlavatar"=>$row['urlavatar'],
 						"senha"=>$row['senha']);
 					return $r;
 				}catch(PDOException $e){
