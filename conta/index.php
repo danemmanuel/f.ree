@@ -86,7 +86,7 @@ if(isset($_SESSION['idfreelancer'])){
                 <div class="col-md-6 col-xs-12">
                   <div class="form-group">
                     <label for="nomefreelancer">Seu Email</label>
-                    <input id="nomefreelancer" class="form-control input-lg" name="email" type="text" disabled placeholder="Seu Email" value="<?php echo $email ?>">
+                    <input id="email" class="form-control input-lg" name="email" type="text" placeholder="Seu Email" value="<?php echo $email ?>">
                   </div>
                 </div>
 
