@@ -130,7 +130,7 @@ $urlavatar=$result['urlavatar'];
               <img src="<?php echo $urlavatar ?>" class="img-circle" alt="User Image">
 
               <p>
-                Alexander Pierce - Web Developer
+               <?php echo $nomefreelancer; ?>
                 <small>Member since Nov. 2012</small>
               </p>
             </li>
