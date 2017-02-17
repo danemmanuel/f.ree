@@ -2,6 +2,7 @@
 session_start();
 if(isset($_SESSION['idfreelancer'])){
 
+require_once 'includes/freelancer.php';
  $header=file_get_contents(realpath(dirname(__FILE__) . '/includes/header.php'));
  $menu=file_get_contents(realpath(dirname(__FILE__) . '/includes/menu.php'));
  ?>         
@@ -70,21 +71,7 @@ if(isset($_SESSION['idfreelancer'])){
         <div class="box">
           
               <div class="box-body">
-                <?php 
-                require_once '../php/class/freelancer.class.php';
 
-                $freelancer=new freelancer();
-                $idfreelancer=$_SESSION['idfreelancer'];
-                $freelancer->setId($idfreelancer);
-                $result = $freelancer->buscarId();
-
-                $nomefreelancer=$result['nome'];
-                $email=$result['email'];
-                $telefone=$result['telefone'];
-
-
-
-                ?>
                 <form action="recebeUpload.php" enctype="multipart/form-data" method="POST">
                   <div class="row form-group">
                     <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
