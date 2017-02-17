@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php 
+session_start();
+
+ ?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -76,7 +79,7 @@
             </li>
 
             <?php 
-            session_start();
+            
 
 
             require_once 'php/class/freelancer.class.php';
