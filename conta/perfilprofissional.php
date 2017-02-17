@@ -82,7 +82,7 @@ if(isset($_SESSION['idfreelancer'])){
                   <div class="form-group">
                     <label for="nomefreelancer">Área de Atuação</label>
                     <select class="form-control select2" name="areaatuacao">
-                      <option selected="selected">Alabama</option>
+                      <option selected="selected">Ciência e Tecnologia</option>
                       <?php echo $profissoes; ?>
                     </select>
 
@@ -92,37 +92,6 @@ if(isset($_SESSION['idfreelancer'])){
 
               <div class="row">
 
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label for="nomefreelancer">Especialidade Primária</label>
-                    <select class="form-control select2" name="especialidadeprimaria">
-                      <option selected="selected">Alabama</option>
-                      <option>Alaska</option>
-                      <option>California</option>
-                      <option>Delaware</option>
-                      <option>Tennessee</option>
-                      <option>Texas</option>
-                      <option>Washington</option>
-                    </select>
-
-                  </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label for="nomefreelancer">Especialidade Secundária</label>
-                    <select class="form-control select2" name="especialidadesecundaria">
-                      <option selected="selected">Alabama</option>
-                      <option>Alaska</option>
-                      <option>California</option>
-                      <option>Delaware</option>
-                      <option>Tennessee</option>
-                      <option>Texas</option>
-                      <option>Washington</option>
-                    </select>
-
-                  </div>
-                </div>
               </div>
 
             </form>
