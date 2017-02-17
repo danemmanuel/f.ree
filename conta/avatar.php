@@ -68,9 +68,7 @@ require_once 'includes/freelancer.php';
       <section class="content">
 
         <!-- Default box -->
-        <div class="box">
-          
-              <div class="box-body">
+
 
                 <form action="recebeUpload.php" enctype="multipart/form-data" method="POST">
                   <div class="row form-group">
@@ -84,15 +82,14 @@ require_once 'includes/freelancer.php';
                   </div>
 
                   
-
-                  <div class="form-group">
+                  <div class="col-md-12">
+                  <div class="form-group" style="text-align:center">
                     <input type="submit" value="Enviar" class="btn btn-primary btn-lg" name="salvar">
+                  </div>
                   </div>
 
                 </form> 
-              </div>
-              
-            </div>
+
             <!-- /.box -->
 
           </section>

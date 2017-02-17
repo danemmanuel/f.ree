@@ -13,6 +13,8 @@ class freelancer{
 	private $datanascimento;
 	private $resumo;
 	private $senha;
+	private $anosexperiencia;
+	private $nivelprofissional;
 	private $urlavatar;
 
 
@@ -78,6 +80,18 @@ class freelancer{
 	}
 	public function setUrlAvatar($urlavatar){
 		$this->urlavatar=$urlavatar;
+	}
+	public function getAnosExperiencia(){
+		return $this->anosexperiencia;
+	}
+	public function setAnosExperiencia($anosexperiencia){
+		$this->anosexperiencia=$anosexperiencia;
+	}
+	public function getNivelProfissional(){
+		return $this->nivelprofissional;
+	}
+	public function setNivelProfissional($nivelprofissional){
+		$this->nivelprofissional=$nivelprofissional;
 	}	
 	public function inserir(){
 		
@@ -120,6 +134,22 @@ class freelancer{
 			$stmt->bindValue(":email",$this->getEmail());
 			$stmt->bindValue(":sexo",$this->getSexo());
 			$stmt->bindValue(":datanascimento",$this->getDatanascimento());
+			return $stmt->execute();
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
+	}
+
+	public function alterarDadosProfissionais(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"UPDATE freelancer set areaatuacao=:areaatuacao,nivelprofissional=:nivelprofissional,
+				anosexperiencia=:anosexperiencia where idfreelancer=:idfreelancer");
+			$stmt->bindValue(":idfreelancer",$this->getId());
+			$stmt->bindValue(":areaatuacao",$this->getAreaatuacao());
+			$stmt->bindValue(":nivelprofissional",$this->getNivelProfissional());
+			$stmt->bindValue(":anosexperiencia",$this->getAnosExperiencia());
 			return $stmt->execute();
 		}catch(PDOException $e){
 			echo $e->getMessage();
@@ -223,6 +253,7 @@ class freelancer{
 						"resumo"=>$row['resumo'],
 						"nivelprofissional"=>$row['nivelprofissional'],
 						"urlavatar"=>$row['urlavatar'],
+						"anosexperiencia"=>$row['anosexperiencia'],
 						"senha"=>$row['senha']);
 					return $r;
 				}catch(PDOException $e){

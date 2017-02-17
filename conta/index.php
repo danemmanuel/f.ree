@@ -69,9 +69,7 @@ if(isset($_SESSION['idfreelancer'])){
       <section class="content">
 
         <!-- Default box -->
-        <div class="box">
 
-          <div class="box-body">
 
             <form method="POST" action="../php/functions/alterarfreelancer.php">
               <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer ?>">
@@ -122,16 +120,7 @@ if(isset($_SESSION['idfreelancer'])){
               </div>
 
               <div class="row">
-                <div class="col-md-6 col-xs-12">
-                  <label for="telefone">Telefone</label>
-                  <div class="input-group">
-
-                    <div class="input-group-addon">
-                      <i class="fa fa-phone"></i>
-                    </div>
-                    <input id="telefone" type="text" class="form-control input-lg"  data-inputmask='"mask": "(99) 99999-9999"' data-mask>
-                  </div>
-                </div>
+                
                 <div class="col-md-6 col-xs-12">
                   <label for="telefone">Celular</label> <small>(Whatsapp)</small>
                   <div class="input-group">
@@ -141,8 +130,16 @@ if(isset($_SESSION['idfreelancer'])){
                     </div>
                     <input id="telefone" type="text" class="form-control input-lg" name="telefone" value="<?php echo $telefone?>" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
                   </div>
+                </div>
 
-
+                <div class="col-md-6 col-xs-12">
+                  <label for="telefone">Telefone</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-phone"></i>
+                    </div>
+                    <input id="telefone" type="text" class="form-control input-lg"  data-inputmask='"mask": "(99) 99999-9999"' data-mask>
+                  </div>
                 </div>
 
               </div></br>
@@ -155,9 +152,7 @@ if(isset($_SESSION['idfreelancer'])){
               </div>
 
             </form>
-          </div>
 
-        </div>
         <!-- /.box -->
 
       </section>

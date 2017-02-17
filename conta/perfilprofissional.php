@@ -79,8 +79,8 @@ if(isset($_SESSION['idfreelancer'])){
           PERFIL PROFISSIONAL
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Conta</a></li>
-          <li class="active">Avatar</li>
+          <li><a href="#"><i class="fa fa-dashboard"></i> Perfil</a></li>
+          <li class="active">Perfil Profissional</li>
         </ol>
       </section>
 
@@ -88,60 +88,75 @@ if(isset($_SESSION['idfreelancer'])){
       <section class="content">
 
         <!-- Default box -->
-        <div class="box">
+        
+        <form method="POST" action="../php/functions/alterarfreelancerperfil.php">
 
-          <div class="box-body">
+          <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
+          <div class="row">
 
-            <form method="GET" action="test.php">
-              <div class="row">
-
-                <div class="col-md-4 col-xs-12">
-                  <div class="form-group">
-                    <label for="nomefreelancer">Área de Atuação</label>
-                    <select class="form-control select2" name="areaatuacao">
-                      <option selected="selected"><?php echo $areaatuacao ?></option>
-                      <?php echo $profissoes ?>
-                    </select>
-
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-xs-12">
-                  <div class="form-group">
-                    <label for="nomefreelancer">Nível Profissional</label>
-                    <select class="form-control select2" name="nivelprofissional">
-                      <option selected="selected"><?php echo $nivelprofissional  ?></option>
-                      <option>Júnior</option>
-                      <option>Pleno</option>
-                      <option>Senior</option>
-                    </select>
-
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-xs-12">
-                  <div class="form-group">
-                    <label for="nomefreelancer">Anos de Experiência</label>
-                    <input id="anosexperiencia" class="form-control input-lg" name="anosexperiencia" type="number" placeholder="" value="<?php echo $anosexperiencia?>">
-
-                  </div>
-                </div>
-
-                
+            <div class="col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="nomefreelancer">Área de Atuação</label>
+                <select class="form-control select2" name="areaatuacao">
+                  <option selected="selected"><?php echo $areaatuacao ?></option>
+                  <?php echo $profissoes ?>
+                </select>
 
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="input-group">
-                    <button type="submit" class="btn btn-block btn-success btn-lg">Salvar</button>
-                  </div>
-                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+
+              <div class="form-group">
+                <label for="nomefreelancer">Nível Profissional</label>
+                <select class="form-control select2" name="nivelprofissional">
+                  <option selected="selected"><?php echo $nivelprofissional  ?></option>
+                  <option>Estagiário</option>
+                  <option>Júnior</option>
+                  <option>Pleno</option>
+                  <option>Senior</option>
+                  <option>Empresário</option>
+                  <option>Presidente</option>
+                  <option>Diretor</option>
+                  <option>Gerente</option>
+                  <option>Supervisor</option>
+                  <option>Encarregador</option>
+                  <option>Líder</option>
+                  <option>Consultor</option>
+                  <option>Trainee</option>
+                  <option>Técnico</option>
+                  <option>Assistente</option>
+                  <option>Auxiliar</option>
+
+                </select>
+
               </div>
-            </form>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="nomefreelancer">Anos de Experiência</label>
+                <input id="anosexperiencia" class="form-control input-lg" name="anosexperiencia" type="number" placeholder="" value="<?php echo $anosexperiencia?>">
+
+              </div>
+            </div>
+
+
 
           </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group">
+                <button type="submit" class="btn btn-block btn-success btn-lg">Salvar</button>
+              </div>
+            </div>
+          </div>
 
-        </div>
+        </form>
+
+
+
+
         <!-- /.box -->
 
       </section>
@@ -184,8 +199,8 @@ if(isset($_SESSION['idfreelancer'])){
               <div class="col-md-2">
                 <input value="<?php echo $row ['preco'] ?>"id="nomefreelancer" class="form-control input-lg" name="preco" type="text" placeholder="Serviço">
               </div>
-              <div class="col-md-2"><button type="submit" class="btn btn-block btn-warning btn-lg"><i class="fa fa-fw fa-edit"></i></button></div>
-              <div class="col-md-2"><a href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button type="button" class="btn btn-block btn-danger btn-lg"><i class="fa fa-fw fa-trash"></i></button></a></div>
+              <div class="col-md-2"><button type="submit" class="btn btn-block btn-warning btn-lg"><i class="fa fa-fw fa-edit"></i> Editar</button></div>
+              <div class="col-md-2"><a href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button type="button" class="btn btn-block btn-danger btn-lg"><i class="fa fa-fw fa-trash"></i> Apagar</button></a></div>
             </div><br>
           </form>
 
@@ -201,49 +216,49 @@ if(isset($_SESSION['idfreelancer'])){
 
   </section>
 
-<div id="somedialog" class="dialog">
-        <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
-        <div class="dialog__content">
+  <div id="somedialog" class="dialog">
+    <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
+    <div class="dialog__content">
 
-          <form method="POST" action="../php/functions/inserirservico.php">
-          <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
-          <div class="row">
-            <h1 style="text-align:center"></h1>
-            <div class="col-md-12 col-xs-12">
-              <div class="form-group">
-                <label for="nomefreelancer">Nome do Serviço</label>
-                <input id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
-              </div>
-            </div>
-
-            <div class="col-md-12 col-xs-12">
-              <div class="form-group">
-                <label for="nomefreelancer">Descrição</label>
-                <input id="nomefreelancer" class="form-control input-lg" name="descricao" type="text" placeholder="Descrição do Serviço">
-              </div>
-            </div>
-
-            <div class="col-md-12 col-xs-12">
-              <div class="form-group">
-                <label for="nomefreelancer">Preço</label>
-                <input id="nomefreelancer" class="form-control input-lg" name="preco" type="number" placeholder="R$">
-              </div>
-            </div>
-
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="input-group">
-                <button type="submit" class="btn btn-block btn-success btn-lg">Adicionar</button>
-              </div>
+      <form method="POST" action="../php/functions/inserirservico.php">
+        <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
+        <div class="row">
+          <h1 style="text-align:center"></h1>
+          <div class="col-md-12 col-xs-12">
+            <div class="form-group">
+              <label for="nomefreelancer">Nome do Serviço</label>
+              <input id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
             </div>
           </div>
 
-        </form>
+          <div class="col-md-12 col-xs-12">
+            <div class="form-group">
+              <label for="nomefreelancer">Descrição</label>
+              <input id="nomefreelancer" class="form-control input-lg" name="descricao" type="text" placeholder="Descrição do Serviço">
+            </div>
+          </div>
 
+          <div class="col-md-12 col-xs-12">
+            <div class="form-group">
+              <label for="nomefreelancer">Preço</label>
+              <input id="nomefreelancer" class="form-control input-lg" name="preco" type="number" placeholder="R$">
+            </div>
+          </div>
 
         </div>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="input-group" style="width:100%;">
+              <button type="submit" class="btn btn-block btn-success btn-lg">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+
+    </div>
+  </div>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

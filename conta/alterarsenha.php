@@ -68,9 +68,7 @@ require_once 'includes/freelancer.php';
       <section class="content">
 
         <!-- Default box -->
-        <div class="box">
-          
-              <div class="box-body">
+
                   <form method="POST" action="../php/functions/alterarsenha.php">
                     <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer; ?>">
                     
@@ -78,7 +76,7 @@ require_once 'includes/freelancer.php';
               <div class="col-md-6 col-xs-12">
               <div class="form-group">
                 <label for="antigasenha">Senha antiga</label>
-                <input id="antigasenha" class="form-control input-lg" name="antigasenha" type="text" placeholder="Digite sua senha anterior">
+                <input id="antigasenha" class="form-control input-lg" name="antigasenha" type="password" placeholder="Digite sua senha anterior">
               </div>
               </div>
               </div>
@@ -93,7 +91,7 @@ require_once 'includes/freelancer.php';
               </div>
 
               <div class="form-group">
-                <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer; ?>
+                <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer; ?>"
               </div>
 
               <div class="row">
@@ -105,10 +103,7 @@ require_once 'includes/freelancer.php';
               </div>
 
                 </form>
-              </div>
-
               
-            </div>
             <!-- /.box -->
 
           </section>
