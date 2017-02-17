@@ -50,7 +50,7 @@ if(isset($_SESSION['idfreelancer'])){
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 
   <div class="fixed-action-btn vertical" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large red" style="background-color:#008D4C" href="#" data-dialog="somedialog" data-toggle="modal" data-target=".bd-example-modal-lg">
