@@ -125,6 +125,19 @@ class freelancer{
 			echo $e->getMessage();
 		}
 	}
+
+	public function alterarSenha(){
+		  $conect = new conexao();
+		  try{
+		   $stmt = $conect->conn->prepare(
+		    "UPDATE freelancer set senha=:senha where idfreelancer=:idfreelancer");
+		   $stmt->bindValue(":idfreelancer",$this->getId());
+		   $stmt->bindValue(":senha",$this->getSenha());
+		   return $stmt->execute();
+		  }catch(PDOException $e){
+		   echo $e->getMessage();
+		  }
+		 }
 	public function apagar(){
 		$conect = new conexao();
 		try{
