@@ -133,12 +133,18 @@ session_start();
             <div class="media m-t-1">
               <div class="media-left">
 
+<?php 
+if(isset($_SESSION['idfreelancer'])){
+?>
+<img src="conta/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
+<?php
+}
+else{
 
-                <img src="conta/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
-              </div>
-              <div class="media-body media-middle">
-                <h5 class="media-heading">Joel Fisher</h5>
-                <h6>hey@joelfisher.com</h6>
+
+}
+ ?>
+                
               </div>
             </div>
             <a href="conta" class="dropdown-item text-uppercase">Minha Conta</a>
