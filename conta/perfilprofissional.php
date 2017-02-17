@@ -208,7 +208,7 @@ if(isset($_SESSION['idfreelancer'])){
           <form method="POST" action="../php/functions/inserirservico.php">
           <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
           <div class="row">
-            <h1 style="text-align:center">Adicionar Serviço</h1>
+            <h1 style="text-align:center"></h1>
             <div class="col-md-12 col-xs-12">
               <div class="form-group">
                 <label for="nomefreelancer">Nome do Serviço</label>
