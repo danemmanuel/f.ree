@@ -5,6 +5,7 @@ if(isset($_SESSION['idfreelancer'])){
   require_once 'includes/freelancer.php';
   $header=file_get_contents(realpath(dirname(__FILE__) . '/includes/header.php'));
   $menu=file_get_contents(realpath(dirname(__FILE__) . '/includes/menu.php'));
+  $profissoes=file_get_contents(realpath(dirname(__FILE__) . '/includes/profissoes.html'));
   ?>         
 
   <!DOCTYPE html>
@@ -82,12 +83,7 @@ if(isset($_SESSION['idfreelancer'])){
                     <label for="nomefreelancer">Área de Atuação</label>
                     <select class="form-control select2" name="areaatuacao">
                       <option selected="selected">Alabama</option>
-                      <option>Alaska</option>
-                      <option>California</option>
-                      <option>Delaware</option>
-                      <option>Tennessee</option>
-                      <option>Texas</option>
-                      <option>Washington</option>
+                      <?php echo $profissoes; ?>
                     </select>
 
                   </div>
