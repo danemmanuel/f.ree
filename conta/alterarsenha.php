@@ -92,6 +92,10 @@ require_once 'includes/freelancer.php';
               </div>
               </div>
 
+              <div class="form-group">
+                <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer; ?>
+              </div>
+
               <div class="row">
                 <div class="col-md-6">
                   <div class="input-group">
