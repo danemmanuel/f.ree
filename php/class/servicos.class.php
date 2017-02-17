@@ -2,107 +2,76 @@
 
 require_once 'conexao.class.php';
 
-class freelancer{
+class servicos{
 
+	private $idservico;
+	private $descricao;
+	private $nomeservico;
+	private $preco;
 	private $idfreelancer;
-	private $nome;
-	private $email;
-	private $telefone;
-	private $areaatuacao;
-	private $sexo;
-	private $datanascimento;
-	private $resumo;
-	private $senha;
-	private $urlavatar;
 
 
 
 
 	public function getId(){
+		return $this->idservico;
+	}
+	public function setId($idservico){
+		if(!empty($idservico)) $this->idservico=$idservico;
+	}
+	public function getIdFreelancer(){
 		return $this->idfreelancer;
 	}
-	public function setId($idfreelancer){
+	public function setIdFreelancer($idfreelancer){
 		if(!empty($idfreelancer)) $this->idfreelancer=$idfreelancer;
 	}
-	public function getNome(){
-		return $this->nome;
+	public function getDescricao(){
+		return $this->descricao;
 	}
-	public function setNome($nome){
-		$this->nome=$nome;
+	public function setDescricao($descricao){
+		$this->descricao=$descricao;
 	}
-	public function getTelefone(){
-		return $this->telefone;
+	public function getNomeServico(){
+		return $this->nomeservico;
 	}
-	public function setTelefone($telefone){
-		$this->telefone=$telefone;
+	public function setNomeServico($nomeservico){
+		$this->nomeservico=$nomeservico;
 	}
-	public function getEmail(){
-		return $this->email;
+	public function getPreco(){
+		return $this->preco;
 	}
-	public function setEmail($email){
-		$this->email=$email;
+	public function setPreco($preco){
+		$this->preco=$preco;
 	}
-	public function getAreaatuacao(){
-		return $this->areaatuacao;
-	}
-	public function setAreaatuacao($areaatuacao){
-		$this->areaatuacao=$areaatuacao;
-	}
-	public function getSexo(){
-		return $this->sexo;
-	}
-	public function setSexo($sexo){
-		$this->sexo=$sexo;
-	}
-	public function getDatanascimento(){
-		return $this->datanascimento;
-	}
-	public function setDatanascimento($datanascimento){
-		$this->datanascimento=$datanascimento;
-	}
-	public function getResumo(){
-		return $this->resumo;
-	}
-	public function setResumo($resumo){
-		$this->resumo=$resumo;
-	}
-
-	public function getSenha(){
-		return $this->senha;
-	}
-	public function setSenha($senha){
-		$this->senha=$senha;
-	}	
-	public function getUrlAvatar(){
-		return $this->urlavatar;
-	}
-	public function setUrlAvatar($urlavatar){
-		$this->urlavatar=$urlavatar;
-	}	
+	
+	
 	public function inserir(){
 		
 		
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"INSERT INTO freelancer(nome,email,senha)
-				VALUES(:nome,:email,:senha)");
-			$stmt->bindValue(":nome",$this->getNome());
-			$stmt->bindValue(":email",$this->getEmail());
-			$stmt->bindValue(":senha",$this->getSenha());
+				"INSERT INTO servicos(idfreelancer,nomeservico,descricao,preco)
+				VALUES(:idfreelancer,:nomeservico,:descricao,:preco)");
+			$stmt->bindValue(":idfreelancer",$this->getIdFreelancer());
+			$stmt->bindValue(":nomeservico",$this->getNomeServico());
+			$stmt->bindValue(":descricao",$this->getDescricao());
+			$stmt->bindValue(":preco",$this->getPreco());
 			return $stmt->execute();
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
 	}
-	public function alterarAvatar(){
+	public function alterar(){
 		
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"UPDATE freelancer set urlavatar=:urlavatar where idfreelancer=:idfreelancer");
-			$stmt->bindValue(":idfreelancer",$this->getId());
-			$stmt->bindValue(":urlavatar",$this->getUrlAvatar());
+				"UPDATE servicos set nomeservico=:nomeservico,descricao=:descricao,preco=:preco where idservico=:idservico");
+			$stmt->bindValue(":idservico",$this->getId());
+			$stmt->bindValue(":nomeservico",$this->getNomeServico());
+			$stmt->bindValue(":descricao",$this->getDescricao());
+			$stmt->bindValue(":preco",$this->getPreco());
 			return $stmt->execute();
 		}catch(PDOException $e){
 			echo $e->getMessage();
@@ -113,8 +82,8 @@ class freelancer{
 		try{
 			$stmt = $conect->conn->prepare(
 				"UPDATE freelancer set nome=:nome,telefone=:telefone,
-				email=:email,sexo=:sexo,datanascimento=:datanascimento where idfreelancer=:idfreelancer");
-			$stmt->bindValue(":idfreelancer",$this->getId());
+				email=:email,sexo=:sexo,datanascimento=:datanascimento where idservico=:idservico");
+			$stmt->bindValue(":idservico",$this->getId());
 			$stmt->bindValue(":nome",$this->getNome());
 			$stmt->bindValue(":telefone",$this->getTelefone());
 			$stmt->bindValue(":email",$this->getEmail());
@@ -130,8 +99,8 @@ class freelancer{
 		  $conect = new conexao();
 		  try{
 		   $stmt = $conect->conn->prepare(
-		    "UPDATE freelancer set senha=:senha where idfreelancer=:idfreelancer");
-		   $stmt->bindValue(":idfreelancer",$this->getId());
+		    "UPDATE freelancer set senha=:senha where idservico=:idservico");
+		   $stmt->bindValue(":idservico",$this->getId());
 		   $stmt->bindValue(":senha",$this->getSenha());
 		   return $stmt->execute();
 		  }catch(PDOException $e){
@@ -143,8 +112,8 @@ class freelancer{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"DELETE from freelancer where idfreelancer=:idfreelancer");
-			$stmt->bindValue(":idfreelancer",$this->getId());
+				"DELETE from freelancer where idservico=:idservico");
+			$stmt->bindValue(":idservico",$this->getId());
 			return $stmt->execute();
 			
 		}catch(PDOException $e){
@@ -155,8 +124,8 @@ class freelancer{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"DELETE from clientes where idfreelancer=:idfreelancer");
-			$stmt->bindValue(":idfreelancer",$this->getId());
+				"DELETE from servicos where idservico=:idservico");
+			$stmt->bindValue(":idservico",$this->getId());
 			return $stmt->execute();
 			
 		}catch(PDOException $e){
@@ -167,19 +136,18 @@ class freelancer{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"SELECT * from clientes where idusuario=:idusuario");
-			$stmt->bindValue(":idusuario",$this->getIdUsuario());
+				"SELECT * from servicos where idfreelancer=:idfreelancer");
+			$stmt->bindValue(":idfreelancer",$this->getIdFreelancer());
 			$stmt->execute();
 			$r=$stmt->fetchAll();
 			$resposta= array();
 			foreach ($r as $row) {
 				$temp= array(
+					"idservico"=>$row['idservico'],
 					"idfreelancer"=>$row['idfreelancer'],
-					"idusuario"=>$row['idusuario'],
-					"nome"=>$row['nome'],
-					"email"=>$row['email'],
-					"telefone"=>$row['telefone'],
-					"areaatuacao"=>$row['areaatuacao']);
+					"nomeservico"=>$row['nomeservico'],
+					"descricao"=>$row['descricao'],
+					"preco"=>$row['preco']);
 				array_push($resposta, $temp);
 			}
 			return $resposta;
@@ -208,12 +176,12 @@ class freelancer{
 				$conect = new conexao();
 				try{
 					$stmt = $conect->conn->prepare(
-						"select * from freelancer where idfreelancer=:idfreelancer");
-					$stmt->bindValue(':idfreelancer',$this->getId());
+						"select * from freelancer where idservico=:idservico");
+					$stmt->bindValue(':idservico',$this->getId());
 					$stmt->execute();
 					$row=$stmt->fetch();
 					$r= array(
-						"idfreelancer"=>$row['idfreelancer'],
+						"idservico"=>$row['idservico'],
 						"nome"=>$row['nome'],
 						"telefone"=>$row['telefone'],
 						"email"=>$row['email'],
@@ -240,7 +208,7 @@ class freelancer{
 					$stmt->execute();
 					$row=$stmt->fetch();
 					$r= array(
-						"idfreelancer"=>$row['idfreelancer']);
+						"idservico"=>$row['idservico']);
 					return $r;
 				}catch(PDOException $e){
 					echo $e->getMessage();

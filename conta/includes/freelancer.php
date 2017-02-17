@@ -12,6 +12,8 @@ $telefone=$result['telefone'];
 $datanascimento=$result['datanascimento'];
 $sexo=$result['sexo'];
 $senha=$result['senha'];
+$areaatuacao=$result['areaatuacao'];
+$nivelprofissional=$result['nivelprofissional'];
 
 
 $datanova = date("d-m-Y", strtotime($datanascimento));
