@@ -78,20 +78,33 @@
             <?php 
             session_start();
 
+
+            require_once 'php/class/freelancer.class.php';
+            $freelancer2= new freelancer();
+
+            $freelancer2->setId($_SESSION['idfreelancer']);
+            $resp=$freelancer2->buscarId();
+            $avatar=$resp['urlavatar'];
+            $nomefreelancer=$resp['nome'];
+            $email=$resp['email'];
+
+            
+
             if(isset($_SESSION['idfreelancer'])){
-             ?>
-             <li class="nav-item dropdown hidden-sm-down textselect-off">
+            ?>
+            <li class="nav-item dropdown hidden-sm-down textselect-off">
               <a class="nav-link dropdown-toggle nav-dropdown-user" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="img/face5.jpg" height="40" width="40" alt="Avatar" class="img-circle"> <span class="icon-caret-down"></span>
+                <img src="conta/<?php echo $avatar ?>" height="40" width="40" alt="Avatar" class="img-circle"> <span class="icon-caret-down"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-user dropdown-menu-animated" aria-labelledby="dropdownMenu2">
                 <div class="media">
                   <div class="media-left">
-                    <img src="img/face5.jpg" height="60" width="60" alt="Avatar" class="img-circle">
+
+                    <img src="conta/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
                   </div>
                   <div class="media-body media-middle">
-                    <h5 class="media-heading">Joel Fisher</h5>
-                    <h6>hey@joelfisher.com</h6>
+                    <h5 class="media-heading"><?php echo $nomefreelancer?></h5>
+                    <h6><?php echo $email?></h6>
                   </div>
                 </div>
                 <a href="conta" class="dropdown-item text-uppercase">Minha Conta</a>
@@ -116,7 +129,9 @@
           <div id="collapsingMobileUser" class="collapse navbar-toggleable-custom dropdown-menu-custom p-x-1 hidden-md-up" role="tabpanel" aria-labelledby="collapsingMobileUser">
             <div class="media m-t-1">
               <div class="media-left">
-                <img src="img/face5.jpg" height="60" width="60" alt="Avatar" class="img-circle">
+
+
+                <img src="conta/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
               </div>
               <div class="media-body media-middle">
                 <h5 class="media-heading">Joel Fisher</h5>
@@ -124,7 +139,7 @@
               </div>
             </div>
             <a href="conta" class="dropdown-item text-uppercase">Minha Conta</a>
-                <a href="conta/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
+            <a href="conta/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
             <a href="#" class="btn-circle has-gradient pull-xs-right m-b-1">
               <span class="sr-only">Edit</span>
               <span class="icon-edit"></span>
