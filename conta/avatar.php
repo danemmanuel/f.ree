@@ -224,7 +224,7 @@ if(isset($_SESSION['idfreelancer'])){
 
         <?php
 
-        $menu=file_get_contents(realpath(dirname(__FILE__) . '/menu.php'));
+        $menu=file_get_contents(realpath(dirname(__FILE__) . '/includes/menu.php'));
         echo $menu;
 
         ?>
