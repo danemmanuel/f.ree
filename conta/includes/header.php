@@ -1,5 +1,5 @@
 <?php 
-require_once '../../php/class/freelancer.class.php';
+require_once '../php/class/freelancer.class.php';
 
 $freelancer=new freelancer();
 $idfreelancer=$_SESSION['idfreelancer'];

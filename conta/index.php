@@ -43,7 +43,7 @@ if(isset($_SESSION['idfreelancer'])){
     <?php
 
 
-    echo $header;
+    require_once 'includes/header.php';
 
     ?>
 
