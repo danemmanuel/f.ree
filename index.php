@@ -112,10 +112,7 @@ session_start();
                 </div>
                 <a href="conta" class="dropdown-item text-uppercase">Minha Conta</a>
                 <a href="conta/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
-                <a href="#" class="btn-circle has-gradient pull-xs-right">
-                  <span class="sr-only">Edit</span>
-                  <span class="icon-edit"></span>
-                </a>
+                
               </div>
             </li>
 
