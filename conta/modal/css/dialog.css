@@ -10,7 +10,7 @@
 	position: fixed;
 	display: -webkit-flex;
 	display: flex;
-	z-index: 99999;
+	z-index: 1030;
 	-webkit-align-items: center;
 	align-items: left;
 	-webkit-justify-content: center;

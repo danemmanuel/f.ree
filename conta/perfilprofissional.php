@@ -6,6 +6,7 @@ if(isset($_SESSION['idfreelancer'])){
   $header=file_get_contents(realpath(dirname(__FILE__) . '/includes/header.php'));
   $menu=file_get_contents(realpath(dirname(__FILE__) . '/includes/menu.php'));
   $profissoes=file_get_contents(realpath(dirname(__FILE__) . '/includes/profissoes.html'));
+  $idfreelancer=$_SESSION['idfreelancer'];
   ?>         
 
   <!DOCTYPE html>
@@ -13,7 +14,7 @@ if(isset($_SESSION['idfreelancer'])){
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>F.ree > Minha Conta</title>
+    <title>F.ree > Perfil Profissional</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -52,13 +53,16 @@ if(isset($_SESSION['idfreelancer'])){
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed">
 
-  <div class="fixed-action-btn vertical" style="bottom: 45px; right: 24px;">
+  <div class="fixed-action-btn vertical" style=" right: 24px;">
     <a class="btn-floating btn-large red" style="background-color:#008D4C" href="#" data-dialog="somedialog" data-toggle="modal" data-target=".bd-example-modal-lg">
 
       <i class="fa fa-fw fa-plus"></i>
 
     </a>
   </div>
+
+
+
   <!-- Site wrapper -->
   <div class="wrapper">
 
@@ -77,6 +81,7 @@ if(isset($_SESSION['idfreelancer'])){
       <section class="content-header">
         <h1>
           PERFIL PROFISSIONAL
+          <small>Adicione experiências profissionais</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Perfil</a></li>
@@ -87,30 +92,39 @@ if(isset($_SESSION['idfreelancer'])){
       <!-- Main content -->
       <section class="content">
 
-        <!-- Default box -->
-        
-        <form method="POST" action="../php/functions/alterarfreelancerperfil.php">
+       <?php 
 
-          <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
+       require_once '../php/class/areaatuacao.class.php';
+
+       $areaatuacao=new areaatuacao();
+       $areaatuacao->setIdFreelancer($idfreelancer);
+       $resp=$areaatuacao->buscarTodos();
+
+       foreach ($resp as $row) {
+
+
+        ?>
+        <form action="../php/functions/alterararea.php" method="POST">
+          <input type="hidden" value="<?php echo $row['idareaatuacao'] ?>" name="idarea">
           <div class="row">
+            <div class="col-md-3">
 
-            <div class="col-md-4 col-xs-12">
               <div class="form-group">
-                <label for="nomefreelancer">Área de Atuação</label>
+                <small>Área de Atuação</small>
                 <select class="form-control select2" name="areaatuacao">
-                  <option selected="selected"><?php echo $areaatuacao ?></option>
+                  <option selected="selected"><?php echo $row['nomearea'] ?></option>
                   <?php echo $profissoes ?>
                 </select>
-
               </div>
+
             </div>
-
-            <div class="col-md-4 col-xs-12">
-
+            <div class="col-md-3">
               <div class="form-group">
-                <label for="nomefreelancer">Nível Profissional</label>
+<small>Nivel Profissional</small>
                 <select class="form-control select2" name="nivelprofissional">
-                  <option selected="selected"><?php echo $nivelprofissional  ?></option>
+                  <option selected="selected"><?php echo $row['nivelprofissional']  ?></option>
+                  <option>Não Exercendo</option> 
+                  <option>Freelancer</option> 
                   <option>Estagiário</option>
                   <option>Júnior</option>
                   <option>Pleno</option>
@@ -132,336 +146,297 @@ if(isset($_SESSION['idfreelancer'])){
 
               </div>
             </div>
+            <div class="col-md-2">
 
-            <div class="col-md-4 col-xs-12">
               <div class="form-group">
-                <label for="nomefreelancer">Anos de Experiência</label>
-                <input id="anosexperiencia" class="form-control input-lg" name="anosexperiencia" type="number" placeholder="" value="<?php echo $anosexperiencia?>">
-
+               <small>Anos de Experiência</small>
+                <input id="anosexperiencia" class="form-control input-lg" name="anosexperiencia" type="number" placeholder="" value="<?php echo $row['anosexperiencia']?>">
               </div>
             </div>
 
-
-
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="input-group">
-                <button type="submit" class="btn btn-block btn-success btn-lg">Salvar</button>
-              </div>
-            </div>
-          </div>
-
+            <div class="col-md-2"><small>&nbsp;</small><button type="submit" class="btn btn-block btn-warning btn-lg"><i class="fa fa-fw fa-edit"></i> Editar</button></div>
+            <div class="col-md-2"><small>&nbsp;</small><a href="../php/functions/excluirarea.php?idareaatuacao=<?php echo $row['idareaatuacao'] ?>"><button type="button" class="btn btn-block btn-danger btn-lg"><i class="fa fa-fw fa-trash"></i> Apagar</button></a></div>
+          </div><br>
         </form>
 
+        <?php
+      }
+
+      ?>
 
 
 
-        <!-- /.box -->
 
       </section>
 
 
-      <section class="content-header">
-        <h1>
-          SERVIÇOS OFERECIDOS
-        </h1>
-      </section>
+      
 
-      <!-- Main content -->
-      <section class="content">
+      <div id="somedialog" class="dialog">
+        <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
+        <div class="dialog__content">
 
-        <!-- Default box -->
-
-        
-
-        <?php 
-
-        require_once '../php/class/servicos.class.php';
-
-        $servicos=new servicos();
-        $servicos->setIdFreelancer($idfreelancer);
-        $resp=$servicos->buscarTodos();
-
-        foreach ($resp as $row) {
-
-
-          ?>
-          <form action="../php/functions/alterarservico.php" method="POST">
-            <input type="hidden" value="<?php echo $row['idservico'] ?>" name="idservico">
+          <form method="POST" action="../php/functions/inserirarea.php">
+            <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
             <div class="row">
-              <div class="col-md-3">
-                <input value="<?php echo $row ['nomeservico'] ?>"id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
+              <h1 style="text-align:center"></h1>
+              <div class="col-md-12 col-xs-12">
+                <div class="form-group">
+                  <label for="nomefreelancer">Área de Atuação</label>
+                  <select class="form-control select2" name="nomearea">
+                    <option selected="selected">Selecione...</option>
+                    <?php echo $profissoes ?>
+                  </select>
+                </div>
               </div>
-              <div class="col-md-3">
-                <input value="<?php echo $row ['descricao'] ?>"id="nomefreelancer" class="form-control input-lg" name="descricao" type="text" placeholder="Serviço">
+
+              <div class="col-md-12 col-xs-12">
+                <div class="form-group">
+                  <label for="nomefreelancer">Nível Profissional</label>
+                  <select class="form-control select2" name="nivelprofissional">
+                    <option selected="selected">Selecione...</option>
+                    <option>Não Exercendo</option>  
+                    <option>freelancer</option>
+                    <option>Estagiário</option>
+                    <option>Júnior</option>
+                    <option>Pleno</option>
+                    <option>Senior</option>
+                    <option>Empresário</option>
+                    <option>Presidente</option>
+                    <option>Diretor</option>
+                    <option>Gerente</option>
+                    <option>Supervisor</option>
+                    <option>Encarregador</option>
+                    <option>Líder</option>
+                    <option>Consultor</option>
+                    <option>Trainee</option>
+                    <option>Técnico</option>
+                    <option>Assistente</option>
+                    <option>Auxiliar</option>
+
+                  </select>
+
+                </div>
               </div>
-              <div class="col-md-2">
-                <input value="<?php echo $row ['preco'] ?>"id="nomefreelancer" class="form-control input-lg" name="preco" type="text" placeholder="Serviço">
+
+              <div class="col-md-12 col-xs-12">
+                <div class="form-group">
+                  <label for="nomefreelancer">Anos de Experiência</label>
+                  <input id="anosexperiencia" class="form-control input-lg" name="anosexperiencia" type="number" placeholder="" value="0">
+                </div>
               </div>
-              <div class="col-md-2"><button type="submit" class="btn btn-block btn-warning btn-lg"><i class="fa fa-fw fa-edit"></i> Editar</button></div>
-              <div class="col-md-2"><a href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button type="button" class="btn btn-block btn-danger btn-lg"><i class="fa fa-fw fa-trash"></i> Apagar</button></a></div>
-            </div><br>
+
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input-group" style="width:100%;">
+                  <button type="submit" class="btn btn-block btn-success btn-lg">Adicionar</button>
+                </div>
+              </div>
+            </div>
+
           </form>
 
-          <?php
-        }
 
-        ?>
-
+        </div>
       </div>
-
+      <!-- /.content -->
     </div>
-    <!-- /.box -->
+    <!-- /.content-wrapper -->
 
-  </section>
+   
 
-  <div id="somedialog" class="dialog">
-    <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
-    <div class="dialog__content">
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Create the tabs -->
+      <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
 
-      <form method="POST" action="../php/functions/inserirservico.php">
-        <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
-        <div class="row">
-          <h1 style="text-align:center"></h1>
-          <div class="col-md-12 col-xs-12">
-            <div class="form-group">
-              <label for="nomefreelancer">Nome do Serviço</label>
-              <input id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
-            </div>
-          </div>
-
-          <div class="col-md-12 col-xs-12">
-            <div class="form-group">
-              <label for="nomefreelancer">Descrição</label>
-              <input id="nomefreelancer" class="form-control input-lg" name="descricao" type="text" placeholder="Descrição do Serviço">
-            </div>
-          </div>
-
-          <div class="col-md-12 col-xs-12">
-            <div class="form-group">
-              <label for="nomefreelancer">Preço</label>
-              <input id="nomefreelancer" class="form-control input-lg" name="preco" type="number" placeholder="R$">
-            </div>
-          </div>
-
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="input-group" style="width:100%;">
-              <button type="submit" class="btn btn-block btn-success btn-lg">Adicionar</button>
-            </div>
-          </div>
-        </div>
-
-      </form>
-
-
-    </div>
-  </div>
-  <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-
-<footer class="main-footer">
-  <div class="pull-right hidden-xs">
-    <b>Version</b> 2.3.11
-  </div>
-  <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-  reserved.
-</footer>
-
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-  <!-- Create the tabs -->
-  <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-    <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-
-    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-  </ul>
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <!-- Home tab content -->
-    <div class="tab-pane" id="control-sidebar-home-tab">
-      <h3 class="control-sidebar-heading">Recent Activity</h3>
-      <ul class="control-sidebar-menu">
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-              <p>Will be 23 on April 24th</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-user bg-yellow"></i>
-
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-              <p>New phone +1(800)555-1234</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-              <p>nora@example.com</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-              <p>Execution time 5 seconds</p>
-            </div>
-          </a>
-        </li>
+        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
       </ul>
-      <!-- /.control-sidebar-menu -->
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <!-- Home tab content -->
+        <div class="tab-pane" id="control-sidebar-home-tab">
+          <h3 class="control-sidebar-heading">Recent Activity</h3>
+          <ul class="control-sidebar-menu">
+            <li>
+              <a href="javascript:void(0)">
+                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
-      <h3 class="control-sidebar-heading">Tasks Progress</h3>
-      <ul class="control-sidebar-menu">
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Custom Template Design
-              <span class="label label-danger pull-right">70%</span>
-            </h4>
+                <div class="menu-info">
+                  <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
 
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                  <p>Will be 23 on April 24th</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <i class="menu-icon fa fa-user bg-yellow"></i>
+
+                <div class="menu-info">
+                  <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+
+                  <p>New phone +1(800)555-1234</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+                <div class="menu-info">
+                  <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+
+                  <p>nora@example.com</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <i class="menu-icon fa fa-file-code-o bg-green"></i>
+
+                <div class="menu-info">
+                  <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+
+                  <p>Execution time 5 seconds</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <!-- /.control-sidebar-menu -->
+
+          <h3 class="control-sidebar-heading">Tasks Progress</h3>
+          <ul class="control-sidebar-menu">
+            <li>
+              <a href="javascript:void(0)">
+                <h4 class="control-sidebar-subheading">
+                  Custom Template Design
+                  <span class="label label-danger pull-right">70%</span>
+                </h4>
+
+                <div class="progress progress-xxs">
+                  <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <h4 class="control-sidebar-subheading">
+                  Update Resume
+                  <span class="label label-success pull-right">95%</span>
+                </h4>
+
+                <div class="progress progress-xxs">
+                  <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <h4 class="control-sidebar-subheading">
+                  Laravel Integration
+                  <span class="label label-warning pull-right">50%</span>
+                </h4>
+
+                <div class="progress progress-xxs">
+                  <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <h4 class="control-sidebar-subheading">
+                  Back End Framework
+                  <span class="label label-primary pull-right">68%</span>
+                </h4>
+
+                <div class="progress progress-xxs">
+                  <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <!-- /.control-sidebar-menu -->
+
+        </div>
+        <!-- /.tab-pane -->
+        <!-- Stats tab content -->
+        <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+        <!-- /.tab-pane -->
+        <!-- Settings tab content -->
+        <div class="tab-pane" id="control-sidebar-settings-tab">
+          <form method="post">
+            <h3 class="control-sidebar-heading">General Settings</h3>
+
+            <div class="form-group">
+              <label class="control-sidebar-subheading">
+                Report panel usage
+                <input type="checkbox" class="pull-right" checked>
+              </label>
+
+              <p>
+                Some information about this general settings option
+              </p>
             </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Update Resume
-              <span class="label label-success pull-right">95%</span>
-            </h4>
+            <!-- /.form-group -->
 
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+            <div class="form-group">
+              <label class="control-sidebar-subheading">
+                Allow mail redirect
+                <input type="checkbox" class="pull-right" checked>
+              </label>
+
+              <p>
+                Other sets of options are available
+              </p>
             </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Laravel Integration
-              <span class="label label-warning pull-right">50%</span>
-            </h4>
+            <!-- /.form-group -->
 
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+            <div class="form-group">
+              <label class="control-sidebar-subheading">
+                Expose author name in posts
+                <input type="checkbox" class="pull-right" checked>
+              </label>
+
+              <p>
+                Allow the user to show his name in blog posts
+              </p>
             </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Back End Framework
-              <span class="label label-primary pull-right">68%</span>
-            </h4>
+            <!-- /.form-group -->
 
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+            <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+            <div class="form-group">
+              <label class="control-sidebar-subheading">
+                Show me as online
+                <input type="checkbox" class="pull-right" checked>
+              </label>
             </div>
-          </a>
-        </li>
-      </ul>
-      <!-- /.control-sidebar-menu -->
+            <!-- /.form-group -->
 
-    </div>
-    <!-- /.tab-pane -->
-    <!-- Stats tab content -->
-    <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-    <!-- /.tab-pane -->
-    <!-- Settings tab content -->
-    <div class="tab-pane" id="control-sidebar-settings-tab">
-      <form method="post">
-        <h3 class="control-sidebar-heading">General Settings</h3>
+            <div class="form-group">
+              <label class="control-sidebar-subheading">
+                Turn off notifications
+                <input type="checkbox" class="pull-right">
+              </label>
+            </div>
+            <!-- /.form-group -->
 
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Report panel usage
-            <input type="checkbox" class="pull-right" checked>
-          </label>
-
-          <p>
-            Some information about this general settings option
-          </p>
+            <div class="form-group">
+              <label class="control-sidebar-subheading">
+                Delete chat history
+                <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+              </label>
+            </div>
+            <!-- /.form-group -->
+          </form>
         </div>
-        <!-- /.form-group -->
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Allow mail redirect
-            <input type="checkbox" class="pull-right" checked>
-          </label>
-
-          <p>
-            Other sets of options are available
-          </p>
-        </div>
-        <!-- /.form-group -->
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Expose author name in posts
-            <input type="checkbox" class="pull-right" checked>
-          </label>
-
-          <p>
-            Allow the user to show his name in blog posts
-          </p>
-        </div>
-        <!-- /.form-group -->
-
-        <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Show me as online
-            <input type="checkbox" class="pull-right" checked>
-          </label>
-        </div>
-        <!-- /.form-group -->
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Turn off notifications
-            <input type="checkbox" class="pull-right">
-          </label>
-        </div>
-        <!-- /.form-group -->
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Delete chat history
-            <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-          </label>
-        </div>
-        <!-- /.form-group -->
-      </form>
-    </div>
-    <!-- /.tab-pane -->
-  </div>
-</aside>
-<!-- /.control-sidebar -->
+        <!-- /.tab-pane -->
+      </div>
+    </aside>
+    <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>

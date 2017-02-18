@@ -8,6 +8,6 @@ $servicos=new servicos();
 $servicos->setId($idservico);
 $servicos->apagar();
 
-header("location:../../conta/perfilprofissional.php");
+header("location:../../conta/servicosoferecidos.php");
 
  ?>
