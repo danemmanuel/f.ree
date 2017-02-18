@@ -1,6 +1,6 @@
 <?php 
 
-require_once '../php/class/freelancer.class.php';
+require_once '../conta/php/class/freelancer.class.php';
 
 
 $email=$_POST['email'];

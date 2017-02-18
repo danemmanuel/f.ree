@@ -82,7 +82,7 @@ session_start();
             
 
 
-            require_once 'php/class/freelancer.class.php';
+            require_once 'conta/php/class/freelancer.class.php';
             $freelancer2= new freelancer();
 
             $freelancer2->setId($_SESSION['idfreelancer']);
@@ -97,21 +97,21 @@ session_start();
             ?>
             <li class="nav-item dropdown hidden-sm-down textselect-off">
               <a class="nav-link dropdown-toggle nav-dropdown-user" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="conta/<?php echo $avatar ?>" height="40" width="40" alt="Avatar" class="img-circle"> <span class="icon-caret-down"></span>
+                <img src="conta/freelancer/<?php echo $avatar ?>" height="40" width="40" alt="Avatar" class="img-circle"> <span class="icon-caret-down"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-user dropdown-menu-animated" aria-labelledby="dropdownMenu2">
                 <div class="media">
                   <div class="media-left">
 
-                    <img src="conta/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
+                    <img src="conta/freelancer/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
                   </div>
                   <div class="media-body media-middle">
                     <h5 class="media-heading"><?php echo $nomefreelancer?></h5>
                     <h6><?php echo $email?></h6>
                   </div>
                 </div>
-                <a href="conta" class="dropdown-item text-uppercase">Minha Conta</a>
-                <a href="conta/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
+                <a href="conta/freelancer" class="dropdown-item text-uppercase">Minha Conta</a>
+                <a href="conta/freelancer/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
                 
               </div>
             </li>
@@ -121,7 +121,7 @@ session_start();
               ?>
 
               <li class="nav-item nav-item-toggable">
-                <a class="nav-link" href="conta">Login</a>
+                <a class="nav-link" href="conta/freelancer">Login</a>
               </li>
               <?php } ?>
             </ul>
@@ -133,7 +133,7 @@ session_start();
 <?php 
 if(isset($_SESSION['idfreelancer'])){
 ?>
-<img src="conta/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
+<img src="conta/freelancer/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
 <?php
 }
 else{

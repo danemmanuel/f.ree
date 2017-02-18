@@ -16,7 +16,7 @@ $freelancer->setNivelProfissional($nivelprofissional);
 $freelancer->setAnosExperiencia($anosexperiencia);
 $freelancer->alterarDadosProfissionais();
 
-header("location:../../conta/perfilprofissional.php");
+header("location:../../freelancer/perfilprofissional.php");
 
 
 

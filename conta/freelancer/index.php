@@ -3,10 +3,9 @@ session_start();
 if(isset($_SESSION['idfreelancer'])){
 
   require_once 'includes/freelancer.php';
-  $header=file_get_contents(realpath(dirname(__FILE__) . '/includes/header.php'));
+
   $menu=file_get_contents(realpath(dirname(__FILE__) . '/includes/menu.php'));
-  $profissoes=file_get_contents(realpath(dirname(__FILE__) . '/includes/profissoes.html'));
-  $idfreelancer=$_SESSION['idfreelancer'];
+
   ?>         
 
   <!DOCTYPE html>
@@ -14,14 +13,11 @@ if(isset($_SESSION['idfreelancer'])){
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>F.ree > Perfil Profissional</title>
+    <title>F.ree > Minha Conta</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="materialize/materialize.css">
-
-    <link rel="stylesheet" type="text/css" href="upload/css/component.css" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -29,20 +25,10 @@ if(isset($_SESSION['idfreelancer'])){
     <!-- Theme style -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <script src="plugins/select2/select2.full.min.js"></script>
-    <link rel="stylesheet" href="plugins/select2/select2.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="plugins/iCheck/all.css">
-  <link rel="stylesheet" type="text/css" href="modal/css/normalize.css" />
-
-  <!-- common styles -->
-  <link rel="stylesheet" type="text/css" href="modal/css/dialog.css" />
-  <!-- individual effect -->
-  <link rel="stylesheet" type="text/css" href="modal/css/dialog-sandra.css" />
-  <script src="modal/js/modernizr.custom.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,18 +37,7 @@ if(isset($_SESSION['idfreelancer'])){
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
-
-  <div class="fixed-action-btn vertical" style=" right: 24px;">
-    <a class="btn-floating btn-large red" style="background-color:#008D4C" href="#" data-dialog="somedialog" data-toggle="modal" data-target=".bd-example-modal-lg">
-
-      <i class="fa fa-fw fa-plus"></i>
-
-    </a>
-  </div>
-
-
-
+<body class="hold-transition skin-blue fixed sidebar-mini">
   <!-- Site wrapper -->
   <div class="wrapper">
 
@@ -74,185 +49,123 @@ if(isset($_SESSION['idfreelancer'])){
 
     ?>
 
+    
+    <!-- =============================================== -->
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          PERFIL PROFISSIONAL
-          <small>Adicione experiências profissionais</small>
+          DADOS PESSOAIS
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Perfil</a></li>
-          <li class="active">Perfil Profissional</li>
+          <li><a href="#"><i class="fa fa-dashboard"></i> Conta</a></li>
+          <li class="active">Dados Pessoais</li>
         </ol>
       </section>
 
       <!-- Main content -->
       <section class="content">
 
-       <?php 
-
-       require_once '../php/class/areaatuacao.class.php';
-
-       $areaatuacao=new areaatuacao();
-       $areaatuacao->setIdFreelancer($idfreelancer);
-       $resp=$areaatuacao->buscarTodos();
-
-       foreach ($resp as $row) {
+        <!-- Default box -->
 
 
-        ?>
-        <form action="../php/functions/alterararea.php" method="POST">
-          <input type="hidden" value="<?php echo $row['idareaatuacao'] ?>" name="idarea">
-          <div class="row">
-            <div class="col-md-3">
+            <form method="POST" action="../php/functions/alterarfreelancer.php">
+              <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer ?>">
+              <div class="row">
+                <div class="col-md-6 col-xs-12">
+                  <div class="form-group">
+                    <label for="nomefreelancer">Seu Nome</label>
+                    <input id="nomefreelancer" class="form-control input-lg" name="nomefreelancer" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
+                  </div>
+                </div>
 
-              <div class="form-group">
-                <small>Área de Atuação</small>
-                <select class="form-control select2" name="areaatuacao">
-                  <option selected="selected"><?php echo $row['nomearea'] ?></option>
-                  <?php echo $profissoes ?>
-                </select>
+                <div class="col-md-6 col-xs-12">
+                  <div class="form-group">
+                    <label for="nomefreelancer">Seu Email</label>
+                    <input id="email" class="form-control input-lg" name="email" type="text" placeholder="Seu Email" value="<?php echo $email ?>">
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-xs-12">
+                  <div class="form-group">
+                    <label>Data Nascimento:</label>
+
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control input-lg" value="<?php echo $datanova ?>"name="datanascimento" data-inputmask="'alias': 'dd-mm-yyyy'" data-mask>
+
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-xs-12">
+                  <div class="form-group">
+                    <label>Sexo:</label><br>
+
+                    <label for="masculino">Masculino</label>
+                    <input type="radio" name="sexo" class="flat-red" value="masculino" id="masculino" checked>
+                    <label for="feminino">Feminino</label>
+                    <input type="radio" class="flat-red" name="sexo" value="feminino" id="feminino">
+
+
+
+
+                  </div>
+                </div>
               </div>
 
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-<small>Nivel Profissional</small>
-                <select class="form-control select2" name="nivelprofissional">
-                  <option selected="selected"><?php echo $row['nivelprofissional']  ?></option>
-                  <option>Não Exercendo</option> 
-                  <option>Freelancer</option> 
-                  <option>Estagiário</option>
-                  <option>Júnior</option>
-                  <option>Pleno</option>
-                  <option>Senior</option>
-                  <option>Empresário</option>
-                  <option>Presidente</option>
-                  <option>Diretor</option>
-                  <option>Gerente</option>
-                  <option>Supervisor</option>
-                  <option>Encarregador</option>
-                  <option>Líder</option>
-                  <option>Consultor</option>
-                  <option>Trainee</option>
-                  <option>Técnico</option>
-                  <option>Assistente</option>
-                  <option>Auxiliar</option>
+              <div class="row">
+                
+                <div class="col-md-6 col-xs-12">
+                  <label for="telefone">Celular</label> <small>(Whatsapp)</small>
+                  <div class="input-group">
 
-                </select>
+                    <div class="input-group-addon">
+                      <i class="fa fa-phone"></i>
+                    </div>
+                    <input id="telefone" type="text" class="form-control input-lg" name="telefone" value="<?php echo $telefone?>" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
+                  </div>
+                </div>
 
+                <div class="col-md-6 col-xs-12">
+                  <label for="telefone">Telefone</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-phone"></i>
+                    </div>
+                    <input id="telefone" type="text" class="form-control input-lg"  data-inputmask='"mask": "(99) 99999-9999"' data-mask>
+                  </div>
+                </div>
+
+              </div></br>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <button type="submit" class="btn btn-block btn-success btn-lg">Salvar</button>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-2">
 
-              <div class="form-group">
-               <small>Anos de Experiência</small>
-                <input id="anosexperiencia" class="form-control input-lg" name="anosexperiencia" type="number" placeholder="" value="<?php echo $row['anosexperiencia']?>">
-              </div>
-            </div>
+            </form>
 
-            <div class="col-md-2"><small>&nbsp;</small><button type="submit" class="btn btn-block btn-warning btn-lg"><i class="fa fa-fw fa-edit"></i> Editar</button></div>
-            <div class="col-md-2"><small>&nbsp;</small><a href="../php/functions/excluirarea.php?idareaatuacao=<?php echo $row['idareaatuacao'] ?>"><button type="button" class="btn btn-block btn-danger btn-lg"><i class="fa fa-fw fa-trash"></i> Apagar</button></a></div>
-          </div><br>
-        </form>
-
-        <?php
-      }
-
-      ?>
-
-
-
+        <!-- /.box -->
 
       </section>
-
-
-      
-
-      <div id="somedialog" class="dialog">
-        <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
-        <div class="dialog__content">
-
-          <form method="POST" action="../php/functions/inserirarea.php">
-            <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
-            <div class="row">
-              <h1 style="text-align:center"></h1>
-              <div class="col-md-12 col-xs-12">
-                <div class="form-group">
-                  <label for="nomefreelancer">Área de Atuação</label>
-                  <select class="form-control select2" name="nomearea">
-                    <option selected="selected">Selecione...</option>
-                    <?php echo $profissoes ?>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-12 col-xs-12">
-                <div class="form-group">
-                  <label for="nomefreelancer">Nível Profissional</label>
-                  <select class="form-control select2" name="nivelprofissional">
-                    <option selected="selected">Selecione...</option>
-                    <option>Não Exercendo</option>  
-                    <option>freelancer</option>
-                    <option>Estagiário</option>
-                    <option>Júnior</option>
-                    <option>Pleno</option>
-                    <option>Senior</option>
-                    <option>Empresário</option>
-                    <option>Presidente</option>
-                    <option>Diretor</option>
-                    <option>Gerente</option>
-                    <option>Supervisor</option>
-                    <option>Encarregador</option>
-                    <option>Líder</option>
-                    <option>Consultor</option>
-                    <option>Trainee</option>
-                    <option>Técnico</option>
-                    <option>Assistente</option>
-                    <option>Auxiliar</option>
-
-                  </select>
-
-                </div>
-              </div>
-
-              <div class="col-md-12 col-xs-12">
-                <div class="form-group">
-                  <label for="nomefreelancer">Anos de Experiência</label>
-                  <input id="anosexperiencia" class="form-control input-lg" name="anosexperiencia" type="number" placeholder="" value="0">
-                </div>
-              </div>
-
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="input-group" style="width:100%;">
-                  <button type="submit" class="btn btn-block btn-success btn-lg">Adicionar</button>
-                </div>
-              </div>
-            </div>
-
-          </form>
-
-
-        </div>
-      </div>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
-   
+    
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Create the tabs -->
       <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-        <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-
-        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
@@ -472,22 +385,7 @@ if(isset($_SESSION['idfreelancer'])){
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-
-<script src="upload/js/custom-file-input.js"></script>
-<script src="modal/js/classie.js"></script>
-<script src="modal/js/dialogFx.js"></script>
 <!-- Page script -->
-<script>
-(function() {
-
-  var dlgtrigger = document.querySelector( '[data-dialog]' ),
-  somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
-  dlg = new DialogFx( somedialog );
-
-  dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
-
-})();
-</script>
 <script>
 $(function () {
     //Initialize Select2 Elements
@@ -561,6 +459,6 @@ $(function () {
 <?php
 
 }else{ 
-  header("location:../login");
+  header("location:../../login");
 }
 ?>

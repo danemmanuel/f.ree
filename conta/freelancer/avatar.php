@@ -401,6 +401,6 @@ $(function () {
 <?php
 
 }else{ 
-  header("location:../login");
+  header("location:../../login");
 }
 ?>

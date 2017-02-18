@@ -16,6 +16,6 @@ $areaatuacao->setNivelprofissional($nivelprofissional);
 $areaatuacao->setAnosexperiencia($anosexperiencia);
 $areaatuacao->inserir();
 
-header("location:../../conta/perfilprofissional.php");
+header("location:../../freelancer/perfilprofissional.php");
 
  ?>

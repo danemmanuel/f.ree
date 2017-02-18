@@ -21,7 +21,7 @@ $freelancer->setSexo($sexo);
 $freelancer->setTelefone($telefone);
 $freelancer->alterarFreelancer();
 
-header("location:../../conta");
+header("location:../../freelancer");
 
 
 

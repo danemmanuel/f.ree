@@ -2,20 +2,18 @@
 
 require_once '../class/servicos.class.php';
 
-$servicos= new servicos();
-
-$idfreelancer=$_POST['idfreelancer'];
+$idservico=$_POST['idservico'];
 $nomeservico=$_POST['nomeservico'];
 $descricao=$_POST['descricao'];
 $preco=$_POST['preco'];
 
-
-$servicos->setIdFreelancer($idfreelancer);
+$servicos=new servicos();
+$servicos->setId($idservico);
 $servicos->setNomeServico($nomeservico);
 $servicos->setDescricao($descricao);
 $servicos->setPreco($preco);
-$servicos->inserir();
+$servicos->alterar();
 
-header("location:../../conta/perfilprofissional.php");
+header("location:../../freelancer/perfilprofissional.php");
 
  ?>

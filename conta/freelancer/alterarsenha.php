@@ -38,7 +38,7 @@ require_once 'includes/freelancer.php';
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
   <!-- Site wrapper -->
   <div class="wrapper">
 
@@ -68,9 +68,7 @@ require_once 'includes/freelancer.php';
       <section class="content">
 
         <!-- Default box -->
-        <div class="box">
-          
-              <div class="box-body">
+
                   <form method="POST" action="../php/functions/alterarsenha.php">
                     <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer; ?>">
                     
@@ -78,28 +76,34 @@ require_once 'includes/freelancer.php';
               <div class="col-md-6 col-xs-12">
               <div class="form-group">
                 <label for="antigasenha">Senha antiga</label>
-                <input id="antigasenha" class="form-control input-lg" name="antigasenha" type="text" placeholder="Digite sua senha anterior">
+                <input id="antigasenha" class="form-control input-lg" name="antigasenha" type="password" placeholder="Digite sua senha anterior">
+              </div>
+              </div>
+              </div>
+
+              <div class="row">
+              <div class="col-md-6 col-xs-12">
+              <div class="form-group">
+                <label for="novasenha">Nova Senha</label>
+                <input id="novasenha" class="form-control input-lg" name="novasenha" type="text" placeholder="Digite a nova senha">  
               </div>
               </div>
               </div>
 
               <div class="form-group">
-                <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer; ?>
+                <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer; ?>"
               </div>
 
               <div class="row">
                 <div class="col-md-6">
                   <div class="input-group">
-                    <button type="submit" class="btn btn-block btn-success btn-lg">Excluir</button>
+                    <button type="submit" class="btn btn-block btn-success btn-lg">Salvar</button>
                   </div>
                 </div>
               </div>
 
                 </form>
-              </div>
-
               
-            </div>
             <!-- /.box -->
 
           </section>
@@ -107,13 +111,6 @@ require_once 'includes/freelancer.php';
         </div>
         <!-- /.content-wrapper -->
 
-        <footer class="main-footer">
-          <div class="pull-right hidden-xs">
-            <b>Version</b> 2.3.11
-          </div>
-          <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-          reserved.
-        </footer>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -417,6 +414,6 @@ $(function () {
 <?php
 
 }else{ 
-  header("location:../login");
+  header("location:../../login");
 }
 ?>
