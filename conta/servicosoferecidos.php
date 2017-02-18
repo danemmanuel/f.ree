@@ -106,16 +106,19 @@ if(isset($_SESSION['idfreelancer'])){
             <input type="hidden" value="<?php echo $row['idservico'] ?>" name="idservico">
             <div class="row">
               <div class="col-md-3">
+                <small>Qual o serviços</small>
                 <input value="<?php echo $row ['nomeservico'] ?>"id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
               </div>
               <div class="col-md-3">
+                <small>Fale um pouco sobre</small>
                 <input value="<?php echo $row ['descricao'] ?>"id="nomefreelancer" class="form-control input-lg" name="descricao" type="text" placeholder="Serviço">
               </div>
               <div class="col-md-2">
+                <small>Quanto cobra?</small>
                 <input value="<?php echo $row ['preco'] ?>"id="nomefreelancer" class="form-control input-lg" name="preco" type="text" placeholder="Serviço">
               </div>
-              <div class="col-md-2"><button type="submit" class="btn btn-block btn-warning btn-lg"><i class="fa fa-fw fa-edit"></i> Editar</button></div>
-              <div class="col-md-2"><a href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button type="button" class="btn btn-block btn-danger btn-lg"><i class="fa fa-fw fa-trash"></i> Apagar</button></a></div>
+              <div class="col-md-2"><small>&nbsp;</small><button type="submit" class="btn btn-block btn-warning btn-lg"><i class="fa fa-fw fa-edit"></i> Editar</button></div>
+              <div class="col-md-2"><small>&nbsp;</small><a href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button type="button" class="btn btn-block btn-danger btn-lg"><i class="fa fa-fw fa-trash"></i> Apagar</button></a></div>
             </div><br>
           </form>
 
