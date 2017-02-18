@@ -14,6 +14,6 @@ $servicos->setDescricao($descricao);
 $servicos->setPreco($preco);
 $servicos->alterar();
 
-header("location:../../freelancer/perfilprofissional.php");
+header("location:../../freelancer/servicosoferecidos.php");
 
  ?>
