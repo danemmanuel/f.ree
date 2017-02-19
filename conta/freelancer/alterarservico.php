@@ -51,16 +51,6 @@ if(isset($_SESSION['idfreelancer'])){
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed">
 
-  <div class="fixed-action-btn vertical" style="right: 24px;">
-    <a class="btn-floating btn-large red" style="background-color:#008D4C" href="#" data-dialog="somedialog" data-toggle="modal" data-target=".bd-example-modal-lg">
-
-      <i class="fa fa-fw fa-plus"></i>
-
-    </a>
-  </div>
-
-
-
   <!-- Site wrapper -->
   <div class="wrapper">
 
@@ -84,106 +74,50 @@ if(isset($_SESSION['idfreelancer'])){
 
       <!-- Main content -->
       <section class="content">
+         <?php 
+
+          require_once '../php/class/servicos.class.php';
+
+          $servicos=new servicos();
+          $servicos->setIdFreelancer($idfreelancer);
+          $id=$_GET['id'];
+          $servicos->setId($id);
+          $resp=$servicos->buscarId();
+
+        
 
 
-        <section class="pricing-section bg-8">
+            ?>
+            <form action="../php/functions/alterarservico.php" method="POST">
+              <input type="hidden" value="<?php echo $resp['idservico'] ?>" name="idservico">
+              <div class="row">
+                <div class="col-md-3">
+                  <small>Qual o serviços</small>
+                  <input value="<?php echo $resp ['nomeservico'] ?>"id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
+                </div>
+                <div class="col-md-3">
+                  <small>Fale um pouco sobre</small>
+                  <textarea maxlength="120" placeholder="<?php echo $resp ['descricao'] ?>"id="nomefreelancer" class="form-control input-lg" name="descricao" type="text"></textarea>
+                </div>
+                <div class="col-md-2">
+                  <small>Quanto cobra?</small>
+                  <input value="<?php echo $resp ['preco'] ?>"id="nomefreelancer" class="form-control input-lg" name="preco" type="text" placeholder="Serviço">
+                </div>
+                <div class="col-md-2"><small>&nbsp;</small><button type="submit" class="btn btn-block btn-warning btn-lg"><i class="fa fa-fw fa-edit"></i> Editar</button></div>
+                 </div><br>
+            </form>
 
-          <div class="pricing pricing--tashi">
-            <?php 
+            <?php
+        
 
-            require_once '../php/class/servicos.class.php';
+          ?>
 
-            $servicos=new servicos();
-            $servicos->setIdFreelancer($idfreelancer);
-            $resp=$servicos->buscarTodos();
-
-            foreach ($resp as $row) {
-
-
-              ?>
-              <div class="pricing__item">
-                <h3 class="pricing__title"><?php echo $row ['nomeservico'] ?></h3>
-                <p class="pricing__sentence"><?php echo $row ['descricao'] ?></p>
-                <div class="pricing__price"><span class="pricing__currency">R$ </span><?php echo $row ['preco'] ?><span class="pricing__period">/ <?php echo $row['tipo']?></span></div>
-                <ul class="pricing__feature-list">
-                 <!-- <li class="pricing__feature">1 GB of space</li>
-                  <li class="pricing__feature">Support at $25/hour</li>
-                  <li class="pricing__feature">Small social media package</li> -->
-                </ul>
-                <a href="alterarservico.php?id=<?php echo $row['idservico'] ?>"><i class="fa fa-fw fa-edit"></i> Alterar</a>
-                <a style="align-self:flex-end;"href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
-              </div>
-
-            <?php } ?>
-            </div>
-          </section>
-
-         
         </div>
 
       </div>
       <!-- /.box -->
 
     </section>
-
-    <div id="somedialog" class="dialog">
-      <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
-      <div class="dialog__content">
-
-        <form method="POST" action="../php/functions/inserirservico.php">
-          <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
-          <div class="row">
-            <h1 style="text-align:center"></h1>
-            <div class="col-md-12 col-xs-12">
-              <div class="form-group">
-                <label for="nomefreelancer">Nome do Serviço</label>
-                <input id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
-              </div>
-            </div>
-
-            <div class="col-md-12 col-xs-12">
-              <div class="form-group">
-                <label for="nomefreelancer">Breve Descrição | <small>Max 120 caractéres</small></label>
-                <textarea maxlength="120" id="nomefreelancer" class="form-control input-lg" name="descricao" type="text" placeholder="Descrição do Serviço"></textarea>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-xs-12">
-              <div class="form-group">
-                <label for="nomefreelancer">Preço</label>
-                <input id="nomefreelancer" class="form-control input-lg" name="preco" type="number" placeholder="R$">
-              </div>
-            </div>
-
-            <div class="col-md-6 col-xs-12">
-              <div class="form-group">
-                  <label >Tipo</label>
-                  <select name="tipo" class="form-control">
-                    <option>Por Hora</option>
-                    <option>Por Dia</option>
-                    <option>Por Unidade</option>
-                  </select>
-                </div>
-            </div>
-
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="input-group" style="width:100%;">
-                <button type="submit" class="btn btn-block btn-success btn-lg">Adicionar</button>
-              </div>
-            </div>
-          </div>
-
-        </form>
-
-
-      </div>
-    </div>
-
-
-    
-
 
 
     <!-- /.content -->

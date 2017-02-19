@@ -106,11 +106,11 @@ if(isset($_SESSION['idfreelancer'])){
                 <p class="pricing__sentence"><?php echo $row ['descricao'] ?></p>
                 <div class="pricing__price"><span class="pricing__currency">R$ </span><?php echo $row ['preco'] ?><span class="pricing__period">/ <?php echo $row['tipo']?></span></div>
                 <ul class="pricing__feature-list">
-                 <!-- <li class="pricing__feature">1 GB of space</li>
+                  <li class="pricing__feature">1 GB of space</li>
                   <li class="pricing__feature">Support at $25/hour</li>
-                  <li class="pricing__feature">Small social media package</li> -->
+                  <li class="pricing__feature">Small social media package</li>
                 </ul>
-                <a href="alterarservico.php?id=<?php echo $row['idservico'] ?>"><i class="fa fa-fw fa-edit"></i> Alterar</a>
+                <a href="alterarservico.php?id=<?php echo $row['idservico'] ?>">Alterar</a>
                 <a style="align-self:flex-end;"href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
               </div>
 
@@ -118,7 +118,43 @@ if(isset($_SESSION['idfreelancer'])){
             </div>
           </section>
 
-         
+          <?php 
+
+          require_once '../php/class/servicos.class.php';
+
+          $servicos=new servicos();
+          $servicos->setIdFreelancer($idfreelancer);
+          $resp=$servicos->buscarTodos();
+
+          foreach ($resp as $row) {
+
+
+            ?>
+            <form action="../php/functions/alterarservico.php" method="POST">
+              <input type="hidden" value="<?php echo $row['idservico'] ?>" name="idservico">
+              <div class="row">
+                <div class="col-md-3">
+                  <small>Qual o serviços</small>
+                  <input value="<?php echo $row ['nomeservico'] ?>"id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
+                </div>
+                <div class="col-md-3">
+                  <small>Fale um pouco sobre</small>
+                  <input value="<?php echo $row ['descricao'] ?>"id="nomefreelancer" class="form-control input-lg" name="descricao" type="text" placeholder="Serviço">
+                </div>
+                <div class="col-md-2">
+                  <small>Quanto cobra?</small>
+                  <input value="<?php echo $row ['preco'] ?>"id="nomefreelancer" class="form-control input-lg" name="preco" type="text" placeholder="Serviço">
+                </div>
+                <div class="col-md-2"><small>&nbsp;</small><button type="submit" class="btn btn-block btn-warning btn-lg"><i class="fa fa-fw fa-edit"></i> Editar</button></div>
+                <div class="col-md-2"><small>&nbsp;</small><a href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button type="button" class="btn btn-block btn-danger btn-lg"><i class="fa fa-fw fa-trash"></i> Apagar</button></a></div>
+              </div><br>
+            </form>
+
+            <?php
+          }
+
+          ?>
+
         </div>
 
       </div>

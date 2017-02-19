@@ -8,14 +8,16 @@ $idfreelancer=$_POST['idfreelancer'];
 $nomeservico=$_POST['nomeservico'];
 $descricao=$_POST['descricao'];
 $preco=$_POST['preco'];
+$tipo=$_POST['tipo'];
 
 
 $servicos->setIdFreelancer($idfreelancer);
 $servicos->setNomeServico($nomeservico);
 $servicos->setDescricao($descricao);
 $servicos->setPreco($preco);
+$servicos->setTipo($tipo);
 $servicos->inserir();
 
-header("location:../../freelancer/perfilprofissional.php");
+header("location:../../freelancer/servicosoferecidos.php");
 
  ?>
