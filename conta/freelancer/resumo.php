@@ -25,13 +25,11 @@ if(isset($_SESSION['idfreelancer'])){
     <!-- Theme style -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-  folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/iCheck/all.css">
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="plugins/iCheck/all.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -75,14 +73,7 @@ if(isset($_SESSION['idfreelancer'])){
       ?>
       <!-- Main content -->
       <section class="content">
-
-
-
-
         <div style="font-size:20px;text-align:justify;"> <?php echo $resp['resumo']?></div>
-
-
-
         <br>
         <form method="POST" action="../php/functions/alterarresumo.php">
           <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer ?>">
