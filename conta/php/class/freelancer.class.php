@@ -153,7 +153,7 @@ class freelancer{
 				"DELETE from freelancer where idfreelancer=:idfreelancer");
 			$stmt->bindValue(":idfreelancer",$this->getId());
 			return $stmt->execute();
-			
+						
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}

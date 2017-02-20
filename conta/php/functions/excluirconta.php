@@ -1,15 +1,15 @@
 <?php 
 require_once '../class/freelancer.class.php';
-header("location:../../freelancer/alterarsenha.php");
+//header("location:../../../index.php");
 
 $idfreelancer=$_POST['idfreelancer'];
-$senhaantiga=$_POST['antigasenha'];
-$novasenha=$_POST['novasenha'];
 
 $freelancer = new freelancer();
 $freelancer->setId($idfreelancer);
-$freelancer->setSenha($novasenha);
-$freelancer->alterarSenha();
+$freelancer->excluirConta();
 
+session_start();
+session_destroy();
+header("location:../../freelancer/");
 
  ?>
