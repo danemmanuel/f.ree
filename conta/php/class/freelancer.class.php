@@ -78,8 +78,8 @@ class freelancer{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"INSERT INTO freelancer(nome,email,senha)
-				VALUES(:nome,:email,:senha)");
+				"INSERT INTO freelancer(nome,email,senha,ativo)
+				VALUES(:nome,:email,:senha,'1')");
 			$stmt->bindValue(":nome",$this->getNome());
 			$stmt->bindValue(":email",$this->getEmail());
 			$stmt->bindValue(":senha",$this->getSenha());
@@ -150,7 +150,7 @@ class freelancer{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"DELETE from freelancer where idfreelancer=:idfreelancer");
+				"UPDATE freelancer SET ativo='0' where idfreelancer=:idfreelancer");
 			$stmt->bindValue(":idfreelancer",$this->getId());
 			return $stmt->execute();
 						
