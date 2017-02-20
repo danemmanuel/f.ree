@@ -31,6 +31,9 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+.resumo{
+  font-size: 40px;
+}
 .wrapper:before,
 .wrapper:after {
   content: " ";

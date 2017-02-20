@@ -121,17 +121,30 @@ class freelancer{
 
 
 	public function alterarSenha(){
-		  $conect = new conexao();
-		  try{
-		   $stmt = $conect->conn->prepare(
-		    "UPDATE freelancer set senha=:senha where idfreelancer=:idfreelancer");
-		   $stmt->bindValue(":idfreelancer",$this->getId());
-		   $stmt->bindValue(":senha",$this->getSenha());
-		   return $stmt->execute();
-		  }catch(PDOException $e){
-		   echo $e->getMessage();
-		  }
-		 }
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"UPDATE freelancer set senha=:senha where idfreelancer=:idfreelancer");
+			$stmt->bindValue(":idfreelancer",$this->getId());
+			$stmt->bindValue(":senha",$this->getSenha());
+			return $stmt->execute();
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
+	}
+
+	public function alterarResumo(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"UPDATE freelancer set resumo=:resumo where idfreelancer=:idfreelancer");
+			$stmt->bindValue(":idfreelancer",$this->getId());
+			$stmt->bindValue(":resumo",$this->getResumo());
+			return $stmt->execute();
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
+	}
 
 	public function excluirConta(){
 		$conect = new conexao();
