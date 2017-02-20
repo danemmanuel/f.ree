@@ -238,7 +238,7 @@ class freelancer{
 				$conect = new conexao();
 				try{
 					$stmt = $conect->conn->prepare(
-						"select * from freelancer where email=:email and senha=:senha");
+						"select * from freelancer where email=:email and senha=:senha and ativo='1'");
 					$stmt->bindValue(':email',$this->getEmail());
 					$stmt->bindValue(':senha',$this->getSenha());
 					$stmt->execute();

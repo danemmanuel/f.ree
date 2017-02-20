@@ -51,7 +51,7 @@ if(isset($_SESSION['idfreelancer'])){
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed">
 
-  
+
 
   <!-- Site wrapper -->
   <div class="wrapper">
@@ -73,40 +73,36 @@ if(isset($_SESSION['idfreelancer'])){
       <!-- Main content -->
       <section class="content">
 
-      <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my entire
-                soul, like these sweet mornings of spring which I enjoy with my whole heart.
-                <a href="" data-dialog="somedialog" data-toggle="modal" data-target=".bd-example-modal-lg">Confirmar</a>
-                    </div>
-
-
-      
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+          Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my entire
+          soul, like these sweet mornings of spring which I enjoy with my whole heart.
+          <a href="" data-dialog="somedialog" data-toggle="modal" data-target=".bd-example-modal-lg">Confirmar</a>
         </div>
-
-      </div>
-      <!-- /.box -->
-
-    </section>
-
-    <div id="somedialog" class="dialog">
-      <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
-      <div class="dialog__content">
-
-        <form action="../php/functions/excluirconta.php" method="POST">
-                <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer?>">
-                <div class="input-group">
-                <button type="submit" class="btn btn-block btn-success btn-lg">Excluir</button>
-                </div>
-        </form>
-
-
       </div>
     </div>
-    <!-- /.content -->
+    <!-- /.box -->
+
+  </section>
+
+  <div id="somedialog" class="dialog">
+    <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
+    <div class="dialog__content">
+
+      <form action="../php/functions/excluirconta.php" method="POST">
+        <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer?>">
+        <div class="input-group">
+          <button type="submit" class="btn btn-block btn-success btn-lg">Excluir</button>
+        </div>
+      </form>
+
+
+    </div>
   </div>
-  <!-- /.content-wrapper -->
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 </div>
 <!-- ./wrapper -->
 
