@@ -13,8 +13,6 @@ $datanascimento=$result['datanascimento'];
 $sexo=$result['sexo'];
 $senha=$result['senha'];
 $areaatuacao=$result['areaatuacao'];
-$nivelprofissional=$result['nivelprofissional'];
-$anosexperiencia=$result['anosexperiencia'];
 
 
 $datanova = date("d-m-Y", strtotime($datanascimento));
