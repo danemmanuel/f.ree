@@ -19,6 +19,6 @@ $idfreelancer=$busca['idfreelancer'];
 session_start();
 $_SESSION['idfreelancer'] = $idfreelancer;
 
-header("location:../index.php");
+header("location:../conta/freelancer");
 
 ?>

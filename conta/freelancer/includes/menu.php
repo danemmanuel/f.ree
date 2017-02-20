@@ -27,7 +27,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="perfilprofissional.php"><i class="fa fa-male"></i> Perfil Profissional</a></li>
-          <li><a href="servicosoferecidos.php"><i class="fa fa-briefcase"></i> Serviços Oferecidos</a></li>
+          <li><a href="servicosoferecidos.php"><i class="fa fa-briefcase"></i> Meus Serviços</a></li>
           <li><a href="#"><i class="fa fa-align-left"></i> Resumo</a></li>
           <li><a href="#"><i class="fa fa-sliders"></i> Habilidades</a></li>
           <li><a href="#"><i class="fa fa-phone"></i> Contatos</a></li>

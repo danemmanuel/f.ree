@@ -2,7 +2,7 @@
 session_start();
 
  ?><!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,10 +26,10 @@ session_start();
   <link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16">
   <link rel="manifest" href="img/favicon/manifest.json">
   <link rel="shortcut icon" href="img/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#663fb5">
+  <meta name="msapplication-TileColor" content="#2d3e50">
   <meta name="msapplication-TileImage" content="img/favicon/mstile-144x144.png">
   <meta name="msapplication-config" content="img/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#663fb5">
+  <meta name="theme-color" content="#2d3e50">
   <link rel="stylesheet" href="css/landio.css">
 </head>
 
@@ -38,22 +38,19 @@ session_start();
     <!-- Navigation
     ================================================== -->
 
-    <nav class="navbar navbar-dark bg-inverse bg-inverse-custom navbar-fixed-top">
+    <nav class="navbar navbar-dark bg-inverse bg-inverse-custom navbar-fixed-top";>
       <div class="container">
         <a class="navbar-brand" href="#">
-          <span class="icon-logo"></span>
-          <span class="sr-only">Land.io</span>
+          <img src="img/logofreebranco.png" style="max-width:140px">
         </a>
         <a class="navbar-toggler hidden-md-up pull-xs-right" data-toggle="collapse" href="#collapsingNavbar" aria-expanded="false" aria-controls="collapsingNavbar">
           &#9776;
         </a>
-        <a class="navbar-toggler navbar-toggler-custom hidden-md-up pull-xs-right" data-toggle="collapse" href="#collapsingMobileUser" aria-expanded="false" aria-controls="collapsingMobileUser">
-          <span class="icon-user"></span>
-        </a>
+        
         <div id="collapsingNavbar" class="collapse navbar-toggleable-custom" role="tabpanel" aria-labelledby="collapsingNavbar">
           <ul class="nav navbar-nav pull-xs-right">
             <li class="nav-item nav-item-toggable">
-              <a class="nav-link" href="./index-carousel.html"><small>NEW</small> Slides<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="conta/freelancer">Minha Conta</a>
             </li>
             <li class="nav-item nav-item-toggable">
               <a class="nav-link" href="ui-elements.html">UI Kit</a>
@@ -61,11 +58,7 @@ session_start();
             <li class="nav-item nav-item-toggable">
               <a class="nav-link" href="https://github.com/tatygrassini/landio-html" target="_blank">GitHub</a>
             </li>
-            <li class="nav-item nav-item-toggable hidden-md-up">
-              <form class="navbar-form">
-                <input class="form-control navbar-search-input" type="text" placeholder="Type your search &amp; hit Enter&hellip;">
-              </form>
-            </li>
+
             <li class="navbar-divider hidden-sm-down"></li>
             <li class="nav-item dropdown nav-dropdown-search hidden-sm-down">
               <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -146,10 +139,7 @@ else{
             </div>
             <a href="conta/freelancer" class="dropdown-item text-uppercase">Minha Conta</a>
             <a href="conta/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
-            <a href="#" class="btn-circle has-gradient pull-xs-right m-b-1">
-              <span class="sr-only">Edit</span>
-              <span class="icon-edit"></span>
-            </a>
+            
           </div>
         </div>
       </nav>

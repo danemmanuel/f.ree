@@ -76,7 +76,11 @@ if(isset($_SESSION['idfreelancer'])){
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-
+      <section class="content-header">
+        <h1>
+          SERVIÇOS OFERECIDOS
+        </h1>
+      </section>
 
       <!-- Main content -->
       <section class="content">
@@ -87,149 +91,161 @@ if(isset($_SESSION['idfreelancer'])){
           <div class="pricing pricing--tashi">
             <?php 
 
-            require_once '../php/class/servicos.class.php';
+            require_once '../php/class/areaatuacao.class.php';
 
-            $servicos=new servicos();
-            $servicos->setIdFreelancer($idfreelancer);
-            $resp=$servicos->buscarTodos();
+            $areaatuacao=new areaatuacao();
+            $areaatuacao->setIdFreelancer($idfreelancer);
+            $resp=$areaatuacao->buscarTodos();
 
             foreach ($resp as $row) {
 
 
               ?>
               <div class="pricing__item">
-                <h3 class="pricing__title"><?php echo $row ['nomeservico'] ?></h3>
-                <p class="pricing__sentence"><?php echo $row ['descricao'] ?></p>
-                <div class="pricing__price"><span class="pricing__currency">R$ </span><?php echo $row ['preco'] ?><span class="pricing__period">/ <?php echo $row['tipo']?></span></div>
-                <ul class="pricing__feature-list">
+                <h3 class="pricing__title"><?php echo $row['nomearea'] ?></h3>
+                <p class="pricing__sentence"><?php echo $row['nivelprofissional']  ?></p>
+                <div class="pricing__price"><span class="pricing__currency"> </span><?php echo $row['anosexperiencia']?><span class="pricing__period"> Anos de experiência <span></div>
+                <!--<ul class="pricing__feature-list">
                  <!-- <li class="pricing__feature">1 GB of space</li>
                   <li class="pricing__feature">Support at $25/hour</li>
                   <li class="pricing__feature">Small social media package</li> -->
-                </ul>
-                <a href="alterarservico.php?id=<?php echo $row['idservico'] ?>"><i class="fa fa-fw fa-edit"></i> Alterar</a>
-                <a style="align-self:flex-end;"href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
+                  <!--</ul>-->
+                  <!-- <a href="alterarservico.php?id=<?php echo $row['idservico'] ?>"><i class="fa fa-fw fa-edit"></i> Alterar</a> -->
+                  <a style="align-self:flex-end;"href="../php/functions/excluirarea.php?idareaatuacao=<?php echo $row['idareaatuacao'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
+                </div>
+
+                <?php } ?>
               </div>
+            </section>
 
-            <?php } ?>
-            </div>
-          </section>
 
-         
+          </div>
+
         </div>
+        <!-- /.box -->
 
-      </div>
-      <!-- /.box -->
+      </section>
+      <div id="somedialog" class="dialog">
+        <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
+        <div class="dialog__content">
 
-    </section>
-
-    <div id="somedialog" class="dialog">
-      <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
-      <div class="dialog__content">
-
-        <form method="POST" action="../php/functions/inserirservico.php">
-          <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
-          <div class="row">
-            <h1 style="text-align:center"></h1>
-            <div class="col-md-12 col-xs-12">
-              <div class="form-group">
-                <label for="nomefreelancer">Nome do Serviço</label>
-                <input id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
-              </div>
-            </div>
-
-            <div class="col-md-12 col-xs-12">
-              <div class="form-group">
-                <label for="nomefreelancer">Breve Descrição | <small>Max 120 caractéres</small></label>
-                <textarea maxlength="120" id="nomefreelancer" class="form-control input-lg" name="descricao" type="text" placeholder="Descrição do Serviço"></textarea>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-xs-12">
-              <div class="form-group">
-                <label for="nomefreelancer">Preço</label>
-                <input id="nomefreelancer" class="form-control input-lg" name="preco" type="number" placeholder="R$">
-              </div>
-            </div>
-
-            <div class="col-md-6 col-xs-12">
-              <div class="form-group">
-                  <label >Tipo</label>
-                  <select name="tipo" class="form-control">
-                    <option>Por Hora</option>
-                    <option>Por Dia</option>
-                    <option>Por Produto</option>
-                    <option>Por Unidade</option>
+          <form method="POST" action="../php/functions/inserirarea.php">
+            <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
+            <div class="row">
+              <h1 style="text-align:center"></h1>
+              <div class="col-md-12 col-xs-12">
+                <div class="form-group">
+                  <label for="nomefreelancer">Área de Atuação</label>
+                  <select class="form-control select2" name="nomearea">
+                    <option selected="selected">Selecione...</option>
+                    <?php echo $profissoes ?>
                   </select>
                 </div>
-            </div>
+              </div>
 
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="input-group" style="width:100%;">
-                <button type="submit" class="btn btn-block btn-success btn-lg">Adicionar</button>
+              <div class="col-md-12 col-xs-12">
+                <div class="form-group">
+                  <label for="nomefreelancer">Nível Profissional</label>
+                  <select class="form-control select2" name="nivelprofissional">
+                    <option selected="selected">Selecione...</option>
+                    <option>Não Exercendo</option>  
+                    <option>freelancer</option>
+                    <option>Estagiário</option>
+                    <option>Júnior</option>
+                    <option>Pleno</option>
+                    <option>Senior</option>
+                    <option>Empresário</option>
+                    <option>Presidente</option>
+                    <option>Diretor</option>
+                    <option>Gerente</option>
+                    <option>Supervisor</option>
+                    <option>Encarregador</option>
+                    <option>Líder</option>
+                    <option>Consultor</option>
+                    <option>Trainee</option>
+                    <option>Técnico</option>
+                    <option>Assistente</option>
+                    <option>Auxiliar</option>
+
+                  </select>
+
+                </div>
+              </div>
+
+              <div class="col-md-12 col-xs-12">
+                <div class="form-group">
+                  <label for="nomefreelancer">Anos de Experiência</label>
+                  <input id="anosexperiencia" class="form-control input-lg" name="anosexperiencia" type="number" placeholder="" value="0">
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input-group" style="width:100%;">
+                  <button type="submit" class="btn btn-block btn-success btn-lg">Adicionar</button>
+                </div>
               </div>
             </div>
-          </div>
 
-        </form>
+          </form>
 
 
+        </div>
       </div>
+      <!-- /.content -->
     </div>
-    <!-- /.content -->
+    <!-- /.content-wrapper -->
   </div>
-  <!-- /.content-wrapper -->
-</div>
-<!-- ./wrapper -->
+  <!-- ./wrapper -->
 
-<!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- Select2 -->
-<script src="plugins/select2/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="plugins/input-mask/jquery.inputmask.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- SlimScroll 1.3.0 -->
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="plugins/iCheck/icheck.min.js"></script>
-<!-- FastClick -->
-<script src="plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+  <!-- jQuery 2.2.3 -->
+  <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <!-- Bootstrap 3.3.6 -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <!-- Select2 -->
+  <script src="plugins/select2/select2.full.min.js"></script>
+  <!-- InputMask -->
+  <script src="plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+  <script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+  <!-- date-range-picker -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+  <script src="plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- bootstrap datepicker -->
+  <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+  <!-- bootstrap color picker -->
+  <script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+  <!-- bootstrap time picker -->
+  <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+  <!-- SlimScroll 1.3.0 -->
+  <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <!-- iCheck 1.0.1 -->
+  <script src="plugins/iCheck/icheck.min.js"></script>
+  <!-- FastClick -->
+  <script src="plugins/fastclick/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/app.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="dist/js/demo.js"></script>
 
-<script src="upload/js/custom-file-input.js"></script>
-<script src="modal/js/classie.js"></script>
-<script src="modal/js/dialogFx.js"></script>
-<!-- Page script -->
-<script>
-(function() {
+  <script src="upload/js/custom-file-input.js"></script>
+  <script src="modal/js/classie.js"></script>
+  <script src="modal/js/dialogFx.js"></script>
+  <!-- Page script -->
+  <script>
+  (function() {
 
-  var dlgtrigger = document.querySelector( '[data-dialog]' ),
-  somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
-  dlg = new DialogFx( somedialog );
+    var dlgtrigger = document.querySelector( '[data-dialog]' ),
+    somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+    dlg = new DialogFx( somedialog );
 
-  dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+    dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
 
-})();
-</script>
-<script>
-$(function () {
+  })();
+  </script>
+  <script>
+  $(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
 

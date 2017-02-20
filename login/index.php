@@ -10,7 +10,7 @@ header("location:../conta");
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Land.io UI Kit | Codrops</title>
+  <title>Fazer Login F.ree</title>
   <meta name="description" content="A free HTML template and UI Kit built on Bootstrap" />
   <meta name="keywords" content="free html template, bootstrap, ui kit, sass" />
   <meta name="author" content="Peter Finlan and Taty Grassini Codrops" />
@@ -39,7 +39,7 @@ header("location:../conta");
 
 <body class="bg-faded p-t-2">
   <div class="container">
-    <h3 class="p-y-1 text-xs-center">Entre na sua conta<strong> F.ree</strong></h3>
+    <h3 class="p-y-1 text-xs-center">Entre na sua conta<strong> <a href="../">F.ree</a></strong></h3>
   </div>
 
     <!-- WHITE navigation
