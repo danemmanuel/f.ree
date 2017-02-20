@@ -50,7 +50,7 @@
 
           <!-- Forms
           ================================================== -->
-          <form  action="../php/functions/registrarfreelancer.php" method="POST">
+          <form  action="../conta/php/functions/registrarfreelancer.php" method="POST">
             <div class="form-group has-icon-left form-control-name">
               <label class="sr-only" for="inputName">Seu nome</label>
               <input type="text" class="form-control form-control-lg" id="inputName" name="nome" placeholder="Seu nome">
