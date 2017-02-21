@@ -51,6 +51,14 @@ if(isset($_SESSION['idfreelancer'])){
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed">
 
+  <div class="fixed-action-btn vertical" style="right: 24px;">
+    <a class="btn-floating btn-large red" style="background-color:#008D4C" href="#" data-dialog="somedialog" data-toggle="modal" data-target=".bd-example-modal-lg">
+
+      <i class="fa fa-fw fa-plus"></i>
+
+    </a>
+  </div>
+
 
 
   <!-- Site wrapper -->
@@ -73,35 +81,91 @@ if(isset($_SESSION['idfreelancer'])){
       <!-- Main content -->
       <section class="content">
 
-        <div class="alert alert-danger alert-dismissible">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <h4>Oi :(</h4>
-          Poxa, você quer mesmo excluir sua conta?
-          <br><a style="text-decoration: none" href="" data-dialog="somedialog" data-toggle="modal" data-target=".bd-example-modal-lg">Confirmar</a>
+
+        <section class="pricing-section bg-8">
+
+          <div class="pricing pricing--tashi">
+            <?php 
+
+            require_once '../php/class/habilidades.class.php';
+
+            $habilidades=new habilidades();
+            $habilidades->setIdFreelancer($idfreelancer);
+            $resp=$habilidades->buscarTodos();
+
+            foreach ($resp as $row) {
+
+
+              ?>
+              <div class="pricing__item">
+                <h3 class="pricing__title" style="font-size: 40px"><?php echo $row ['nomehabilidade'] ?></h3>
+                <p class="pricing__sentence" style="font-size: 30px"><?php echo $row ['nivel'] ?></p>
+                
+                <a style="align-self:flex-end;"href="../php/functions/excluirhabilidade.php?id=<?php echo $row['idhabilidade'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
+              </div>
+
+            <?php } ?>
+            </div>
+          </section>
+
+         
         </div>
+
+      </div>
+      <!-- /.box -->
+
+    </section>
+
+    <div id="somedialog" class="dialog">
+      <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
+      <div class="dialog__content">
+
+        <form method="POST" action="../php/functions/inserirhabilidade.php">
+          <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
+          <div class="row">
+            <h1 style="text-align:center"></h1>
+            <div class="col-md-12 col-xs-12">
+              <div class="form-group">
+                <label for="nomehabilidade">Nome da Habilidade</label>
+                <input id="nomefreelancer" class="form-control input-lg" name="nomehabilidade" type="text" placeholder="Habilidade">
+              </div>
+            </div>
+
+            
+            <div class="col-md-12 col-xs-12">
+                <div class="form-group">
+                  <label for="nomefreelancer">Nível</label>
+                  <select class="form-control select2" name="nivel">
+                    <option selected="selected">Selecione...</option>
+                    <option>Noob</option>  
+                    <option>Não manjo muito</option>
+                    <option>Maômenos</option>
+                    <option>Me viro bem</option>
+                    <option>Manjo pakas</option>
+                    <option>Hardcore</option>
+                  </select>
+
+                </div>
+              </div>
+
+            
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-group" style="width:100%;">
+                <button type="submit" class="btn btn-block btn-success btn-lg">Adicionar</button>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+
       </div>
     </div>
-    <!-- /.box -->
-
-  </section>
-
-  <div id="somedialog" class="dialog">
-    <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
-    <div class="dialog__content">
-
-      <form action="../php/functions/excluirconta.php" method="POST">
-        <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer?>">
-        <div class="input-group" style="width: 100%">
-          <button type="submit" class="btn btn-block btn-success btn-lg">Excluir</button>
-        </div>
-      </form>
-
-
-    </div>
+    <!-- /.content -->
   </div>
-  <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+  <!-- /.content-wrapper -->
 </div>
 <!-- ./wrapper -->
 
@@ -140,18 +204,18 @@ if(isset($_SESSION['idfreelancer'])){
 <script src="modal/js/dialogFx.js"></script>
 <!-- Page script -->
 <script>
-  (function() {
+(function() {
 
-    var dlgtrigger = document.querySelector( '[data-dialog]' ),
-    somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
-    dlg = new DialogFx( somedialog );
+  var dlgtrigger = document.querySelector( '[data-dialog]' ),
+  somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+  dlg = new DialogFx( somedialog );
 
-    dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+  dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
 
-  })();
+})();
 </script>
 <script>
-  $(function () {
+$(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
 
