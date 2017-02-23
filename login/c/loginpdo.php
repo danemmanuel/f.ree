@@ -1,25 +1,24 @@
 <?php 
 
-require_once '../../conta/php/class/freelancer.class.php';
+require_once '../../conta/php/class/cliente.class.php';
 
 
 $email=$_POST['email'];
 $senha=$_POST['senha'];
 
-$freela=new freelancer();
+$cliente=new cliente();
 
-$freela->setEmail($email);
-$freela->setSenha($senha);
-$busca=$freela->login();
+$cliente->setEmail($email);
+$cliente->setSenha($senha);
+$busca=$cliente->login();
 
-$idfreelancer=$busca['idfreelancer'];
-
+$idcliente=$busca['idcliente'];
 
 
 session_start();
 
-$_SESSION['idfreelancer'] = $idfreelancer;
+$_SESSION['idcliente'] = $idcliente;
 
-header("location:../../conta/f");
+header("location:../../conta/c");
 
 ?>

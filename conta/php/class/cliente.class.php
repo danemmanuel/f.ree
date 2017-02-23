@@ -8,8 +8,11 @@ class cliente{
 	private $idusuario;
 	private $nome;
 	private $email;
+	private $sexo;
+	private $datanascimento;
 	private $telefone;
 	private $endereco;
+	private $senha;
 
 
 	public function getId(){
@@ -42,11 +45,29 @@ class cliente{
 	public function setEmail($email){
 		$this->email=$email;
 	}
+	public function getSexo(){
+		return $this->sexo;
+	}
+	public function setSexo($sexo){
+		$this->sexo=$sexo;
+	}
 	public function getEndereco(){
 		return $this->endereco;
 	}
 	public function setEndereco($endereco){
 		$this->endereco=$endereco;
+	}
+	public function getSenha(){
+		return $this->senha;
+	}
+	public function setSenha($senha){
+		$this->senha=$senha;
+	}
+	public function getDatanascimento(){
+		return $this->datanascimento;
+	}
+	public function setDatanascimento($datanascimento){
+		$this->datanascimento=$datanascimento;
 	}
 
 	public function inserir(){
@@ -55,13 +76,11 @@ class cliente{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"INSERT INTO clientes(idusuario,nome,email,telefone,endereco)
-				VALUES(:idusuario,:nome,:email,:telefone,:endereco)");
-			$stmt->bindValue(":idusuario",$this->getIdUsuario());
+				"INSERT INTO cliente(nome,email,senha,ativo)
+				VALUES(:nome,:email,:senha,'1')");
 			$stmt->bindValue(":nome",$this->getNome());
-			$stmt->bindValue(":telefone",$this->getTelefone());
 			$stmt->bindValue(":email",$this->getEmail());
-			$stmt->bindValue(":endereco",$this->getEndereco());
+			$stmt->bindValue(":senha",$this->getSenha());
 			return $stmt->execute();
 		}catch(PDOException $e){
 			echo $e->getMessage();
@@ -139,8 +158,8 @@ class cliente{
 				$conect = new conexao();
 				try{
 					$stmt = $conect->conn->prepare(
-						"select * from clientes where idcliente=:idcliente");
-					$stmt->bindValue(':idcliente',$this->getId());
+						"select * from cliente where idcliente=:idcliente");
+					$stmt->bindValue(':idfreelancer',$this->getId());
 					$stmt->execute();
 					$row=$stmt->fetch();
 					$r= array(
@@ -148,7 +167,25 @@ class cliente{
 						"nome"=>$row['nome'],
 						"telefone"=>$row['telefone'],
 						"email"=>$row['email'],
-						"endereco"=>$row['endereco']);
+						"sexo"=>$row['sexo'],
+						"datanascimento"=>$row['datanascimento'],
+						"senha"=>$row['senha']);
+					return $r;
+				}catch(PDOException $e){
+					echo $e->getMessage();
+				}
+			}
+			public function login(){
+				$conect = new conexao();
+				try{
+					$stmt = $conect->conn->prepare(
+						"select * from cliente where email=:email and senha=:senha and ativo='1'");
+					$stmt->bindValue(':email',$this->getEmail());
+					$stmt->bindValue(':senha',$this->getSenha());
+					$stmt->execute();
+					$row=$stmt->fetch();
+					$r= array(
+						"idcliente"=>$row['idcliente']);
 					return $r;
 				}catch(PDOException $e){
 					echo $e->getMessage();

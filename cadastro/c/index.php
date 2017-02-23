@@ -1,9 +1,3 @@
-<?php
-session_start();
-if(isset($_SESSION['idfreelancer'])){
-
-header("location:../conta");
-}else{  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,9 +30,10 @@ header("location:../conta");
   <!-- Only needed Bootstrap bits + custom CSS in one file -->
   <link rel="stylesheet" href="../../css/landio.css">
 </head>
+
 <body class="bg-faded p-t-2">
   <div class="container">
-    <h3 class="p-y-1 text-xs-center">Entre como<strong> <a href="../">Cliente</a></strong></h3>
+    <h3 class="p-y-1 text-xs-center">Cadastre-se na<strong> F.ree</strong></h3>
   </div>
 
     <!-- WHITE navigation
@@ -55,7 +50,11 @@ header("location:../conta");
 
           <!-- Forms
           ================================================== -->
-          <form  action="loginpdo.php" method="POST">
+          <form  action="../../conta/php/functions/registrarcliente.php" method="POST">
+            <div class="form-group has-icon-left form-control-name">
+              <label class="sr-only" for="inputName">Seu nome</label>
+              <input type="text" class="form-control form-control-lg" id="inputName" name="nome" placeholder="Seu nome">
+            </div>
             <div class="form-group has-icon-left form-control-email">
               <label class="sr-only" for="inputEmail">Seu email</label>
               <input type="email" class="form-control form-control-lg" id="inputEmail" name="email" placeholder="Seu email" autocomplete="off">
@@ -65,8 +64,8 @@ header("location:../conta");
               <input type="password" class="form-control form-control-lg" id="inputPassword" name="senha" placeholder="Sua senha" autocomplete="off">
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Entrar!</button>
-            <p style="text-align:center;padding:5px;">Não é cadastrado? <a href="../../cadastro/c">Cadastre-se</a></p>
+            <button type="submit" class="btn btn-primary btn-block">Cadastrar!</button>
+            <p style="text-align:center;padding:5px;">Já é cadastrado? <a href="../../login/c">Entre</a></p>
           </form>
 
         </div>
@@ -76,15 +75,15 @@ header("location:../conta");
           ================================================== -->
 
           <a href="#" class="btn btn-social btn-block bg-facebook">
-            <span class="icon-facebook"></span> Entrar com Facebook
+            <span class="icon-facebook"></span> Cadastrar com Facebook
           </a>
           <hr class="invisible">
           <a href="#" class="btn btn-social btn-block bg-google">
-            <span class="icon-google"></span> Entrar com Google
+            <span class="icon-google"></span> Cadastrar com Google
           </a>
           <hr class="invisible">
           <a href="#" class="btn btn-social btn-block bg-linkedin">
-            <span class="icon-linkedin"></span> Entrar com LinkedIn
+            <span class="icon-linkedin"></span> Cadastrar com LinkedIn
           </a>
 
           <hr class="invisible">
@@ -114,10 +113,6 @@ header("location:../conta");
     <hr class="invisible">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="js/landio.min.js"></script>
+    <script src="../js/landio.min.js"></script>
   </body>
   </html>
-<?php 
-  
-}
-?>
