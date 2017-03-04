@@ -18,6 +18,6 @@ $servicos->setPreco($preco);
 $servicos->setTipo($tipo);
 $servicos->inserir();
 
-header("location:../../freelancer/servicosoferecidos.php");
+header("location:../../f/servicosoferecidos.php");
 
  ?>

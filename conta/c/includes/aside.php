@@ -7,14 +7,14 @@
           <div class="pull-left image">
             <?php
 
-            require_once '../php/class/freelancer.class.php';
-            $freelancer2= new freelancer();
+            require_once '../php/class/cliente.class.php';
+            $cliente2= new cliente();
 
-            $freelancer2->setId($_SESSION['idfreelancer']);
-            $resp=$freelancer2->buscarId();
+            $cliente2->setId($_SESSION['idcliente']);
+            $resp=$cliente2->buscarId();
             $avatar=$resp['urlavatar'];
-            $nomefreelancer=$resp['nome'];
-
+            $nomecliente=$resp['nome'];
+            
 
             ?>
 
@@ -22,7 +22,7 @@
             <img src="<?php echo $avatar ?>" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p><?php echo $nomefreelancer; ?></p>
+            <p><?php echo $nomecliente; ?></p>
 
             <a href="#"><i class="fa fa-circle text-success"></i> LOGADO</a>
 

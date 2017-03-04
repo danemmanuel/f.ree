@@ -8,6 +8,6 @@ $habilidades=new habilidades();
 $habilidades->setId($idhabilidade);
 $habilidades->apagar();
 
-header("location:../../freelancer/habilidades.php");
+header("location:../../f/habilidades.php");
 
  ?>

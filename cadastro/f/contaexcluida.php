@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['idfreelancer'])){
+
+header("location:../../conta/f");
+}else{  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +40,11 @@
 
 <body class="bg-faded p-t-2">
   <div class="container">
-    <h3 class="p-y-1 text-xs-center">Cadastre-se na<strong> F.ree</strong></h3>
+    <h3 class="p-y-1 text-xs-center">Detectamos que você já possuia uma conta na <strong> F.ree</strong> porém em algum momento você à excluiu
+
+      <br> Realize um novo cadastro com um email diferente
+
+    </h3>
   </div>
 
     <!-- WHITE navigation
@@ -116,3 +127,7 @@
     <script src="../js/landio.min.js"></script>
   </body>
   </html>
+  <?php 
+  
+}
+?>

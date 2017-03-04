@@ -18,7 +18,7 @@ $idcliente=$busca['idcliente'];
 session_start();
 
 $_SESSION['idcliente'] = $idcliente;
-
+$_SESSION['email'] = $email;
 header("location:../../conta/c");
 
 ?>

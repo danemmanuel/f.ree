@@ -10,6 +10,6 @@ $freelancer->excluirConta();
 
 session_start();
 session_destroy();
-header("location:../../freelancer/");
+header("location:../../f/");
 
 ?>

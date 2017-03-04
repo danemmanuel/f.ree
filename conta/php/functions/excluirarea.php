@@ -8,6 +8,6 @@ $areaatuacao=new areaatuacao();
 $areaatuacao->setId($idareaatuacao);
 $areaatuacao->apagar();
 
-header("location:../../freelancer/perfilprofissional.php");
+header("location:../../f/perfilprofissional.php");
 
  ?>

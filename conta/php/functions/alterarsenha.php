@@ -1,6 +1,6 @@
 <?php 
 require_once '../class/freelancer.class.php';
-header("location:../../freelancer/alterarsenha.php");
+header("location:../../f/alterarsenha.php");
 
 $idfreelancer=$_POST['idfreelancer'];
 $senhaantiga=$_POST['antigasenha'];

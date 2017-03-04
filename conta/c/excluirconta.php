@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['idfreelancer'])){
+if(isset($_SESSION['idcliente'])){
 
   require_once 'includes/freelancer.php';
   $header=file_get_contents(realpath(dirname(__FILE__) . '/includes/header.php'));
@@ -89,8 +89,8 @@ if(isset($_SESSION['idfreelancer'])){
     <div class="dialog__overlay"></div><h2><strong> </strong></h2><div><button class="action" data-dialog-close></button></div>
     <div class="dialog__content">
 
-      <form action="../php/functions/excluirconta.php" method="POST">
-        <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer?>">
+      <form action="../php/functions/excluircontacliente.php" method="POST">
+        <input type="hidden" name="idcliente" value="<?php echo $idcliente?>">
         <div class="input-group" style="width: 100%">
           <button type="submit" class="btn btn-block btn-success btn-lg">Excluir</button>
         </div>

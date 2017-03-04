@@ -13,6 +13,7 @@ $datanascimento=$result['datanascimento'];
 $sexo=$result['sexo'];
 $senha=$result['senha'];
 $areaatuacao=$result['areaatuacao'];
+$facebook=$result['facebook'];
 
 
 $datanova = date("d-m-Y", strtotime($datanascimento));

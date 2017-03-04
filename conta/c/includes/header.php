@@ -1,16 +1,14 @@
 <?php 
-require_once '../php/class/freelancer.class.php';
+require_once '../php/class/cliente.class.php';
 
-$freelancer=new freelancer();
-$idfreelancer=$_SESSION['idfreelancer'];
-$freelancer->setId($idfreelancer);
-$result = $freelancer->buscarId();
+$cliente=new cliente();
+$idcliente=$_SESSION['idcliente'];
+$cliente->setId($idcliente);
+$result = $cliente->buscarId();
 
-$nomefreelancer=$result['nome'];
+$nomecliente=$result['nome'];
 $email=$result['email'];
 $telefone=$result['telefone'];
-$datanascimento=$result['datanascimento'];
-$sexo=$result['sexo'];
 $urlavatar=$result['urlavatar'];
 
 
@@ -45,7 +43,7 @@ $urlavatar=$result['urlavatar'];
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="<?php echo $urlavatar ?>" class="user-image" alt="User Image">
-            <span class="hidden-xs"><?php echo $nomefreelancer ?></span>
+            <span class="hidden-xs"><?php echo $nomecliente ?></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -53,7 +51,7 @@ $urlavatar=$result['urlavatar'];
               <img src="<?php echo $urlavatar ?>" class="img-circle" alt="User Image">
 
               <p>
-               <?php echo $nomefreelancer; ?>
+               <?php echo $nomecliente; ?>
                 <small>Member since Nov. 2012</small>
               </p>
             </li>

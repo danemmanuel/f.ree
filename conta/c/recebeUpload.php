@@ -37,13 +37,13 @@ if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] 
         // tenta mover o arquivo para o destino
         if ( @move_uploaded_file ( $arquivo_tmp, $destino ) ) {
 
-            require_once '../php/class/freelancer.class.php';
+            require_once '../php/class/cliente.class.php';
 
-            $freelancer= new freelancer();
-            $idfreelancer=$_POST['idfreelancer'];
-            $freelancer->setId($idfreelancer);
-            $freelancer->setUrlAvatar($destino);
-            $freelancer->alterarAvatar();
+            $cliente= new cliente();
+            $idcliente=$_POST['idcliente'];
+            $cliente->setId($idcliente);
+            $cliente->setUrlAvatar($destino);
+            $cliente->alterarAvatar();
             header("location:avatar.php");
 
         }

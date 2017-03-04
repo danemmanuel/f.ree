@@ -8,18 +8,38 @@ $senha=$_POST['senha'];
 
 $freela=new freelancer();
 
+
+
 $freela->setEmail($email);
 $freela->setSenha($senha);
 $busca=$freela->login();
 
 $idfreelancer=$busca['idfreelancer'];
 
+$ativo=$busca['ativo'];
 
 
-session_start();
 
-$_SESSION['idfreelancer'] = $idfreelancer;
+if (isset($idfreelancer)) {
+	
 
-header("location:../../conta/f");
+	session_start();
+
+	if($ativo=="0"){
+		header("location:../../cadastro/f/contaexcluida.php");
+	}
+
+	elseif($ativo=="1"){
+
+		$_SESSION['idfreelancer'] = $idfreelancer;
+		header("location:../../conta/f");
+	}
+
+
+}else{
+	echo "usuario nao cadastrado";
+}
+
+
 
 ?>

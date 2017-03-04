@@ -2,7 +2,22 @@
 session_start();
 if(isset($_SESSION['idcliente'])){
 
-  require_once 'includes/cliente.php';
+  require_once '../php/class/cliente.class.php';
+
+  $cliente=new cliente();
+  $idcliente=$_SESSION['idcliente'];
+  $cliente->setId($idcliente);  
+  $result = $cliente->buscarId();
+
+  $telefonecliente=$result['telefone'];
+  $nomecliente=$result['nome'];
+  $emailcliente=$result['email'];
+      $datacliente=$result['datanascimento'];
+  $datanova = date("d-m-Y", strtotime($datacliente));
+
+  
+
+
 
   $menu=file_get_contents(realpath(dirname(__FILE__) . '/includes/menu.php'));
 
@@ -70,7 +85,7 @@ if(isset($_SESSION['idcliente'])){
 
         <!-- Default box -->
 
-<?php echo $result['email']; ?>
+
         <form method="POST" action="../php/functions/alterarcliente.php">
           <input type="hidden" name="idcliente" value="<?php echo $idcliente ?>">
           <div class="row">
@@ -84,7 +99,7 @@ if(isset($_SESSION['idcliente'])){
             <div class="col-md-6 col-xs-12">
               <div class="form-group">
                 <label for="nomecliente">Seu Email</label>
-                <input id="email" class="form-control input-lg" name="email" type="text" placeholder="Seu Email" value="<?php echo $email ?>">
+                <input id="nomecliente" class="form-control input-lg" name="emailcliente" type="text" placeholder="Seu Email" value="<?php echo $emailcliente ?>">
               </div>
             </div>
 
@@ -128,7 +143,7 @@ if(isset($_SESSION['idcliente'])){
                 <div class="input-group-addon">
                   <i class="fa fa-phone"></i>
                 </div>
-                <input id="telefone" type="text" class="form-control input-lg" name="telefone" value="<?php echo $telefone?>" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
+                <input id="telefone" type="text" class="form-control input-lg" name="telefone" value="<?php echo $telefonecliente?>" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
               </div>
             </div>
 

@@ -9,6 +9,6 @@ $freelancer -> setNome($nome);
 $freelancer -> setEmail($email);
 $freelancer -> setSenha($senha);
 $freelancer -> inserir();
-header("location:../../../login");
+header("location:../../../login/f");
 
  ?>

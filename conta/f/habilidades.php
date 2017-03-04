@@ -93,6 +93,20 @@ if(isset($_SESSION['idfreelancer'])){
             $habilidades->setIdFreelancer($idfreelancer);
             $resp=$habilidades->buscarTodos();
 
+
+            if ($resp==NULL){?>
+
+
+                <div class="alert alert-danger alert-dismissible" style="width:100%">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="font-size:30px">&times;</button>
+                  <h4 style="text-align:center;padding-top:10px;font-size:25px;"> Adicione suas habilidades profissionais</h4>
+                </div>
+
+                <?php
+              }
+              if ($resp!=NULL) {
+
+
             foreach ($resp as $row) {
 
 
@@ -104,7 +118,7 @@ if(isset($_SESSION['idfreelancer'])){
                 <a style="align-self:flex-end;"href="../php/functions/excluirhabilidade.php?id=<?php echo $row['idhabilidade'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
               </div>
 
-            <?php } ?>
+            <?php }} ?>
             </div>
           </section>
 

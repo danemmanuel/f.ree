@@ -14,6 +14,6 @@ $habilidades->setNomehabilidade($nomehabilidade);
 $habilidades->setNivel($nivel);
 $habilidades->inserir();
 
-header("location:../../freelancer/habilidades.php");
+header("location:../../f/habilidades.php");
 
  ?>

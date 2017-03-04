@@ -13,7 +13,7 @@ class freelancer{
 	private $resumo;
 	private $senha;
 	private $urlavatar;
-
+	private $facebook;
 
 
 
@@ -72,14 +72,20 @@ class freelancer{
 	public function setUrlAvatar($urlavatar){
 		$this->urlavatar=$urlavatar;
 	}
+	public function getLinkfacebook(){
+		return $this->facebook;
+	}
+	public function setLinkfacebook($facebook){
+		$this->facebook=$facebook;
+	}
 	public function inserir(){
 		
 		
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"INSERT INTO freelancer(nome,email,senha,ativo)
-				VALUES(:nome,:email,:senha,'1')");
+				"INSERT INTO freelancer(nome,email,senha,ativo,urlavatar)
+				VALUES(:nome,:email,:senha,'1','avatar/default.png')");
 			$stmt->bindValue(":nome",$this->getNome());
 			$stmt->bindValue(":email",$this->getEmail());
 			$stmt->bindValue(":senha",$this->getSenha());
@@ -106,11 +112,10 @@ class freelancer{
 		try{
 			$stmt = $conect->conn->prepare(
 				"UPDATE freelancer set nome=:nome,telefone=:telefone,
-				email=:email,sexo=:sexo,datanascimento=:datanascimento where idfreelancer=:idfreelancer");
+				sexo=:sexo,datanascimento=:datanascimento where idfreelancer=:idfreelancer");
 			$stmt->bindValue(":idfreelancer",$this->getId());
 			$stmt->bindValue(":nome",$this->getNome());
 			$stmt->bindValue(":telefone",$this->getTelefone());
-			$stmt->bindValue(":email",$this->getEmail());
 			$stmt->bindValue(":sexo",$this->getSexo());
 			$stmt->bindValue(":datanascimento",$this->getDatanascimento());
 			return $stmt->execute();
@@ -153,7 +158,7 @@ class freelancer{
 				"UPDATE freelancer SET ativo='0' where idfreelancer=:idfreelancer");
 			$stmt->bindValue(":idfreelancer",$this->getId());
 			return $stmt->execute();
-						
+
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
@@ -179,6 +184,7 @@ class freelancer{
 			$stmt->execute();
 			$r=$stmt->fetchAll();
 			$resposta= array();
+			
 			foreach ($r as $row) {
 				$temp= array(
 					"idfreelancer"=>$row['idfreelancer'],
@@ -187,11 +193,14 @@ class freelancer{
 					"email"=>$row['email'],
 					"telefone"=>$row['telefone']);
 				array_push($resposta, $temp);
+
 			}
 			return $resposta;
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}}
+
+
 		public function somar(){
 			$conect = new conexao();
 			try{
@@ -226,7 +235,9 @@ class freelancer{
 						"sexo"=>$row['sexo'],
 						"datanascimento"=>$row['datanascimento'],
 						"resumo"=>$row['resumo'],
+						"facebook"=>$row['linkfacebook'],
 						"urlavatar"=>$row['urlavatar'],
+
 						"senha"=>$row['senha']);
 					return $r;
 				}catch(PDOException $e){
@@ -238,18 +249,34 @@ class freelancer{
 				$conect = new conexao();
 				try{
 					$stmt = $conect->conn->prepare(
-						"select * from freelancer where email=:email and senha=:senha and ativo='1'");
+						"select * from freelancer where email=:email and senha=:senha");
 					$stmt->bindValue(':email',$this->getEmail());
 					$stmt->bindValue(':senha',$this->getSenha());
 					$stmt->execute();
 					$row=$stmt->fetch();
 					$r= array(
-						"idfreelancer"=>$row['idfreelancer']);
+						"idfreelancer"=>$row['idfreelancer'],
+						"ativo"=>$row['ativo']);
 					return $r;
 				}catch(PDOException $e){
 					echo $e->getMessage();
 				}
 			}
+
+			public function alterarLinks(){
+				$conect = new conexao();
+				try{
+					$stmt = $conect->conn->prepare(
+						"UPDATE freelancer set linkfacebook=:linkfacebook where idfreelancer=:idfreelancer");
+					$stmt->bindValue(":idfreelancer",$this->getId());
+					$stmt->bindValue(":linkfacebook",$this->getLinkfacebook());
+					return $stmt->execute();
+				}catch(PDOException $e){
+					echo $e->getMessage();
+				}
+			}
+
+
 			
 		}
 		?>

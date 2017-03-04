@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['idfreelancer'])){
+if(isset($_SESSION['idcliente'])){
 
-require_once 'includes/freelancer.php';
+require_once 'includes/cliente.php';
  $header=file_get_contents(realpath(dirname(__FILE__) . '/includes/header.php'));
  $menu=file_get_contents(realpath(dirname(__FILE__) . '/includes/menu.php'));
  ?>         
@@ -72,7 +72,7 @@ require_once 'includes/freelancer.php';
 
                 <form action="recebeUpload.php" enctype="multipart/form-data" method="POST">
                   <div class="row form-group">
-                    <input type="hidden" value="<?php echo $idfreelancer ?>" name="idfreelancer">
+                    <input type="hidden" value="<?php echo $idcliente ?>" name="idcliente">
 
                   </div>
 

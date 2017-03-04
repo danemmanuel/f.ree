@@ -11,6 +11,6 @@ $freelancer->setId($idfreelancer);
 $freelancer->setResumo($resumo);
 $freelancer->alterarResumo();
 
-header("location:../../freelancer/resumo.php");
+header("location:../../f/resumo.php");
 
  ?>

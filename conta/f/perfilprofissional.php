@@ -38,6 +38,7 @@ if(isset($_SESSION['idfreelancer'])){
     <link rel="stylesheet" type="text/css" href="tables/css/component.css" />
     <!-- common styles -->
     <link rel="stylesheet" type="text/css" href="modal/css/dialog.css" />
+
     <!-- individual effect -->
     <link rel="stylesheet" type="text/css" href="modal/css/dialog-sandra.css" />
     <script src="modal/js/modernizr.custom.js"></script>
@@ -63,7 +64,7 @@ if(isset($_SESSION['idfreelancer'])){
 
   <!-- Site wrapper -->
   <div class="wrapper">
-    
+
     <?php
 
 
@@ -76,10 +77,11 @@ if(isset($_SESSION['idfreelancer'])){
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-     
+
 
       <!-- Main content -->
       <section class="content">
+
 
 
         <section class="pricing-section bg-8">
@@ -93,14 +95,29 @@ if(isset($_SESSION['idfreelancer'])){
             $areaatuacao->setIdFreelancer($idfreelancer);
             $resp=$areaatuacao->buscarTodos();
 
-            foreach ($resp as $row) {
+
+            if ($resp==NULL){?>
 
 
-              ?>
-              <div class="pricing__item">
-                <h3 class="pricing__title"><?php echo $row['nomearea'] ?></h3>
-                <p class="pricing__sentence"><?php echo $row['nivelprofissional']  ?></p>
-                <div class="pricing__price"><span class="pricing__currency"> </span><?php echo $row['anosexperiencia']?><span class="pricing__period"> Anos de experiência <span></div>
+                <div class="alert alert-danger alert-dismissible" style="width:100%">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="font-size:30px">&times;</button>
+                  <h4 style="text-align:center;padding-top:10px;font-size:25px;"> Adicione suas áreas de atuações</h4>
+                </div>
+
+                <?php
+              }
+              if ($resp!=NULL) {
+
+
+                foreach ($resp as $row) {
+
+
+
+                  ?>
+                  <div class="pricing__item">
+                    <h3 class="pricing__title"><?php echo $row['nomearea'] ?></h3>
+                    <p class="pricing__sentence"><?php echo $row['nivelprofissional']  ?></p>
+                    <div class="pricing__price"><span class="pricing__currency"> </span><?php echo $row['anosexperiencia']?><span class="pricing__period"> Anos de experiência <span></div>
                 <!--<ul class="pricing__feature-list">
                  <!-- <li class="pricing__feature">1 GB of space</li>
                   <li class="pricing__feature">Support at $25/hour</li>
@@ -110,8 +127,9 @@ if(isset($_SESSION['idfreelancer'])){
                   <a style="align-self:flex-end;"href="../php/functions/excluirarea.php?idareaatuacao=<?php echo $row['idareaatuacao'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
                 </div>
 
-                <?php } ?>
+                <?php } }?>
               </div>
+
             </section>
 
 

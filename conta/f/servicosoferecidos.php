@@ -93,6 +93,18 @@ if(isset($_SESSION['idfreelancer'])){
             $servicos->setIdFreelancer($idfreelancer);
             $resp=$servicos->buscarTodos();
 
+            if ($resp==NULL){?>
+
+
+                <div class="alert alert-danger alert-dismissible" style="width:100%">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="font-size:30px">&times;</button>
+                  <h4 style="text-align:center;padding-top:10px;font-size:25px;"> Adicione seus serviços oferecidos</h4>
+                </div>
+
+                <?php
+              }
+              if ($resp!=NULL) {
+
             foreach ($resp as $row) {
 
 
@@ -106,11 +118,10 @@ if(isset($_SESSION['idfreelancer'])){
                   <li class="pricing__feature">Support at $25/hour</li>
                   <li class="pricing__feature">Small social media package</li> -->
                 </ul>
-                <a href="alterarservico.php?id=<?php echo $row['idservico'] ?>"><i class="fa fa-fw fa-edit"></i> Alterar</a>
-                <a style="align-self:flex-end;"href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
+               <a style="align-self:flex-end;"href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
               </div>
 
-            <?php } ?>
+            <?php } }?>
             </div>
           </section>
 

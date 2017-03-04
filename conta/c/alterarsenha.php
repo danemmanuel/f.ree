@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['idfreelancer'])){
+if(isset($_SESSION['idcliente'])){
 
-require_once 'includes/freelancer.php';
+require_once 'includes/cliente.php';
  $header=file_get_contents(realpath(dirname(__FILE__) . '/includes/header.php'));
  $menu=file_get_contents(realpath(dirname(__FILE__) . '/includes/menu.php'));
  ?>         
@@ -69,8 +69,8 @@ require_once 'includes/freelancer.php';
 
         <!-- Default box -->
 
-                  <form method="POST" action="../php/functions/alterarsenha.php">
-                    <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer; ?>">
+                  <form method="POST" action="../php/functions/alterarsenhacliente.php">
+                    <input type="hidden" name="idcliente" value="<?php echo $idcliente; ?>">
                     
               <div class="row">
               <div class="col-md-6 col-xs-12">
@@ -90,9 +90,7 @@ require_once 'includes/freelancer.php';
               </div>
               </div>
 
-              <div class="form-group">
-                <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer; ?>"
-              </div>
+              
 
               <div class="row">
                 <div class="col-md-6">

@@ -8,6 +8,6 @@ $servicos=new servicos();
 $servicos->setId($idservico);
 $servicos->apagar();
 
-header("location:../../freelancer/servicosoferecidos.php");
+header("location:../../f/servicosoferecidos.php");
 
  ?>

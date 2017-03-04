@@ -71,116 +71,36 @@ if(isset($_SESSION['idfreelancer'])){
 
         <!-- Default box -->
 
-<div class="col-md-4 col-xs-12">
-<section class="pricing-section bg-8">
-      <form>
-          <div class="pricing pricing--tashi">  
-                <div class="pricing__item">
-                <h3 class="pricing__title" style="text-align: center"><i class="fa fa-facebook-square" style="font-size: 80px"></i></h3>
-                <div class="form-group">
-                    <label for="nomefreelancer"> <small>link</small></label>
-                    <input id="nomefreelancer" class="form-control input-lg" name="nomefreelancer" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
-                  </div>           
-                </div>
-
-
-               <div class="pricing__item">
-                <h3 class="pricing__title" style="text-align: center"><i class="fa fa-linkedin-square" style="font-size: 80px"></i></h3>
-                <div class="form-group">
-                    <label for="nomefreelancer"> <small>link</small></label>
-                    <input id="nomefreelancer" class="form-control input-lg" name="nomefreelancer" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
-                  </div>           
-                </div>
-                </div>
-      </form>
-                </section>
-</div>
-
-
-
-
-
-            <form method="POST" action="../php/functions/alterarfreelancer.php">
+        <div class="col-md-4 col-xs-12">
+          <section class="pricing-section bg-8">
+            <form action="../php/functions/alterarlinks.php" method="POST">
               <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer ?>">
-              <div class="row">
-                <div class="col-md-6 col-xs-12">
+              <div class="pricing pricing--tashi">  
+                <div class="pricing__item">
+                  <h3 class="pricing__title" style="text-align: center"><a href="<?php echo $facebook ?>" target="_blank"><i class="fa fa-facebook-square" style="font-size: 80px"></i></a></h3>
                   <div class="form-group">
-                    <label for="nomefreelancer">Seu Nome</label>
-                    <input id="nomefreelancer" class="form-control input-lg" name="nomefreelancer" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
+                    <label for="nomefreelancer"> <small>link do seu perfil</small></label>
+                    <input id="facebook" class="form-control input-lg" name="facebook" type="text" placeholder="Seu Nome" value="<?php echo $facebook?>">
                   </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label for="nomefreelancer">Seu Email</label>
-                    <input id="email" class="form-control input-lg" name="email" type="text" placeholder="Seu Email" value="<?php echo $email ?>">
-                  </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label>Data Nascimento:</label>
-
-                    <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control input-lg" value="<?php echo $datanova ?>"name="datanascimento" data-inputmask="'alias': 'dd-mm-yyyy'" data-mask>
-
+                  <div class="col-md-12">
+                    <div class="input-group" style="width:100%;">
+                      <button type="submit" class="btn btn-block btn-success btn-lg">Adicionar</button>
                     </div>
-                    <!-- /.input group -->
-                  </div>
+                  </div>           
                 </div>
 
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label>Sexo:</label><br>
-
-                    <label for="masculino">Masculino</label>
-                    <input type="radio" name="sexo" class="flat-red" value="masculino" id="masculino" checked>
-                    <label for="feminino">Feminino</label>
-                    <input type="radio" class="flat-red" name="sexo" value="feminino" id="feminino">
-
-
-
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
                 
-                <div class="col-md-6 col-xs-12">
-                  <label for="telefone">Celular</label> <small>(Whatsapp)</small>
-                  <div class="input-group">
 
-                    <div class="input-group-addon">
-                      <i class="fa fa-phone"></i>
-                    </div>
-                    <input id="telefone" type="text" class="form-control input-lg" name="telefone" value="<?php echo $telefone?>" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
-                  </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                  <label for="telefone">Telefone</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-phone"></i>
-                    </div>
-                    <input id="telefone" type="text" class="form-control input-lg"  data-inputmask='"mask": "(99) 99999-9999"' data-mask>
-                  </div>
-                </div>
-
-              </div></br>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="input-group">
-                    <button type="submit" class="btn btn-block btn-success btn-lg">Salvar</button>
-                  </div>
-                </div>
               </div>
-
             </form>
+          </section>
+        </div>
+
+
+
+
+
+
 
         <!-- /.box -->
 

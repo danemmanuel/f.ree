@@ -6,7 +6,9 @@ if(isset($_SESSION['idfreelancer'])){
 
   $menu=file_get_contents(realpath(dirname(__FILE__) . '/includes/menu.php'));
 
-  ?>         
+  ?>
+
+
 
   <!DOCTYPE html>
   <html>
@@ -55,116 +57,136 @@ if(isset($_SESSION['idfreelancer'])){
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <h1>
-          DADOS PESSOAIS
-        </h1>
-        <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Conta</a></li>
-          <li class="active">Dados Pessoais</li>
-        </ol>
-      </section>
+      
 
       <!-- Main content -->
       <section class="content">
 
         <!-- Default box -->
-
-
-            <form method="POST" action="../php/functions/alterarfreelancer.php">
-              <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer ?>">
-              <div class="row">
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label for="nomefreelancer">Seu Nome</label>
-                    <input id="nomefreelancer" class="form-control input-lg" name="nomefreelancer" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
-                  </div>
+        <?php  
+        if ($telefone==NULL) {
+          ?>
+          <div class="alert alert-danger alert-dismissible" style="width:100%">
+                  <button type="button" class="close" data-dismiss="alert" style="font-size:30px" aria-hidden="true">&times;</button>
+                  <h4 style="text-align:center;padding-top:10px;font-size:25px;"> Complete seus dados pessoais</h4>
                 </div>
+          <?php
+        }
+        ?>  
 
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label for="nomefreelancer">Seu Email</label>
-                    <input id="email" class="form-control input-lg" name="email" type="text" placeholder="Seu Email" value="<?php echo $email ?>">
-                  </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label>Data Nascimento:</label>
-
-                    <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control input-lg" value="<?php echo $datanova ?>"name="datanascimento" data-inputmask="'alias': 'dd-mm-yyyy'" data-mask>
-
-                    </div>
-                    <!-- /.input group -->
-                  </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                  <div class="form-group">
-                    <label>Sexo:</label><br>
-
-                    <label for="masculino">Masculino</label>
-                    <input type="radio" name="sexo" class="flat-red" value="masculino" id="masculino" checked>
-                    <label for="feminino">Feminino</label>
-                    <input type="radio" class="flat-red" name="sexo" value="feminino" id="feminino">
-
-
-
-
-                  </div>
-                </div>
+        <form method="POST" action="../php/functions/alterarfreelancer.php">
+          <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer ?>">
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <div class="form-group">
+                <label for="nomefreelancer">Seu Nome</label>
+                <input required id="nomefreelancer" class="form-control input-lg" name="nomefreelancer" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
               </div>
+            </div>
 
-              <div class="row">
-                
-                <div class="col-md-6 col-xs-12">
-                  <label for="telefone">Celular</label> <small>(Whatsapp)</small>
-                  <div class="input-group">
-
-                    <div class="input-group-addon">
-                      <i class="fa fa-phone"></i>
-                    </div>
-                    <input id="telefone" type="text" class="form-control input-lg" name="telefone" value="<?php echo $telefone?>" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
-                  </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                  <label for="telefone">Telefone</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-phone"></i>
-                    </div>
-                    <input id="telefone" type="text" class="form-control input-lg"  data-inputmask='"mask": "(99) 99999-9999"' data-mask>
-                  </div>
-                </div>
-
-              </div></br>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="input-group">
-                    <button type="submit" class="btn btn-block btn-success btn-lg">Salvar</button>
-                  </div>
-                </div>
+            <div class="col-md-6 col-xs-12">
+              <div class="form-group">
+                <label for="nomefreelancer">Seu Email</label>
+                <input disabled id="email" class="form-control input-lg" type="text" placeholder="Seu Email" value="<?php echo $email ?>">
               </div>
+            </div>
 
-            </form>
+            <div class="col-md-6 col-xs-12">
+              <div class="form-group">
+                <label>Data Nascimento</label>
 
-        <!-- /.box -->
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input required type="text" class="form-control input-lg" value="<?php echo $datanova ?>"name="datanascimento" data-inputmask="'alias': 'dd-mm-yyyy'" data-mask>
 
-      </section>
-      <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
 
-    
+            <div class="col-md-6 col-xs-12">
+              <div class="form-group">
+                <label>Gênero</label><br>
 
-    <!-- Control Sidebar -->
+                <?php 
 
-    <!-- /.control-sidebar -->
+                if ($sexo=='masculino') { ?>
+
+                <label for="masculino">Masculino</label>
+                <input type="radio" name="sexo" class="flat-red" value="masculino" id="masculino" checked>
+                <label for="feminino">Feminino</label>
+                <input type="radio" class="flat-red" name="sexo" value="feminino" id="feminino">
+
+                <?php
+
+              }
+
+
+
+
+
+              else{ ?>
+
+              <label for="masculino">Masculino</label>
+              <input type="radio" name="sexo" class="flat-red" value="masculino" id="masculino">
+              <label for="feminino">Feminino</label>
+              <input type="radio" class="flat-red" name="sexo" value="feminino" id="feminino" checked>
+
+              <?php
+            }
+            ?>
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6 col-xs-12">
+          <label for="telefone">Celular</label> <small>(Whatsapp)</small>
+          <div class="input-group">
+
+            <div class="input-group-addon">
+              <i class="fa fa-phone"></i>
+            </div>
+            <input id="telefone" type="text" class="form-control input-lg" name="telefone" value="<?php echo $telefone?>" data-inputmask='"mask": "(99) 99999-9999"' data-mask>
+          </div>
+        </div>
+
+
+        <input id="telefone" type="hidden" class="form-control input-lg"  data-inputmask='"mask": "(99) 99999-9999"' data-mask>
+
+
+      </div></br>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="input-group">
+            <button type="submit" class="btn btn-block btn-success btn-lg">Salvar</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- /.box -->
+
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+<!-- Control Sidebar -->
+
+<!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>

@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['idfreelancer'])){
 
-header("location:../conta");
+header("location:../../conta/f");
 }else{  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,27 +53,24 @@ header("location:../conta");
       <div class="row">
         <div class="col-md-6 col-xl-6">
 
-          <!-- Forms
-          ================================================== -->
+
           <form  action="loginpdo.php" method="POST">
             <div class="form-group has-icon-left form-control-email">
               <label class="sr-only" for="inputEmail">Seu email</label>
-              <input type="email" class="form-control form-control-lg" id="inputEmail" name="email" placeholder="Seu email" autocomplete="off">
+              <input required type="email" class="form-control form-control-lg" id="inputEmail" name="email" placeholder="Seu email" autocomplete="off">
             </div>
             <div class="form-group has-icon-left form-control-password">
               <label class="sr-only" for="inputPassword">Sua senha</label>
-              <input type="password" class="form-control form-control-lg" id="inputPassword" name="senha" placeholder="Sua senha" autocomplete="off">
+              <input required type="password" class="form-control form-control-lg" id="inputPassword" name="senha" placeholder="Sua senha" autocomplete="off">
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Entrar!</button>
-            <p style="text-align:center;padding:5px;">Não é cadastrado? <a href="../cadastro">Cadastre-se</a></p>
+            <p style="text-align:center;padding:5px;">Não é cadastrado? <a href="../../cadastro/f">Cadastre-se</a></p>
           </form>
 
         </div>
         <div class="col-md-6 col-xl-6">
 
-          <!-- SOCIAL buttons
-          ================================================== -->
 
           <a href="#" class="btn btn-social btn-block bg-facebook">
             <span class="icon-facebook"></span> Entrar com Facebook
