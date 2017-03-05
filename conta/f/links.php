@@ -83,7 +83,7 @@ if(isset($_SESSION['idfreelancer'])){
                 <h3 class="pricing__title" style="text-align: center"><a href="<?php echo $facebook ?>" target="_blank"><i class="fa fa-facebook-square" style="font-size: 80px"></i></a></h3>
                 <div class="form-group">
                   <label for="nomefreelancer"> <small>link do seu perfil</small></label>
-                  <input id="facebook" class="form-control input-lg" name="facebook" type="text" placeholder="Seu Nome" value="<?php echo $facebook?>">
+                  <input id="facebook" class="form-control input-lg" name="facebook" type="text" placeholder="Link Facebook" value="<?php echo $facebook?>">
                 </div>
                 <div class="col-md-12">
                   <div class="input-group" style="width:100%;">
@@ -105,7 +105,7 @@ if(isset($_SESSION['idfreelancer'])){
                 <h3 class="pricing__title" style="text-align: center"><a href="<?php echo $linkedin ?>" target="_blank"><i class="fa fa-linkedin-square" style="font-size: 80px"></i></a></h3>
                 <div class="form-group">
                   <label for="nomefreelancer"> <small>link do seu perfil</small></label>
-                  <input id="facebook" class="form-control input-lg" name="linkedin" type="text" placeholder="Seu Nome" value="<?php echo $linkedin?>">
+                  <input id="facebook" class="form-control input-lg" name="linkedin" type="text" placeholder="Link Linkedin" value="<?php echo $linkedin?>">
                 </div>
                 <div class="col-md-12">
                   <div class="input-group" style="width:100%;">
