@@ -29,8 +29,8 @@
           <li><a href="perfilprofissional.php"><i class="fa fa-male"></i> Perfil Profissional</a></li>
           <li><a href="servicosoferecidos.php"><i class="fa fa-briefcase"></i> Meus Serviços</a></li>
           <li><a href="resumo.php"><i class="fa fa-align-left"></i> Resumo</a></li>
-          <li><a href="Habilidades.php"><i class="fa fa-sliders"></i> Habilidades</a></li>
-          <li><a href="#"><i class="fa fa-link"></i> Links</a></li>
+          <li><a href="habilidades.php"><i class="fa fa-sliders"></i> Habilidades</a></li>
+          <li><a href="links.php"><i class="fa fa-link"></i> Links</a></li>
           
         </ul>
       </li>

@@ -14,6 +14,7 @@ class freelancer{
 	private $senha;
 	private $urlavatar;
 	private $facebook;
+	private $linkedin;
 
 
 
@@ -77,6 +78,12 @@ class freelancer{
 	}
 	public function setLinkfacebook($facebook){
 		$this->facebook=$facebook;
+	}
+	public function getLinkedin(){
+		return $this->linkedin;
+	}
+	public function setLinkedin($linkedin){
+		$this->linkedin=$linkedin;
 	}
 	public function inserir(){
 		
@@ -236,6 +243,7 @@ class freelancer{
 						"datanascimento"=>$row['datanascimento'],
 						"resumo"=>$row['resumo'],
 						"facebook"=>$row['linkfacebook'],
+						"linkedin"=>$row['linkedin'],
 						"urlavatar"=>$row['urlavatar'],
 
 						"senha"=>$row['senha']);
@@ -270,6 +278,19 @@ class freelancer{
 						"UPDATE freelancer set linkfacebook=:linkfacebook where idfreelancer=:idfreelancer");
 					$stmt->bindValue(":idfreelancer",$this->getId());
 					$stmt->bindValue(":linkfacebook",$this->getLinkfacebook());
+					return $stmt->execute();
+				}catch(PDOException $e){
+					echo $e->getMessage();
+				}
+			}
+
+			public function alterarLinkedin(){
+				$conect = new conexao();
+				try{
+					$stmt = $conect->conn->prepare(
+						"UPDATE freelancer set linkedin=:linkedin where idfreelancer=:idfreelancer");
+					$stmt->bindValue(":idfreelancer",$this->getId());
+					$stmt->bindValue(":linkedin",$this->getLinkedin());
 					return $stmt->execute();
 				}catch(PDOException $e){
 					echo $e->getMessage();

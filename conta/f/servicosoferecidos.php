@@ -144,7 +144,7 @@ if(isset($_SESSION['idfreelancer'])){
             <div class="col-md-12 col-xs-12">
               <div class="form-group">
                 <label for="nomefreelancer">Nome do Serviço</label>
-                <input id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
+                <input required id="nomefreelancer" class="form-control input-lg" name="nomeservico" type="text" placeholder="Serviço">
               </div>
             </div>
 
@@ -158,7 +158,7 @@ if(isset($_SESSION['idfreelancer'])){
             <div class="col-md-6 col-xs-12">
               <div class="form-group">
                 <label for="nomefreelancer">Preço</label>
-                <input id="nomefreelancer" class="form-control input-lg" name="preco" type="number" placeholder="R$">
+                <input required id="nomefreelancer" class="form-control input-lg" name="preco" type="number" placeholder="R$">
               </div>
             </div>
 

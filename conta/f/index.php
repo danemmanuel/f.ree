@@ -80,7 +80,7 @@ if(isset($_SESSION['idfreelancer'])){
             <div class="col-md-6 col-xs-12">
               <div class="form-group">
                 <label for="nomefreelancer">Seu Nome</label>
-                <input required id="nomefreelancer" class="form-control input-lg" name="nomefreelancer" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
+                <input required id="nomefreelancer"  pattern="[a-z A-Z]+" class="form-control input-lg" name="nomefreelancer" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
               </div>
             </div>
 

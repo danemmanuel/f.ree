@@ -54,4 +54,10 @@ if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] 
         echo 'Você poderá enviar apenas arquivos "*.jpg;*.jpeg;*.gif;*.png"<br />';
 }
 else
-    echo 'Você não enviou nenhum arquivo!';
+    echo "
+    <script>
+    alert('Você não enviou nenhum arquivo!');
+    window.location='avatar.php'; 
+    </script>
+
+    ";

@@ -10,12 +10,42 @@ $nivelprofissional=$_POST['nivelprofissional'];
 $anosexperiencia=$_POST['anosexperiencia'];
 
 
-$areaatuacao->setIdFreelancer($idfreelancer);
-$areaatuacao->setNomearea($nomearea);
-$areaatuacao->setNivelprofissional($nivelprofissional);
-$areaatuacao->setAnosexperiencia($anosexperiencia);
-$areaatuacao->inserir();
 
-header("location:../../f/perfilprofissional.php");
+if ($nomearea=="Selecione...") {
+	echo "
+	<script>
+	alert('É necessário inserir uma área de atuação!');
+	window.location='../../f/perfilprofissional.php'; 
+	</script>
 
- ?>
+	";
+}
+if ($nivelprofissional=="Selecione...") {
+	echo "
+	<script>
+	alert('É necessário inserir um nivel profissional!');
+	window.location='../../f/perfilprofissional.php'; 
+	</script>
+
+	";
+}
+if (($nomearea!="Selecione...") and ($nivelprofissional!="Selecione...")){
+
+	$areaatuacao->setIdFreelancer($idfreelancer);
+	$areaatuacao->setNomearea($nomearea);
+	$areaatuacao->setNivelprofissional($nivelprofissional);
+	$areaatuacao->setAnosexperiencia($anosexperiencia);
+	$areaatuacao->inserir();
+
+	echo "
+	<script>
+	alert('Área de atuação adicionada com sucesso!');
+	window.location='../../f/perfilprofissional.php'; 
+	</script>
+
+	";
+}
+
+
+
+?>

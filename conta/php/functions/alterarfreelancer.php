@@ -12,14 +12,48 @@ $telefone=$_POST['telefone'];
 
 $datanova = date("Y-m-d", strtotime($datanascimento));
 
-$freelancer->setId($idfreelancer);
-$freelancer->setNome($nomefreelancer);
-$freelancer->setDatanascimento($datanova);
-$freelancer->setSexo($sexo);
-$freelancer->setTelefone($telefone);
-$freelancer->alterarFreelancer();
+$array=explode("-",$datanova);
 
-header("location:../../f");
+if (empty($telefone)) {
+	echo "
+	<script>
+	alert('Insira seu telefone');
+	window.location='../../f/'; 
+	</script>
+
+	";
+	
+}else{
+
+	if ($array[0]>=2002) {
+		echo "
+		<script>
+		alert('É necessário possuir mais de 15 anos');
+		window.location='../../f/'; 
+		</script>
+
+		";
+	}
+
+
+	else{
+
+
+		$freelancer->setId($idfreelancer);
+		$freelancer->setNome($nomefreelancer);
+		$freelancer->setDatanascimento($datanova);
+		$freelancer->setSexo($sexo);
+		$freelancer->setTelefone($telefone);
+		$freelancer->alterarFreelancer();
+		echo "
+		<script>
+		alert('Dados atualizados!');
+		window.location='../../f/'; 
+		</script>
+
+		";
+	}
+}
 
 
 

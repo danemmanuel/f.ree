@@ -8,12 +8,29 @@ $idfreelancer=$_POST['idfreelancer'];
 $nomehabilidade=$_POST['nomehabilidade'];
 $nivel=$_POST['nivel'];
 
+if ($nivel=="Selecione...") {
+	echo "
+	<script>
+	alert('É necessário inserir um nivel para a habilidade!');
+	window.location='../../f/habilidades.php'; 
+	</script>
 
-$habilidades->setIdFreelancer($idfreelancer);
-$habilidades->setNomehabilidade($nomehabilidade);
-$habilidades->setNivel($nivel);
-$habilidades->inserir();
+	";
+}
+if($nivel!="Selecione..."){
+	$habilidades->setIdFreelancer($idfreelancer);
+	$habilidades->setNomehabilidade($nomehabilidade);
+	$habilidades->setNivel($nivel);
+	$habilidades->inserir();
+	echo "
+	<script>
+	alert('Habilidade inserida!');
+	window.location='../../f/habilidades.php'; 
+	</script>
 
-header("location:../../f/habilidades.php");
+	";
+}
 
- ?>
+
+
+?>

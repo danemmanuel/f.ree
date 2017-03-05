@@ -11,6 +11,7 @@ $preco=$_POST['preco'];
 $tipo=$_POST['tipo'];
 
 
+
 $servicos->setIdFreelancer($idfreelancer);
 $servicos->setNomeServico($nomeservico);
 $servicos->setDescricao($descricao);
@@ -18,6 +19,12 @@ $servicos->setPreco($preco);
 $servicos->setTipo($tipo);
 $servicos->inserir();
 
-header("location:../../f/servicosoferecidos.php");
+echo "
+	<script>
+	alert('Seu serviço foi adicionado!');
+	window.location='../../f/servicosoferecidos.php'; 
+	</script>
+
+	";
 
  ?>
