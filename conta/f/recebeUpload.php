@@ -70,10 +70,6 @@ if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] 
     else
 
        echo "
-   <script>
-   alert('Você pode enviar apenas arquivos jpg; jpeg; gif; png <br> ou o a imagem é maior que 1MB');
-   window.location='avatar.php'; 
-   </script>
 
  <script>
  alert('Você pode enviar apenas arquivos jpg; jpeg; gif; png ou o a imagem é maior que 1MB');
