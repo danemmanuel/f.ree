@@ -12,9 +12,7 @@ $telefone=$result['telefone'];
 $datanascimento=$result['datanascimento'];
 $sexo=$result['sexo'];
 $senha=$result['senha'];
-$areaatuacao=$result['areaatuacao'];
 $facebook=$result['facebook'];
-$linkedin=$result['linkedin'];
 
 $datanova = date("d-m-Y", strtotime($datanascimento));
 
