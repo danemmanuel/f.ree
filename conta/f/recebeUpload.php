@@ -68,19 +68,18 @@ if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] 
             echo 'Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita.';
     }
     else
-<<<<<<< HEAD
+
        echo "
    <script>
    alert('Você pode enviar apenas arquivos jpg; jpeg; gif; png <br> ou o a imagem é maior que 1MB');
    window.location='avatar.php'; 
    </script>
-=======
-     echo "
+
  <script>
  alert('Você pode enviar apenas arquivos jpg; jpeg; gif; png ou o a imagem é maior que 1MB');
  window.location='avatar.php'; 
  </script>
->>>>>>> 2efffa992bff1f766b6777b48f2823ce59de9125
+
 
    ";
 
