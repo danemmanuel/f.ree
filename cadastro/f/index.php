@@ -61,7 +61,7 @@
             </div>
             <div class="form-group has-icon-left form-control-password">
               <label class="sr-only" for="inputPassword">Sua senha</label>
-              <input required type="password" class="form-control form-control-lg" id="inputPassword" name="senha" placeholder="Sua senha" autocomplete="off">
+              <input required type="password" minlenght="4" class="form-control form-control-lg" id="inputPassword" name="senha" placeholder="Sua senha" autocomplete="off">
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Cadastrar!</button>

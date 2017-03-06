@@ -118,7 +118,10 @@ if(isset($_SESSION['idfreelancer'])){
                   <li class="pricing__feature">Support at $25/hour</li>
                   <li class="pricing__feature">Small social media package</li> -->
                 </ul>
-               <a style="align-self:flex-end;"href="../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
+               
+                <a  style="background-color:#D73925" href="#" class="pricing__action" onclick="javascript: if (confirm('Deseja excluir seu serviço?'))location.href='../php/functions/excluirservico.php?idservico=<?php echo $row['idservico'] ?>'"><i style="padding-left:20px" class="fa fa-fw fa-trash"></i></a>
+                  
+
               </div>
 
             <?php } }?>

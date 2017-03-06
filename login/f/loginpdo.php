@@ -26,7 +26,13 @@ if (isset($idfreelancer)) {
 	session_start();
 
 	if($ativo=="0"){
-		header("location:../../cadastro/f/contaexcluida.php");
+		echo "
+		<script>
+		alert('Esta conta foi excluida! Cadastre-se com outro email');
+		window.location='../../cadastro/f'; 
+		</script>
+
+		";
 	}
 
 	elseif($ativo=="1"){
@@ -37,7 +43,13 @@ if (isset($idfreelancer)) {
 
 
 }else{
-	echo "usuario nao cadastrado";
+	echo "
+		<script>
+		alert('Usuário não cadastrado!');
+		window.location='../../login/f'; 
+		</script>
+
+		";
 }
 
 

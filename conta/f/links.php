@@ -118,6 +118,28 @@ if(isset($_SESSION['idfreelancer'])){
         </section>
       </div>
 
+      <div class="col-md-4 col-xs-12">
+        <section class="pricing-section bg-8">
+          <form action="../php/functions/alterarinsta.php" method="POST">
+            <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer ?>">
+            <div class="pricing pricing--tashi">  
+              <div class="pricing__item">
+                <h3 class="pricing__title" style="text-align: center"><a href="<?php echo $insta ?>" target="_blank"><i class="fa fa-instagram" style="font-size: 80px"></i></a></h3>
+                <div class="form-group">
+                  <label for="nomefreelancer"> <small>link do seu perfil</small></label>
+                  <input id="facebook" class="form-control input-lg" name="insta" type="text" placeholder="Link Linkedin" value="<?php echo $insta?>">
+                </div>
+                <div class="col-md-12">
+                  <div class="input-group" style="width:100%;">
+                    <button type="submit" class="btn btn-block btn-success btn-lg">Atualizar</button>
+                  </div>
+                </div>           
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+
 
 
 

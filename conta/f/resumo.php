@@ -24,6 +24,7 @@ if(isset($_SESSION['idfreelancer'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href="includes/style.css">
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="plugins/iCheck/all.css">
@@ -73,7 +74,7 @@ if(isset($_SESSION['idfreelancer'])){
       ?>
       <!-- Main content -->
       <section class="content">
-        <div style="font-size:20px;text-align:justify;"> <?php echo $resp['resumo']?></div>
+        <div class="resumo"> <?php echo $resp['resumo']?></div>
         <br>
         <form method="POST" action="../php/functions/alterarresumo.php">
           <input type="hidden" name="idfreelancer" value="<?php echo $idfreelancer ?>">
@@ -81,7 +82,7 @@ if(isset($_SESSION['idfreelancer'])){
             <div class="col-md-12 col-xs-12">
               <div class="form-group">
                 <label for="nomefreelancer">Diga um pouco sobre você <small>| Max 1000 caractéres </small></label>
-                <textarea rows="10"id="nomefreelancer" maxlength="1000" class="form-control input-lg" name="resumo" type="text"></textarea>
+                <textarea rows="10"id="nomefreelancer"  maxlength="1000" class="form-control input-lg" name="resumo" type="text"></textarea>
               </div>
             </div>
           </div>

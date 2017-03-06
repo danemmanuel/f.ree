@@ -124,7 +124,9 @@ if(isset($_SESSION['idfreelancer'])){
                   <li class="pricing__feature">Small social media package</li> -->
                   <!--</ul>-->
                   <!-- <a href="alterarservico.php?id=<?php echo $row['idservico'] ?>"><i class="fa fa-fw fa-edit"></i> Alterar</a> -->
-                  <a style="align-self:flex-end;"href="../php/functions/excluirarea.php?idareaatuacao=<?php echo $row['idareaatuacao'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
+                 
+                  <a  style="background-color:#D73925" href="#" class="pricing__action" onclick="javascript: if (confirm('Deseja excluir sua área profissional?'))location.href='../php/functions/excluirarea.php?idareaatuacao=<?php echo $row['idareaatuacao'] ?>'"><i style="padding-left:20px" class="fa fa-fw fa-trash"></i></a>
+                  
                 </div>
 
                 <?php } }?>
@@ -189,7 +191,7 @@ if(isset($_SESSION['idfreelancer'])){
               <div class="col-md-12 col-xs-12">
                 <div class="form-group">
                   <label for="nomefreelancer">Anos de Experiência</label>
-                  <input id="anosexperiencia" class="form-control input-lg" name="anosexperiencia" type="number" placeholder="" value="0">
+                  <input id="anosexperiencia" class="form-control input-lg" name="anosexperiencia" type="number" placeholder="Faz isso à quanto tempo?" value="">
                 </div>
               </div>
 

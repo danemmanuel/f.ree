@@ -54,15 +54,6 @@ require_once 'includes/freelancer.php';
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <h1>
-          SEU AVATAR
-        </h1>
-        <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Conta</a></li>
-          <li class="active">Avatar</li>
-        </ol>
-      </section>
 
       <!-- Main content -->
       <section class="content">

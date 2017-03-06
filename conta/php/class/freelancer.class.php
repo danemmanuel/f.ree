@@ -15,6 +15,7 @@ class freelancer{
 	private $urlavatar;
 	private $facebook;
 	private $linkedin;
+	private $insta;
 
 
 
@@ -84,6 +85,12 @@ class freelancer{
 	}
 	public function setLinkedin($linkedin){
 		$this->linkedin=$linkedin;
+	}
+	public function getInsta(){
+		return $this->insta;
+	}
+	public function setInsta($insta){
+		$this->insta=$insta;
 	}
 	public function inserir(){
 		
@@ -186,8 +193,8 @@ class freelancer{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"SELECT * from clientes where idusuario=:idusuario");
-			$stmt->bindValue(":idusuario",$this->getIdUsuario());
+				"SELECT * from freelancer where email=:email");
+			$stmt->bindValue(":email",$this->getEmail());
 			$stmt->execute();
 			$r=$stmt->fetchAll();
 			$resposta= array();
@@ -244,9 +251,27 @@ class freelancer{
 						"resumo"=>$row['resumo'],
 						"facebook"=>$row['linkfacebook'],
 						"linkedin"=>$row['linkedin'],
+						"insta"=>$row['insta'],
 						"urlavatar"=>$row['urlavatar'],
 
 						"senha"=>$row['senha']);
+					return $r;
+				}catch(PDOException $e){
+					echo $e->getMessage();
+				}
+			}
+
+			public function verificarUser(){
+				$conect = new conexao();
+				try{
+					$stmt = $conect->conn->prepare(
+						"select * from freelancer where email=:email");
+					$stmt->bindValue(':email',$this->getEmail());
+					$stmt->execute();
+					$row=$stmt->fetch();
+					$r= array(
+						"idfreelancer"=>$row['idfreelancer'],
+						"email"=>$row['email']);
 					return $r;
 				}catch(PDOException $e){
 					echo $e->getMessage();
@@ -291,6 +316,19 @@ class freelancer{
 						"UPDATE freelancer set linkedin=:linkedin where idfreelancer=:idfreelancer");
 					$stmt->bindValue(":idfreelancer",$this->getId());
 					$stmt->bindValue(":linkedin",$this->getLinkedin());
+					return $stmt->execute();
+				}catch(PDOException $e){
+					echo $e->getMessage();
+				}
+			}
+
+			public function alterarInsta(){
+				$conect = new conexao();
+				try{
+					$stmt = $conect->conn->prepare(
+						"UPDATE freelancer set insta=:insta where idfreelancer=:idfreelancer");
+					$stmt->bindValue(":idfreelancer",$this->getId());
+					$stmt->bindValue(":insta",$this->getInsta());
 					return $stmt->execute();
 				}catch(PDOException $e){
 					echo $e->getMessage();

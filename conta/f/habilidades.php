@@ -97,14 +97,14 @@ if(isset($_SESSION['idfreelancer'])){
             if ($resp==NULL){?>
 
 
-                <div class="alert alert-danger alert-dismissible" style="width:100%">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="font-size:30px">&times;</button>
-                  <h4 style="text-align:center;padding-top:10px;font-size:25px;"> Adicione suas habilidades profissionais</h4>
-                </div>
+            <div class="alert alert-danger alert-dismissible" style="width:100%">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="font-size:30px">&times;</button>
+              <h4 style="text-align:center;padding-top:10px;font-size:25px;"> Adicione suas habilidades profissionais</h4>
+            </div>
 
-                <?php
-              }
-              if ($resp!=NULL) {
+            <?php
+          }
+          if ($resp!=NULL) {
 
 
             foreach ($resp as $row) {
@@ -115,14 +115,17 @@ if(isset($_SESSION['idfreelancer'])){
                 <h3 class="pricing__title" style="font-size: 40px"><?php echo $row ['nomehabilidade'] ?></h3>
                 <p class="pricing__sentence" style="font-size: 30px"><?php echo $row ['nivel'] ?></p>
                 
-                <a style="align-self:flex-end;"href="../php/functions/excluirhabilidade.php?id=<?php echo $row['idhabilidade'] ?>"><button style="background-color:#D73925"class="pricing__action" aria-label="Purchase this plan"><i class="fa fa-fw fa-trash"></i></button></a>
+                
+                <a  style="background-color:#D73925" href="#" class="pricing__action" onclick="javascript: if (confirm('Deseja excluir sua habilidade?'))location.href='../php/functions/excluirhabilidade.php?id=<?php echo $row['idhabilidade'] ?>'"><i style="padding-left:20px" class="fa fa-fw fa-trash"></i></a>
+
+
               </div>
 
-            <?php }} ?>
+              <?php }} ?>
             </div>
           </section>
 
-         
+
         </div>
 
       </div>
@@ -147,20 +150,20 @@ if(isset($_SESSION['idfreelancer'])){
 
             
             <div class="col-md-12 col-xs-12">
-                <div class="form-group">
-                  <label for="nomefreelancer">Nível</label>
-                  <select class="form-control select2" name="nivel">
-                    <option selected="selected">Selecione...</option>
-                    <option>Noob</option>  
-                    <option>Não manjo muito</option>
-                    <option>Maômenos</option>
-                    <option>Me viro bem</option>
-                    <option>Manjo pakas</option>
-                    <option>Hardcore</option>
-                  </select>
+              <div class="form-group">
+                <label for="nomefreelancer">Nível</label>
+                <select class="form-control select2" name="nivel">
+                  <option selected="selected">Selecione...</option>
+                  <option>Noob</option>  
+                  <option>Não manjo muito</option>
+                  <option>Maômenos</option>
+                  <option>Me viro bem</option>
+                  <option>Manjo pakas</option>
+                  <option>Hardcore</option>
+                </select>
 
-                </div>
               </div>
+            </div>
 
             
           </div>
