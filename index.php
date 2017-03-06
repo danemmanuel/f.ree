@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
- ?><!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
@@ -50,7 +50,7 @@ session_start();
         <div id="collapsingNavbar" class="collapse navbar-toggleable-custom" role="tabpanel" aria-labelledby="collapsingNavbar">
           <ul class="nav navbar-nav pull-xs-right">
             <li class="nav-item nav-item-toggable">
-              <a class="nav-link" href="conta/freelancer">Minha Conta</a>
+              <a class="nav-link" href="conta/f">Minha Conta</a>
             </li>
             <li class="nav-item nav-item-toggable">
               <a class="nav-link" href="ui-elements.html">UI Kit</a>
@@ -78,7 +78,7 @@ session_start();
             require_once 'conta/php/class/freelancer.class.php';
             $freelancer2= new freelancer();
 
-            $freelancer2->setId($_SESSION['idfreelancer']);
+           
             $resp=$freelancer2->buscarId();
             $avatar=$resp['urlavatar'];
             $nomefreelancer=$resp['nome'];
@@ -86,63 +86,27 @@ session_start();
 
             
 
-            if(isset($_SESSION['idfreelancer'])){
             ?>
-            <li class="nav-item dropdown hidden-sm-down textselect-off">
-              <a class="nav-link dropdown-toggle nav-dropdown-user" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="conta/freelancer/<?php echo $avatar ?>" height="40" width="40" alt="Avatar" class="img-circle"> <span class="icon-caret-down"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right dropdown-menu-user dropdown-menu-animated" aria-labelledby="dropdownMenu2">
-                <div class="media">
-                  <div class="media-left">
 
-                    <img src="conta/freelancer/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
-                  </div>
-                  <div class="media-body media-middle">
-                    <h5 class="media-heading"><?php echo $nomefreelancer?></h5>
-                    <h6><?php echo $email?></h6>
-                  </div>
-                </div>
-                <a href="conta/freelancer" class="dropdown-item text-uppercase">Minha Conta</a>
-                <a href="conta/freelancer/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
-                
-              </div>
-            </li>
-
-            <?php }
-            else{
-              ?>
-
-              <li class="nav-item nav-item-toggable">
-                <a class="nav-link" href="conta/freelancer">Login</a>
-              </li>
-              <?php } ?>
-            </ul>
-          </div>
-          <div id="collapsingMobileUser" class="collapse navbar-toggleable-custom dropdown-menu-custom p-x-1 hidden-md-up" role="tabpanel" aria-labelledby="collapsingMobileUser">
-            <div class="media m-t-1">
-              <div class="media-left">
-
-<?php 
-if(isset($_SESSION['idfreelancer'])){
-?>
-<img src="conta/freelancer/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
-<?php
-}
-else{
-
-
-}
- ?>
-                
-              </div>
+                <li class="nav-item nav-item-toggable">
+                  <a class="nav-link" href="conta">Login</a>
+                </li>
+              </ul>
             </div>
-            <a href="conta/freelancer" class="dropdown-item text-uppercase">Minha Conta</a>
-            <a href="conta/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
-            
+            <div id="collapsingMobileUser" class="collapse navbar-toggleable-custom dropdown-menu-custom p-x-1 hidden-md-up" role="tabpanel" aria-labelledby="collapsingMobileUser">
+              <div class="media m-t-1">
+                <div class="media-left">
+
+                  <img src="conta/freelancer/<?php echo $avatar ?>" height="60" width="60" alt="Avatar" class="img-circle">
+
+                </div>
+              </div>
+              <a href="conta/f" class="dropdown-item text-uppercase">Minha Conta</a>
+              <a href="conta/sair.php" class="dropdown-item text-uppercase text-muted">Sair</a>
+
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
     <!-- Hero Section
     ================================================== -->

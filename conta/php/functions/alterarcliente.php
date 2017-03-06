@@ -13,15 +13,45 @@ $telefone=$_POST['telefone'];
 
 $datanova = date("Y-m-d", strtotime($datanascimento));
 
-$cliente->setId($idcliente);
-$cliente->setNome($nomecliente);
-$cliente->setEmail($emailcliente);
-$cliente->setDatanascimento($datanova);
-$cliente->setSexo($sexo);
-$cliente->setTelefone($telefone);
-$cliente->alterarcliente();
+$array=explode("-",$datanova);
 
-header("location:../../c");
+if (empty($telefone)) {
+	echo "
+	<script>
+	alert('Insira seu telefone');
+	window.location='../../c/'; 
+	</script>
+
+	";
+	
+}else{
+
+	if ($array[0]>=2002) {
+		echo "
+		<script>
+		alert('É necessário possuir mais de 15 anos');
+		window.location='../../c/'; 
+		</script>
+
+		";
+	}
+	else{
+
+		$cliente->setId($idcliente);
+		$cliente->setNome($nomecliente);
+		$cliente->setEmail($emailcliente);
+		$cliente->setDatanascimento($datanova);
+		$cliente->setSexo($sexo);
+		$cliente->setTelefone($telefone);
+		$cliente->alterarcliente();
+		echo "<script>
+		alert('Dados atualizados!');
+		window.location='../../c/'; 
+		</script>";
+	}
+}
+
+#header("location:../../c");
 
 
 
