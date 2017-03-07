@@ -67,10 +67,11 @@ if(isset($_SESSION['idfreelancer'])){
        ?>
        <div class="alert alert-danger alert-dismissible" style="width:100%">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="font-size:30px">&times;</button>
-        <h4 style="text-align:center;padding-top:10px;font-size:25px;"> Adicione seus serviços oferecidos</h4>
+        <h4 style="text-align:center;padding-top:10px;font-size:25px;"> Adicione suas redes sociais</h4>
       </div>
       <?php
     }
+    
 
     ?>
 

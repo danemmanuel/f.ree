@@ -89,7 +89,7 @@ session_start();
             ?>
 
                 <li class="nav-item nav-item-toggable">
-                  <a class="nav-link" href="conta">Login</a>
+                  <a class="nav-link" href="login/">Login</a>
                 </li>
               </ul>
             </div>
