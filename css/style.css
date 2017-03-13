@@ -351,14 +351,8 @@ Banner
 Features
 ************************************/
 h2{
-	font-size: 2em;
-    background-color: #333f54;
-    /* padding-bottom: 15px; */
-    padding: 14px;
-    color: #fff;
-    box-shadow: 0px 0px 10px #000;
-    margin-top: 10px;
-    border-radius: 0px 0px 50px 50px;
+	font-size: 24px;
+	padding-bottom: 15px;
 }
 .bottom-line{
 	width: 25px;
