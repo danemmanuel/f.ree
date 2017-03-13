@@ -4,23 +4,25 @@ require_once 'conexao.class.php';
 
 class cliente{
 
-	private $idcliente;
+	private $idmensagem;
+	private $idfreelancer;
 	private $nome;
 	private $email;
-	private $telefone;
-	private $sexo;
-	private $datanascimento;
-	private $senha;
-	private $urlavatar;
+	private $servico;
+	private $mensagem;
 
 
-
-
-	public function getId(){
-		return $this->idcliente;
+	public function getIdMensagem(){
+		return $this->idmensagem;
 	}
-	public function setId($idcliente){
-		if(!empty($idcliente)) $this->idcliente=$idcliente;
+	public function setIdMensagem($idmensagem){
+		if(!empty($idmensagem)) $this->idmensagem=$idmensagem;
+	}
+	public function getIdFreelancer(){
+		return $this->idfreelancer;
+	}
+	public function setIdFreelancer($idfreelancer){
+		$this->idfreelancer=$idfreelancer;
 	}
 	public function getNome(){
 		return $this->nome;
@@ -28,54 +30,39 @@ class cliente{
 	public function setNome($nome){
 		$this->nome=$nome;
 	}
-	public function getTelefone(){
-		return $this->telefone;
-	}
-	public function setTelefone($telefone){
-		$this->telefone=$telefone;
-	}
 	public function getEmail(){
 		return $this->email;
 	}
 	public function setEmail($email){
 		$this->email=$email;
 	}
-	public function getSexo(){
-		return $this->sexo;
+	public function getServico(){
+		return $this->servico;
 	}
-	public function setSexo($sexo){
-		$this->sexo=$sexo;
+	public function setServico($servico){
+		$this->servico=$servico;
 	}
-	public function getDatanascimento(){
-		return $this->datanascimento;
+	public function getMensagem(){
+		return $this->mensagem;
 	}
-	public function setDatanascimento($datanascimento){
-		$this->datanascimento=$datanascimento;
+	public function setMensagem($mensagem){
+		$this->mensagem=$mensagem;
 	}
-
-	public function getSenha(){
-		return $this->senha;
-	}
-	public function setSenha($senha){
-		$this->senha=$senha;
-	}	
-	public function getUrlAvatar(){
-		return $this->urlavatar;
-	}
-	public function setUrlAvatar($urlavatar){
-		$this->urlavatar=$urlavatar;
-	}
+	
+	
 	public function inserir(){
-		
 		
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"INSERT INTO cliente(nome,email,senha,ativo)
-				VALUES(:nome,:email,:senha,'1')");
+				"INSERT INTO mensagens(idfreelancer,nome,email,servico,mensagem)
+				VALUES(:idfreelancer,:nome,:email,:servico,:mensagem)");
+			$stmt->bindValue(":idfreelancer",$this->getIdFreelancer());
 			$stmt->bindValue(":nome",$this->getNome());
 			$stmt->bindValue(":email",$this->getEmail());
-			$stmt->bindValue(":senha",$this->getSenha());
+			$stmt->bindValue(":servico",$this->getServico());
+			$stmt->bindValue(":mensagem",$this->getMensagem());
+
 			return $stmt->execute();
 		}catch(PDOException $e){
 			echo $e->getMessage();
@@ -86,8 +73,8 @@ class cliente{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"UPDATE cliente set urlavatar=:urlavatar where idcliente=:idcliente");
-			$stmt->bindValue(":idcliente",$this->getId());
+				"UPDATE cliente set urlavatar=:urlavatar where idmensagem=:idmensagem");
+			$stmt->bindValue(":idmensagem",$this->getId());
 			$stmt->bindValue(":urlavatar",$this->getUrlAvatar());
 			return $stmt->execute();
 		}catch(PDOException $e){
@@ -99,8 +86,8 @@ class cliente{
 		try{
 			$stmt = $conect->conn->prepare(
 				"UPDATE cliente set nome=:nome,telefone=:telefone,
-				email=:email,sexo=:sexo,datanascimento=:datanascimento where idcliente=:idcliente");
-			$stmt->bindValue(":idcliente",$this->getId());
+				email=:email,sexo=:sexo,datanascimento=:datanascimento where idmensagem=:idmensagem");
+			$stmt->bindValue(":idmensagem",$this->getId());
 			$stmt->bindValue(":nome",$this->getNome());
 			$stmt->bindValue(":telefone",$this->getTelefone());
 			$stmt->bindValue(":email",$this->getEmail());
@@ -117,8 +104,8 @@ class cliente{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"UPDATE cliente set senha=:senha where idcliente=:idcliente");
-			$stmt->bindValue(":idcliente",$this->getId());
+				"UPDATE cliente set senha=:senha where idmensagem=:idmensagem");
+			$stmt->bindValue(":idmensagem",$this->getId());
 			$stmt->bindValue(":senha",$this->getSenha());
 			return $stmt->execute();
 		}catch(PDOException $e){
@@ -130,8 +117,8 @@ class cliente{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"UPDATE cliente set resumo=:resumo where idcliente=:idcliente");
-			$stmt->bindValue(":idcliente",$this->getId());
+				"UPDATE cliente set resumo=:resumo where idmensagem=:idmensagem");
+			$stmt->bindValue(":idmensagem",$this->getId());
 			$stmt->bindValue(":resumo",$this->getResumo());
 			return $stmt->execute();
 		}catch(PDOException $e){
@@ -143,8 +130,8 @@ class cliente{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"UPDATE cliente SET ativo='0' where idcliente=:idcliente");
-			$stmt->bindValue(":idcliente",$this->getId());
+				"UPDATE cliente SET ativo='0' where idmensagem=:idmensagem");
+			$stmt->bindValue(":idmensagem",$this->getId());
 			return $stmt->execute();
 						
 		}catch(PDOException $e){
@@ -155,8 +142,8 @@ class cliente{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"DELETE from clientes where idcliente=:idcliente");
-			$stmt->bindValue(":idcliente",$this->getId());
+				"DELETE from clientes where idmensagem=:idmensagem");
+			$stmt->bindValue(":idmensagem",$this->getId());
 			return $stmt->execute();
 			
 		}catch(PDOException $e){
@@ -174,7 +161,7 @@ class cliente{
 			$resposta= array();
 			foreach ($r as $row) {
 				$temp= array(
-					"idcliente"=>$row['idcliente'],
+					"idmensagem"=>$row['idmensagem'],
 					"idusuario"=>$row['idusuario'],
 					"nome"=>$row['nome'],
 					"email"=>$row['email'],
@@ -207,12 +194,12 @@ class cliente{
 				$conect = new conexao();
 				try{
 					$stmt = $conect->conn->prepare(
-						"select * from cliente where idcliente=:idcliente");
-					$stmt->bindValue(':idcliente',$this->getId());
+						"select * from cliente where idmensagem=:idmensagem");
+					$stmt->bindValue(':idmensagem',$this->getId());
 					$stmt->execute();
 					$row=$stmt->fetch();
 					$r= array(
-						"idcliente"=>$row['idcliente'],
+						"idmensagem"=>$row['idmensagem'],
 						"nome"=>$row['nome'],
 						"telefone"=>$row['telefone'],
 						"email"=>$row['email'],
@@ -236,7 +223,7 @@ class cliente{
 					$stmt->execute();
 					$row=$stmt->fetch();
 					$r= array(
-						"idcliente"=>$row['idcliente']);
+						"idmensagem"=>$row['idmensagem']);
 					return $r;
 				}catch(PDOException $e){
 					echo $e->getMessage();

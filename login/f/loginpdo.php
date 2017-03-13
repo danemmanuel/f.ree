@@ -38,7 +38,7 @@ if (isset($idfreelancer)) {
 	elseif($ativo=="1"){
 
 		$_SESSION['idfreelancer'] = $idfreelancer;
-		header("location:../../conta/f");
+		header("location:../../");
 	}
 
 

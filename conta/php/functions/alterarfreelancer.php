@@ -47,7 +47,6 @@ if (empty($telefone)) {
 		$freelancer->alterarFreelancer();
 		echo "
 		<script>
-		alert('Dados atualizados!');
 		window.location='../../f/'; 
 		</script>
 

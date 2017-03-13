@@ -96,6 +96,8 @@ class areaatuacao{
 		}
 	}
 
+
+
 	public function alterarSenha(){
 		  $conect = new conexao();
 		  try{
@@ -155,6 +157,75 @@ class areaatuacao{
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}}
+
+		public function buscarCategoria(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"SELECT * from areaatuacao where nomearea=:nomearea");
+			$stmt->bindValue(":nomearea",$this->getNomearea());
+			$stmt->execute();
+			$r=$stmt->fetchAll();
+			$resposta= array();
+			foreach ($r as $row) {
+				$temp= array(
+					"idfreelancer"=>$row['idfreelancer'],
+					"anosexperiencia"=>$row['anosexperiencia'],
+					"nomearea"=>$row['nomearea'],
+					"nivelprofissional"=>$row['nivelprofissional']);
+				array_push($resposta, $temp);
+			}
+			return $resposta;
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}}
+
+		public function buscar(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"SELECT * from areaatuacao where idfreelancer=:idfreelancer ORDER BY idareaatuacao DESC LIMIT 1");
+			$stmt->bindValue(":idfreelancer",$this->getIdFreelancer());
+			$stmt->execute();
+			$r=$stmt->fetchAll();
+			$resposta= array();
+			foreach ($r as $row) {
+				$temp= array(
+					"idareaatuacao"=>$row['idareaatuacao'],
+					"idfreelancer"=>$row['idfreelancer'],
+					"anosexperiencia"=>$row['anosexperiencia'],
+					"nomearea"=>$row['nomearea'],
+					"nivelprofissional"=>$row['nivelprofissional']);
+				array_push($resposta, $temp);
+			}
+			return $resposta;
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}}
+		public function buscarAll(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"SELECT * from areaatuacao where idfreelancer=:idfreelancer ORDER BY idareaatuacao");
+			$stmt->bindValue(":idfreelancer",$this->getIdFreelancer());
+			$stmt->execute();
+			$r=$stmt->fetchAll();
+			$resposta= array();
+			foreach ($r as $row) {
+				$temp= array(
+					"idareaatuacao"=>$row['idareaatuacao'],
+					"idfreelancer"=>$row['idfreelancer'],
+					"anosexperiencia"=>$row['anosexperiencia'],
+					"nomearea"=>$row['nomearea'],
+					"nivelprofissional"=>$row['nivelprofissional']);
+				array_push($resposta, $temp);
+			}
+			return $resposta;
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}}
+
+
 		public function somar(){
 			$conect = new conexao();
 			try{

@@ -45,7 +45,6 @@ if(isset($_SESSION['idfreelancer'])){
 
     <?php
 
-
     require_once 'includes/header.php';
     require_once 'includes/aside.php';
 
@@ -67,9 +66,9 @@ if(isset($_SESSION['idfreelancer'])){
         if ($telefone==NULL) {
           ?>
           <div class="alert alert-danger alert-dismissible" style="width:100%">
-                  <button type="button" class="close" data-dismiss="alert" style="font-size:30px" aria-hidden="true">&times;</button>
-                  <h4 style="text-align:center;padding-top:10px;font-size:25px;"> Complete seus dados pessoais</h4>
-                </div>
+            <button type="button" class="close" data-dismiss="alert" style="font-size:30px" aria-hidden="true">&times;</button>
+            <h4 style="text-align:center;padding-top:10px;font-size:25px;"> Complete seus dados pessoais</h4>
+          </div>
           <?php
         }
         ?>  
@@ -180,16 +179,8 @@ if(isset($_SESSION['idfreelancer'])){
   </section>
   <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
 
-
-
-<!-- Control Sidebar -->
-
-<!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
+<div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 

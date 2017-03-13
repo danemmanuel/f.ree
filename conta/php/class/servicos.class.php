@@ -164,6 +164,53 @@ class servicos{
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}}
+		public function buscar(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"SELECT * from servicos where idfreelancer=:idfreelancer LIMIT 5");
+			$stmt->bindValue(":idfreelancer",$this->getIdFreelancer());
+			$stmt->execute();
+			$r=$stmt->fetchAll();
+			$resposta= array();
+			foreach ($r as $row) {
+				$temp= array(
+					"idservico"=>$row['idservico'],
+					"idfreelancer"=>$row['idfreelancer'],
+					"nomeservico"=>$row['nomeservico'],
+					"descricao"=>$row['descricao'],
+					"tipo"=>$row['tipo'],
+					"preco"=>$row['preco']);
+				array_push($resposta, $temp);
+			}
+			return $resposta;
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}}
+
+		public function buscarAll(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"SELECT * from servicos where idfreelancer=:idfreelancer");
+			$stmt->bindValue(":idfreelancer",$this->getIdFreelancer());
+			$stmt->execute();
+			$r=$stmt->fetchAll();
+			$resposta= array();
+			foreach ($r as $row) {
+				$temp= array(
+					"idservico"=>$row['idservico'],
+					"idfreelancer"=>$row['idfreelancer'],
+					"nomeservico"=>$row['nomeservico'],
+					"descricao"=>$row['descricao'],
+					"tipo"=>$row['tipo'],
+					"preco"=>$row['preco']);
+				array_push($resposta, $temp);
+			}
+			return $resposta;
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}}
 		public function somar(){
 			$conect = new conexao();
 			try{

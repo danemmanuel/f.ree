@@ -24,7 +24,6 @@ if($nivel!="Selecione..."){
 	$habilidades->inserir();
 	echo "
 	<script>
-	alert('Habilidade inserida!');
 	window.location='../../f/habilidades.php'; 
 	</script>
 

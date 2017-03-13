@@ -69,6 +69,27 @@ class habilidades{
 			echo $e->getMessage();
 		}
 	}
+	public function buscarAll(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"SELECT * from habilidades where idfreelancer=:idfreelancer");
+			$stmt->bindValue(":idfreelancer",$this->getIdFreelancer());
+			$stmt->execute();
+			$r=$stmt->fetchAll();
+			$resposta= array();
+			foreach ($r as $row) {
+				$temp= array(
+					"idhabilidade"=>$row['idhabilidade'],
+					"idfreelancer"=>$row['idfreelancer'],
+					"nomehabilidade"=>$row['nomehabilidade'],
+					"nivel"=>$row['nivel']);
+				array_push($resposta, $temp);
+			}
+			return $resposta;
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}}
 	public function alterarFreelancer(){
 		$conect = new conexao();
 		try{

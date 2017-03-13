@@ -193,8 +193,7 @@ class freelancer{
 		$conect = new conexao();
 		try{
 			$stmt = $conect->conn->prepare(
-				"SELECT * from freelancer where email=:email");
-			$stmt->bindValue(":email",$this->getEmail());
+				"SELECT * from freelancer  where ativo='1' ORDER BY idfreelancer DESC LIMIT 3");
 			$stmt->execute();
 			$r=$stmt->fetchAll();
 			$resposta= array();
@@ -202,9 +201,63 @@ class freelancer{
 			foreach ($r as $row) {
 				$temp= array(
 					"idfreelancer"=>$row['idfreelancer'],
-					"idusuario"=>$row['idusuario'],
 					"nome"=>$row['nome'],
 					"email"=>$row['email'],
+					"resumo"=>$row['resumo'],
+					"sexo"=>$row['sexo'],
+					"urlavatar"=>$row['urlavatar'],
+					"telefone"=>$row['telefone']);
+				array_push($resposta, $temp);
+
+			}
+			return $resposta;
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}}
+
+		public function buscarCategoria(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"SELECT * from freelancer  where ativo='1' and idfreelancer=:idfreelancer ORDER BY idfreelancer DESC LIMIT 3");
+			$stmt->bindValue(":idfreelancer",$this->getId());
+			$stmt->execute();
+			$r=$stmt->fetchAll();
+			$resposta= array();
+			
+			foreach ($r as $row) {
+				$temp= array(
+					"idfreelancer"=>$row['idfreelancer'],
+					"nome"=>$row['nome'],
+					"email"=>$row['email'],
+					"resumo"=>$row['resumo'],
+					"sexo"=>$row['sexo'],
+					"urlavatar"=>$row['urlavatar'],
+					"telefone"=>$row['telefone']);
+				array_push($resposta, $temp);
+
+			}
+			return $resposta;
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}}
+
+		public function buscarAll(){
+		$conect = new conexao();
+		try{
+			$stmt = $conect->conn->prepare(
+				"SELECT * from freelancer  where ativo='1' ORDER BY idfreelancer DESC LIMIT 3");
+			$stmt->execute();
+			$r=$stmt->fetchAll();
+			$resposta= array();
+			
+			foreach ($r as $row) {
+				$temp= array(
+					"idfreelancer"=>$row['idfreelancer'],
+					"nome"=>$row['nome'],
+					"email"=>$row['email'],
+					"sexo"=>$row['sexo'],
+					"urlavatar"=>$row['urlavatar'],
 					"telefone"=>$row['telefone']);
 				array_push($resposta, $temp);
 
@@ -219,8 +272,8 @@ class freelancer{
 			$conect = new conexao();
 			try{
 				$stmt = $conect->conn->prepare(
-					"SELECT * from clientes where idusuario=:idusuario");
-				$stmt->bindValue(":idusuario",$this->getIdUsuario());
+					"SELECT * from freelancer");
+
 				$stmt->execute();
 				$r=$stmt->fetchAll();
 				$i=0;
@@ -237,7 +290,7 @@ class freelancer{
 				$conect = new conexao();
 				try{
 					$stmt = $conect->conn->prepare(
-						"select * from freelancer where idfreelancer=:idfreelancer");
+						"select * from freelancer where idfreelancer=:idfreelancer and ativo='1'");
 					$stmt->bindValue(':idfreelancer',$this->getId());
 					$stmt->execute();
 					$row=$stmt->fetch();
@@ -253,7 +306,6 @@ class freelancer{
 						"linkedin"=>$row['linkedin'],
 						"insta"=>$row['insta'],
 						"urlavatar"=>$row['urlavatar'],
-
 						"senha"=>$row['senha']);
 					return $r;
 				}catch(PDOException $e){

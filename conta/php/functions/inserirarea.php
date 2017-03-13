@@ -39,7 +39,6 @@ if (($nomearea!="Selecione...") and ($nivelprofissional!="Selecione...")){
 
 	echo "
 	<script>
-	alert('Área de atuação adicionada com sucesso!');
 	window.location='../../f/perfilprofissional.php'; 
 	</script>
 

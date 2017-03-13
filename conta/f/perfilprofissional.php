@@ -34,12 +34,9 @@ if(isset($_SESSION['idfreelancer'])){
     <link rel="stylesheet" type="text/css" href="pservices/css/component.css" />
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="plugins/iCheck/all.css">
+        <link rel="stylesheet" type="text/css" href="tables/css/component.css" />
     <link rel="stylesheet" type="text/css" href="modal/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="tables/css/component.css" />
-    <!-- common styles -->
     <link rel="stylesheet" type="text/css" href="modal/css/dialog.css" />
-
-    <!-- individual effect -->
     <link rel="stylesheet" type="text/css" href="modal/css/dialog-sandra.css" />
     <script src="modal/js/modernizr.custom.js"></script>
 

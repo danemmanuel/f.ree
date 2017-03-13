@@ -21,7 +21,6 @@ $servicos->inserir();
 
 echo "
 	<script>
-	alert('Seu serviço foi adicionado!');
 	window.location='../../f/servicosoferecidos.php'; 
 	</script>
 
