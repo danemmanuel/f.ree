@@ -117,11 +117,11 @@ $id=$_SESSION['idfreelancer'];
     <form action="conta/php/functions/enviarpedido.php" method="POST">
       <input type="hidden" name="idfreelancer" value="<?php echo $resp['idfreelancer'] ?>">
       <div class="form-group">
-        <input required id="nomefreelancer"  pattern="[a-z A-Z]+" class="form-control input-lg" name="nome" type="text" placeholder="Seu Nome" value="<?php echo $nomefreelancer?>">
+        <input required id="nomefreelancer"  pattern="[a-z A-Z]+" class="form-control input-lg" name="nome" type="text" placeholder="Seu Nome">
       </div>
 
       <div class="form-group">
-        <input required id="nomefreelancer" class="form-control input-lg" name="email" type="email" placeholder="Seu Email" value="<?php echo $nomefreelancer?>">
+        <input required id="nomefreelancer" class="form-control input-lg" name="email" type="email" placeholder="Seu Email">
       </div>
 
       <div class="form-group">
