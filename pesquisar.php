@@ -51,8 +51,8 @@ $id=$_SESSION['idfreelancer'];
                 <div class="row">
                   <div class="col-md-4 col-sm-6 padleft-right">
                     <figure class="imghvr-fold-up">
-                      <div class="hoverimg">Desenhar meu Site</div>
-                      <img src="img/course01.jpg" class="img-responsive">
+                      <div class="hoverimg">Tecnologia</div>
+                      <img src="img/tech.jpg" class="img-responsive">
                       <figcaption>
                         <div class="verfreela">Ver Freelancers</div>
                       </figcaption>
@@ -62,8 +62,8 @@ $id=$_SESSION['idfreelancer'];
 
                   <div class="col-md-4 col-sm-6 padleft-right">
                     <figure class="imghvr-fold-up">
-                      <div class="hoverimg">Desenhar meu Site</div>
-                      <img src="img/course01.jpg" class="img-responsive">
+                      <div class="hoverimg">Saúde e Bem Estar</div>
+                      <img src="img/health.jpg" class="img-responsive">
                       <figcaption>
                         <div class="verfreela">Ver Freelancers</div>
                       </figcaption>
@@ -73,8 +73,8 @@ $id=$_SESSION['idfreelancer'];
 
                   <div class="col-md-4 col-sm-6 padleft-right">
                     <figure class="imghvr-fold-up">
-                      <div class="hoverimg">Desenhar meu Site</div>
-                      <img src="img/course01.jpg" class="img-responsive">
+                      <div class="hoverimg">Severino</div>
+                      <img src="img/jackofalltrades.jpg" class="img-responsive">
                       <figcaption>
                         <div class="verfreela">Ver Freelancers</div>
                       </figcaption>
